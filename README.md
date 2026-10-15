@@ -8,7 +8,8 @@ A personal portfolio for Christopher Okoh, a Nigeria-based full-stack and AI eng
 - Three featured projects, with previews for IdomaConnect AI and AIJE Community Shield
 - A categorized overview of tools and technologies
 - Fellowship, scholarship, and software-development learning milestones
-- A responsive layout, mobile navigation, and persistent light/dark theme switch
+- A responsive, single-page layout with mobile navigation
+- A cinematic landscape hero and centered editorial sections inspired by early portfolio sites
 - Search and social-sharing metadata in the page head
 
 ## Tech stack

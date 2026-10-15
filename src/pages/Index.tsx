@@ -1,16 +1,44 @@
-import { ArrowDown, ArrowRight, ArrowUpRight, AtSign, Award, Blocks, Braces, Github, Globe2, Linkedin, MapPin, Radio, Sparkles, Workflow } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  AtSign,
+  BrainCircuit,
+  Check,
+  Code2,
+  Github,
+  Linkedin,
+  MapPin,
+  PanelsTopLeft,
+  Radio,
+  Sparkles,
+} from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ProjectMatcher from "@/components/ProjectMatcher";
 import idomaPreview from "@/assets/portfolio/idomaconnect-preview.jpg.asset.json";
 import aijePreview from "@/assets/portfolio/aije-community-shield-preview.jpg.asset.json";
 import portrait from "@/assets/portfolio/christopher-okoh-portrait.png.asset.json";
 
-const projects = [
+type PortfolioProject = {
+  number: string;
+  title: string;
+  category: string;
+  description: string;
+  stack: string[];
+  href: string;
+  demo?: string;
+  image?: string;
+  imageAlt?: string;
+  kind?: string;
+};
+
+const projects: PortfolioProject[] = [
   {
     number: "01",
     title: "DevFlow AI",
     category: "AI · Developer tools",
-    description: "An AI-powered engineering workspace that brings repository context and practical code intelligence closer to the developer workflow.",
+    description:
+      "An AI-powered engineering workspace that brings repository context and practical code intelligence closer to the developer workflow.",
     stack: ["Go", "React", "PostgreSQL", "RAG"],
     href: "https://github.com/kristopher1027/devflow-ai",
     kind: "devflow",
@@ -19,7 +47,8 @@ const projects = [
     number: "02",
     title: "IdomaConnect AI",
     category: "AI · Culture & heritage",
-    description: "A home for Idoma knowledge: a verified cultural knowledge base, conversational AI and an interactive map of heritage sites.",
+    description:
+      "A home for Idoma knowledge: a verified cultural knowledge base, conversational AI and an interactive map of heritage sites.",
     stack: ["React", "TypeScript", "RAG", "Maps"],
     href: "https://github.com/kristopher1027/the-build-compass",
     demo: "https://the-build-compass.lovable.app",
@@ -30,7 +59,8 @@ const projects = [
     number: "03",
     title: "AIJE Community Shield",
     category: "Community · Public safety",
-    description: "An emergency and community-safety platform for Benue State, with incident reporting, mapped resources and offline-aware tools.",
+    description:
+      "An emergency and community-safety platform for Benue State, with incident reporting, mapped resources and offline-aware tools.",
     stack: ["React", "TypeScript", "Tailwind", "Maps"],
     href: "https://github.com/Stonez-Digital/AIJE-Development-Roadmap",
     demo: "https://aije-development-roadmap.pages.dev/",
@@ -39,11 +69,37 @@ const projects = [
   },
 ];
 
-const skillGroups = [
-  { title: "Frontend", skills: ["HTML & CSS", "JavaScript", "TypeScript", "React"] },
-  { title: "Backend", skills: ["Go", "Python", "FastAPI", "REST APIs"] },
-  { title: "Data & AI", skills: ["PostgreSQL", "LLM APIs", "RAG", "AI integration"] },
-  { title: "Tools & workflow", skills: ["Git & GitHub", "Docker", "Supabase", "System design"] },
+const capabilities = [
+  {
+    icon: PanelsTopLeft,
+    title: "Product thinking",
+    text: "I shape clear, accessible interfaces around the people and problems a product is meant to serve.",
+  },
+  {
+    icon: Code2,
+    title: "Full-stack development",
+    text: "I build responsive frontends, dependable APIs and the data foundations that bring a product together.",
+  },
+  {
+    icon: BrainCircuit,
+    title: "Applied AI",
+    text: "I connect language models and retrieval systems to real workflows, with useful context and careful boundaries.",
+  },
+];
+
+const technologies = [
+  "TypeScript",
+  "React",
+  "Go",
+  "Python",
+  "FastAPI",
+  "PostgreSQL",
+  "RAG",
+  "Supabase",
+  "Docker",
+  "Git & GitHub",
+  "REST APIs",
+  "System design",
 ];
 
 const milestones = [
@@ -53,119 +109,172 @@ const milestones = [
   { name: "01 Edu · Piscine", detail: "Software development", status: "Completed" },
 ];
 
-const highlights = [
-  { icon: Blocks, title: "Three real-world builds", detail: "AI, full-stack products and community impact" },
-  { icon: Award, title: "Nithub × DataCamp", detail: "Selected for the Data & AI scholarship" },
-  { icon: Radio, title: "Idoma Centenary Plus", detail: "Hackathon participant · 2026" },
-  { icon: Workflow, title: "Always in progress", detail: "Building skills for the long run" },
-];
-
 const Index = () => (
   <div className="portfolio-page" id="home">
-    <Navigation />
-
     <main>
-      <section className="intro-section">
-        <div className="intro-grid page-width">
-          <div className="intro-copy">
-            <div className="availability"><span className="availability-dot" /> Open to opportunities</div>
-            <p className="intro-eyebrow">INDEPENDENT DEVELOPER <span>·</span> NIGERIA</p>
-            <h1>Christopher<br /><span className="name-accent">Okoh</span><span className="name-period">.</span></h1>
-            <div className="intro-role"><span /> Full-stack &amp; AI engineer</div>
-            <p className="intro-description">I design and build thoughtful digital products — from reliable backend systems to AI-powered tools that solve real problems.</p>
-            <div className="intro-actions">
-              <a href="#projects" className="button-primary">Explore my work <ArrowDown size={16} aria-hidden="true" /></a>
-              <a href="mailto:etzkristokency2@gmail.com" className="button-text">Get in touch <ArrowUpRight size={16} aria-hidden="true" /></a>
-            </div>
-            <div className="intro-socials" aria-label="Social links">
-              <a href="https://github.com/kristopher1027" aria-label="GitHub" target="_blank" rel="noreferrer"><Github size={17} /></a>
-              <a href="https://www.linkedin.com/in/christopher-okoh-391933430/" aria-label="LinkedIn" target="_blank" rel="noreferrer"><Linkedin size={17} /></a>
-              <a href="mailto:etzkristokency2@gmail.com" aria-label="Email"><AtSign size={17} /></a>
-              <span className="social-caption">Build carefully. Learn continuously.</span>
-            </div>
-          </div>
-
-          <div className="intro-visual" aria-label="Portrait of Christopher Okoh">
-            <div className="visual-coordinate">09°04′N&nbsp; 07°29′E</div>
-            <div className="orbit orbit-outer" />
-            <div className="orbit orbit-inner" />
-            <div className="visual-cross visual-cross-one" /><div className="visual-cross visual-cross-two" />
-            <div className="visual-core"><img src={portrait.url} alt="Christopher Okoh" /><i /></div>
-            <div className="visual-code"><span className="code-light">01</span> systems<br /><span className="code-light">02</span> people<br /><span className="code-light">03</span> possibility</div>
-            <div className="visual-caption"><span>BUILDING AT THE INTERSECTION</span><span>OF AI &amp; EVERYDAY LIFE</span></div>
-            <span className="visual-star">✳</span>
-          </div>
+      <section className="hero-section" aria-labelledby="hero-title">
+        <div className="hero-sky" aria-hidden="true">
+          <div className="hero-stars" />
+          <div className="hero-mountain hero-mountain-back" />
+          <div className="hero-mountain hero-mountain-mid" />
+          <div className="hero-mountain hero-mountain-front" />
+          <div className="hero-lake" />
+          <div className="hero-reflection" />
         </div>
-        <div className="intro-bottom page-width"><span>SOFTWARE THAT DOES SOMETHING MEANINGFUL</span><a href="#about">Scroll to explore <ArrowDown size={14} aria-hidden="true" /></a></div>
+        <Navigation />
+
+        <div className="hero-content">
+          <p className="hero-kicker"><span /> Independent developer · Nigeria</p>
+          <h1 id="hero-title">Hi, I’m <span>Christopher</span></h1>
+          <p className="hero-role">Full-stack &amp; AI engineer</p>
+          <p className="hero-intro">
+            I build thoughtful digital products, from reliable backend systems to AI-powered tools that solve real problems.
+          </p>
+          <a className="hero-button" href="#projects">Explore my work <ArrowRight size={16} aria-hidden="true" /></a>
+        </div>
+
+        <a href="#about" className="hero-scroll" aria-label="Scroll to about Christopher">
+          <span>Scroll to explore</span><ArrowDown size={15} aria-hidden="true" />
+        </a>
+        <div className="hero-location"><MapPin size={13} aria-hidden="true" /> Nigeria · 09°04′N 07°29′E</div>
       </section>
 
-      <section id="about" className="about-section section-space">
-        <div className="page-width about-grid">
-          <div className="section-index"><span>01 / A LITTLE ABOUT ME</span><span className="index-rule" /></div>
-          <div className="about-content"><h2>Turning ideas into <span>intelligent solutions.</span></h2>
-            <p>I’m a full-stack and AI engineer focused on turning complex ideas into useful, dependable software. My work spans product interfaces, backend architecture, data systems and practical AI integrations — always grounded in the people who use what I build.</p>
-            <div className="about-facts">
-              <div><MapPin size={17} aria-hidden="true" /><span><b>Based in</b>Nigeria · open to remote</span></div>
-              <div><Braces size={17} aria-hidden="true" /><span><b>Currently exploring</b>Go, system design &amp; advanced AI</span></div>
-              <div><Sparkles size={17} aria-hidden="true" /><span><b>Working toward</b>Building impactful AI-powered products</span></div>
+      <section id="about" className="section-block about-section">
+        <div className="section-container about-container">
+          <p className="section-kicker">01 / A LITTLE ABOUT ME</p>
+          <h2 className="section-title">A curious mind,<br /><span>building for people.</span></h2>
+          <div className="about-profile">
+            <div className="about-portrait"><img src={portrait.url} alt="Christopher Okoh" loading="lazy" /></div>
+            <div className="about-copy">
+              <p>
+                I’m Christopher, a Nigeria-based full-stack and AI engineer. I enjoy taking a complex idea and turning it into a useful, dependable product, from the first interface to the systems behind it.
+              </p>
+              <p>
+                My work moves between product interfaces, backend architecture, data and practical AI. I care about the details, but I start with the people who will use what I build.
+              </p>
+              <div className="about-meta">
+                <span><MapPin size={15} aria-hidden="true" /> Based in Nigeria</span>
+                <span><Sparkles size={15} aria-hidden="true" /> Open to remote opportunities</span>
+              </div>
             </div>
           </div>
-          <blockquote className="about-quote"><span>“</span>Technology is most powerful when it brings people, ideas and opportunities together.<i>— Christopher Okoh</i></blockquote>
+          <div className="about-statement"><span>“</span>Software is at its best when it makes something meaningful possible.<i>— Christopher Okoh</i></div>
         </div>
       </section>
 
-      <section id="projects" className="projects-section section-space">
-        <div className="page-width">
-          <div className="section-heading"><div><div className="section-index"><span>02 / SELECTED WORK</span></div><h2>Built to be <span>useful.</span></h2></div><p>Selected work across developer tooling, cultural knowledge and community safety — each shaped by practical engineering and a focus on real-world usefulness.</p></div>
+      <section id="focus" className="section-block focus-section">
+        <div className="section-container">
+          <p className="section-kicker">02 / WHAT I DO</p>
+          <h2 className="section-title">Make ideas <span>useful.</span></h2>
+          <p className="section-lede">I work across the product stack to make digital tools feel clear, capable and grounded in everyday needs.</p>
+          <div className="capability-grid">
+            {capabilities.map(({ icon: Icon, title, text }, index) => (
+              <article className="capability" key={title}>
+                <span className="capability-index">0{index + 1}</span>
+                <div className="capability-icon"><Icon size={24} strokeWidth={1.7} aria-hidden="true" /></div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" className="section-block experience-section">
+        <div className="section-container experience-container">
+          <div className="experience-intro">
+            <p className="section-kicker">03 / EXPERIENCE</p>
+            <h2 className="section-title">Learning by<br /><span>doing the work.</span></h2>
+            <p className="section-lede">My path so far is built around hands-on projects, collaboration and steady technical growth.</p>
+          </div>
+          <div className="experience-details">
+            <h3 className="subsection-title"><Radio size={16} aria-hidden="true" /> Learning journey</h3>
+            <div className="milestone-list">
+              {milestones.map((item, index) => (
+                <div className="milestone" key={item.name}>
+                  <span className="milestone-number">0{index + 1}</span>
+                  <div><h4>{item.name}</h4><p>{item.detail}</p></div>
+                  <span className={`milestone-status ${item.status === "Completed" ? "is-complete" : ""}`}>
+                    {item.status === "Completed" && <Check size={12} aria-hidden="true" />}{item.status}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <h3 className="subsection-title technology-title"><Code2 size={16} aria-hidden="true" /> Technologies I use</h3>
+            <div className="technology-list">{technologies.map((technology) => <span key={technology}>{technology}</span>)}</div>
+          </div>
+        </div>
+      </section>
+
+      <section className="work-banner" aria-label="Continue exploring">
+        <div className="section-container work-banner-inner">
+          <div><p className="section-kicker">CURIOUS BY NATURE · BUILT WITH INTENTION</p><h2>There’s always more<br />to <span>make possible.</span></h2></div>
+          <a href="#projects" className="outline-button">See selected work <ArrowDown size={15} aria-hidden="true" /></a>
+        </div>
+      </section>
+
+      <section id="projects" className="section-block projects-section">
+        <div className="section-container">
+          <div className="section-heading-row">
+            <div><p className="section-kicker">04 / SELECTED WORK</p><h2 className="section-title">What I’ve <span>built.</span></h2></div>
+            <p className="section-lede">A few projects at the intersection of developer tooling, cultural knowledge and community safety.</p>
+          </div>
+
           <ProjectMatcher projects={projects} />
-          <div className="project-list">
+
+          <div className="project-grid">
             {projects.map((project) => (
-              <article key={project.number} className="project-row">
-                <div className="project-image-wrap">
-                  {project.image ? <img src={project.image} alt={project.imageAlt} loading="lazy" /> : (
-                    <div className="devflow-art" aria-label="Illustrated preview of the DevFlow AI developer workspace">
-                      <div className="devflow-topline"><span>DEVFLOW</span><span>WORKSPACE / 001</span></div>
-                      <div className="devflow-window"><div className="window-rail"><i /><i /><i /><span>REPOSITORY</span><b>▤ &nbsp; api.go</b><b>▤ &nbsp; agents.go</b><b>▤ &nbsp; memory.go</b></div><div className="window-code"><span>01 &nbsp; <i>func</i> BuildWithContext(repo Repository) &#123;</span><span>02 &nbsp;&nbsp; assistant := NewAssistant(repo)</span><span>03 &nbsp;&nbsp; answer, err := assistant.Ask(prompt)</span><span>04 &nbsp;&nbsp; <i>return</i> answer, err</span><span>05 &#125;</span><span className="devflow-suggestion">✳&nbsp; Context found across 12 files</span></div></div>
-                      <div className="devflow-foot"><span>CODE WITH THE WHOLE PICTURE.</span><span>AI · RAG · ENGINEERING</span></div>
+              <article className="project-card" key={project.number}>
+                <div className="project-card-visual">
+                  {project.image ? (
+                    <img src={project.image} alt={project.imageAlt} loading="lazy" />
+                  ) : (
+                    <div className="devflow-art" role="img" aria-label="Illustrated DevFlow AI engineering workspace preview">
+                      <div className="devflow-toolbar"><span /><span /><span /><b>DEVFLOW / WORKSPACE</b></div>
+                      <div className="devflow-panel"><aside><i>REPOSITORY</i><span>▤ &nbsp; api.go</span><span>▤ &nbsp; agents.go</span><span>▤ &nbsp; memory.go</span></aside><div className="devflow-code"><span><em>func</em> BuildWithContext(repo Repository) &#123;</span><span>&nbsp; assistant := NewAssistant(repo)</span><span>&nbsp; answer, err := assistant.Ask(prompt)</span><span>&nbsp; <em>return</em> answer, err</span><span>&#125;</span><strong>✳ Context found across 12 files</strong></div></div>
                     </div>
                   )}
-                  <span className="project-number">{project.number}</span>
+                  <span className="project-card-number">{project.number}</span>
                 </div>
-                <div className="project-description">
-                  <div className="project-category">{project.category}</div>
-                  <h3>{project.title}</h3><p>{project.description}</p>
+                <div className="project-card-body">
+                  <p className="project-category">{project.category}</p>
+                  <h3>{project.title}</h3>
+                  <p className="project-copy">{project.description}</p>
                   <div className="project-tags">{project.stack.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                  <div className="project-links">{project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Live preview <ArrowUpRight size={15} /></a>}<a href={project.href} target="_blank" rel="noreferrer">Source on GitHub <ArrowUpRight size={15} /></a></div>
+                  <div className="project-links">
+                    {project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Live preview <ArrowUpRight size={14} aria-hidden="true" /></a>}
+                    <a href={project.href} target="_blank" rel="noreferrer">Source code <ArrowUpRight size={14} aria-hidden="true" /></a>
+                  </div>
                 </div>
               </article>
             ))}
           </div>
-          <a href="https://github.com/kristopher1027" className="all-projects-link" target="_blank" rel="noreferrer">More experiments on GitHub <ArrowRight size={16} /></a>
+          <a href="https://github.com/kristopher1027" className="all-work-link" target="_blank" rel="noreferrer">More experiments on GitHub <ArrowRight size={15} aria-hidden="true" /></a>
         </div>
       </section>
 
-      <section id="skills" className="skills-section section-space">
-        <div className="page-width skills-layout">
-          <div className="skills-heading"><div className="section-index"><span>03 / TOOLS OF THE TRADE</span></div><h2>Always learning.<br /><span>Always building.</span></h2><p>The tools I use to move from a clear problem statement to a maintainable, production-minded solution.</p></div>
-          <div className="skills-grid">{skillGroups.map((group, index) => <div className="skill-group" key={group.title}><span className="skill-index">0{index + 1}</span><h3>{group.title}</h3>{group.skills.map((skill) => <span className="skill-pill" key={skill}>{skill}</span>)}</div>)}</div>
+      <section id="contact" className="contact-section">
+        <div className="section-container contact-container">
+          <p className="section-kicker">05 / GET IN TOUCH</p>
+          <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
+          <p className="contact-copy">Have a project, an opportunity or a problem worth solving? I’d love to hear from you.</p>
+          <a className="contact-button" href="mailto:etzkristokency2@gmail.com">Say hello <ArrowUpRight size={16} aria-hidden="true" /></a>
+          <div className="contact-socials" aria-label="Social links">
+            <a href="mailto:etzkristokency2@gmail.com" aria-label="Email"><AtSign size={17} /></a>
+            <a href="https://github.com/kristopher1027" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={17} /></a>
+            <a href="https://www.linkedin.com/in/christopher-okoh-391933430/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={17} /></a>
+          </div>
         </div>
       </section>
-
-      <section id="journey" className="journey-section section-space">
-        <div className="page-width journey-grid">
-          <div><div className="section-index"><span>04 / THE JOURNEY SO FAR</span></div><h2>Growing through<br /><span>the work.</span></h2><p>A learning journey built around hands-on projects, collaboration and steady technical growth.</p></div>
-          <div className="journey-list">{milestones.map((item, index) => <div className="journey-item" key={item.name}><span className="journey-counter">0{index + 1}</span><div className="journey-detail"><h3>{item.name}</h3><p>{item.detail}</p></div><span className={`journey-status ${item.status === "Completed" ? "is-complete" : ""}`}><i />{item.status}</span></div>)}</div>
-        </div>
-        <div className="page-width achievements-strip"><div className="section-index"><span>SMALL WINS, BIG MOTIVATION</span></div><div className="achievement-grid">{highlights.map(({ icon: Icon, title, detail }) => <div className="achievement" key={title}><Icon size={19} aria-hidden="true" /><h3>{title}</h3><p>{detail}</p></div>)}</div></div>
-      </section>
-
-      <section id="contact" className="contact-section section-space"><div className="page-width contact-layout">
-        <div><div className="section-index"><span>05 / YOUR TURN</span></div><h2>Let’s make something<br /><span>that matters.</span></h2><p>Have a project, an opportunity or a problem worth solving? I’d love to hear from you.</p><a href="mailto:etzkristokency2@gmail.com" className="button-primary contact-cta">Start a conversation <ArrowUpRight size={16} /></a></div>
-        <div className="contact-details"><div className="contact-availability"><span className="availability-dot" /> Open to new opportunities</div><a href="mailto:etzkristokency2@gmail.com"><AtSign size={17} />etzkristokency2@gmail.com<ArrowUpRight size={15} /></a><a href="https://www.linkedin.com/in/christopher-okoh-391933430/" target="_blank" rel="noreferrer"><Linkedin size={17} />LinkedIn<ArrowUpRight size={15} /></a><a href="https://github.com/kristopher1027" target="_blank" rel="noreferrer"><Github size={17} />GitHub<ArrowUpRight size={15} /></a><a href="https://github.com/kristopher1027" target="_blank" rel="noreferrer"><Globe2 size={17} />Projects &amp; code<ArrowUpRight size={15} /></a></div>
-      </div></section>
     </main>
 
-    <footer className="site-footer"><div className="page-width footer-inner"><a className="footer-brand" href="#home">CO<span>—</span>CHRISTOPHER OKOH</a><span>© 2026 Christopher Okoh · Made with intention.</span><a href="#home">Back to top <ArrowUpRight size={14} /></a></div></footer>
+    <footer className="site-footer">
+      <div className="section-container footer-inner">
+        <a className="footer-brand" href="#home"><span>CO</span> CHRISTOPHER OKOH</a>
+        <span>© 2026 Christopher Okoh · Built with intention.</span>
+        <a href="#home">Back to top <ArrowUpRight size={14} aria-hidden="true" /></a>
+      </div>
+    </footer>
   </div>
 );
 
