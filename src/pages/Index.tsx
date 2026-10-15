@@ -106,6 +106,16 @@ const technologies = [
 
 const contactEmail = "etzkristokency2@gmail.com";
 const whatsappNumber = "2348020562772";
+const isMobileDevice = () => {
+  if (typeof navigator === "undefined") return false;
+  const browserNavigator = navigator as Navigator & {
+    userAgentData?: { mobile?: boolean };
+  };
+  if (browserNavigator.userAgentData?.mobile !== undefined) return browserNavigator.userAgentData.mobile;
+  return /Android|iPhone|iPad|iPod|Mobile|IEMobile|Windows Phone/i.test(navigator.userAgent)
+    || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+};
+
 const isChromeBrowser = () => {
   if (typeof navigator === "undefined") return false;
   const browserNavigator = navigator as Navigator & {
@@ -131,7 +141,13 @@ const Index = () => {
   const [emailCopied, setEmailCopied] = useState(false);
   const [visitorName, setVisitorName] = useState("");
   const [visitorNeed, setVisitorNeed] = useState("");
-  const useWhatsAppWeb = isChromeBrowser();
+  const isMobile = isMobileDevice();
+  const useWhatsAppWeb = !isMobile && isChromeBrowser();
+  const whatsappAction = isMobile
+    ? `https://wa.me/${whatsappNumber}`
+    : useWhatsAppWeb
+      ? "https://web.whatsapp.com/send/"
+      : "whatsapp://send";
   const whatsappMessage = `Hi Christopher, my name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`;
   const whatsappWebUrl = `https://web.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -306,12 +322,12 @@ const Index = () => {
           <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
           <p className="contact-copy">Tell me a little about yourself and what you need. I’ll meet you on WhatsApp and we can talk it through.</p>
           <form
-            action={useWhatsAppWeb ? "https://web.whatsapp.com/send/" : "whatsapp://send"}
+            action={whatsappAction}
             className="contact-form"
             method="get"
-            target="_blank"
+            target={isMobile ? "_self" : "_blank"}
           >
-            <input name="phone" type="hidden" value={whatsappNumber} />
+            {!isMobile && <input name="phone" type="hidden" value={whatsappNumber} />}
             <label className="contact-field">
               <span>Your name</span>
               <input autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
@@ -328,7 +344,7 @@ const Index = () => {
             <button className="contact-button" disabled={!whatsappNumber} type="submit">Start WhatsApp chat <Send size={15} aria-hidden="true" /></button>
             {!whatsappNumber && <p className="contact-form-note">WhatsApp contact is being set up.</p>}
           </form>
-          {visitorName.trim() && visitorNeed.trim() && (
+          {!isMobile && !useWhatsAppWeb && visitorName.trim() && visitorNeed.trim() && (
             <p className="contact-email-fallback">
               If WhatsApp doesn’t open, <a href={whatsappWebUrl} rel="noreferrer" target="_blank">open WhatsApp Web</a>.
             </p>
