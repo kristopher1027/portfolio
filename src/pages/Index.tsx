@@ -102,6 +102,9 @@ const technologies = [
   "System design",
 ];
 
+const contactEmail = "etzkristokency2@gmail.com";
+const emailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${contactEmail}&su=Portfolio%20inquiry`;
+
 const milestones = [
   { name: "Learn2Earn Fellow", detail: "AI & Software Engineering", status: "In progress" },
   { name: "Nithub × DataCamp", detail: "Data & AI scholarship", status: "In progress" },
@@ -267,9 +270,10 @@ const Index = () => (
           <p className="section-kicker">05 / GET IN TOUCH</p>
           <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
           <p className="contact-copy">Have a project, an opportunity or a problem worth solving? I’d love to hear from you.</p>
-          <a className="contact-button" href="mailto:etzkristokency2@gmail.com">Say hello <ArrowUpRight size={16} aria-hidden="true" /></a>
+          <a className="contact-button" href={emailComposeUrl} target="_blank" rel="noreferrer">Say hello <ArrowUpRight size={16} aria-hidden="true" /></a>
+          <p className="contact-email-fallback">Prefer your email app? <a href={`mailto:${contactEmail}`}>Open a message</a></p>
           <div className="contact-socials" aria-label="Social links">
-            <a href="mailto:etzkristokency2@gmail.com" aria-label="Email"><AtSign size={17} /></a>
+            <a href={`mailto:${contactEmail}`} aria-label="Email"><AtSign size={17} /></a>
             <a href="https://github.com/kristopher1027" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={17} /></a>
             <a href="https://www.linkedin.com/in/christopher-okoh-391933430/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={17} /></a>
           </div>
