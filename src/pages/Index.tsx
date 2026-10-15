@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   ArrowDown,
   ArrowRight,
@@ -103,7 +104,6 @@ const technologies = [
 ];
 
 const contactEmail = "etzkristokency2@gmail.com";
-const emailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${contactEmail}&su=Portfolio%20inquiry`;
 
 const milestones = [
   { name: "Learn2Earn Fellow", detail: "AI & Software Engineering", status: "In progress" },
@@ -112,8 +112,19 @@ const milestones = [
   { name: "01 Edu · Piscine", detail: "Software development", status: "Completed" },
 ];
 
-const Index = () => (
-  <div className="portfolio-page">
+const Index = () => {
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(contactEmail);
+      setEmailCopied(true);
+    } catch {
+      setEmailCopied(false);
+    }
+  };
+
+  return <div className="portfolio-page">
     <a className="skip-link" href="#main-content">Skip to content</a>
     <main id="main-content">
       <section className="hero-section" id="home" aria-labelledby="hero-title">
@@ -270,8 +281,9 @@ const Index = () => (
           <p className="section-kicker">05 / GET IN TOUCH</p>
           <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
           <p className="contact-copy">Have a project, an opportunity or a problem worth solving? I’d love to hear from you.</p>
-          <a className="contact-button" href={emailComposeUrl} target="_blank" rel="noreferrer">Say hello <ArrowUpRight size={16} aria-hidden="true" /></a>
-          <p className="contact-email-fallback">Prefer your email app? <a href={`mailto:${contactEmail}`}>Open a message</a></p>
+          <a className="contact-button" href={`mailto:${contactEmail}?subject=Portfolio%20inquiry`}>Say hello <ArrowUpRight size={16} aria-hidden="true" /></a>
+          <p className="contact-email-fallback">Or email me at <a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
+          <button className="contact-copy-email" type="button" onClick={copyEmail}>{emailCopied ? "Email copied" : "Copy email address"}</button>
           <div className="contact-socials" aria-label="Social links">
             <a href={`mailto:${contactEmail}`} aria-label="Email"><AtSign size={17} /></a>
             <a href="https://github.com/kristopher1027" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={17} /></a>
@@ -288,7 +300,7 @@ const Index = () => (
         <a href="#home">Back to top <ArrowUpRight size={14} aria-hidden="true" /></a>
       </div>
     </footer>
-  </div>
-);
+  </div>;
+};
 
 export default Index;
