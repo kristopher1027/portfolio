@@ -110,16 +110,25 @@ const milestones = [
 ];
 
 const Index = () => (
-  <div className="portfolio-page" id="home">
-    <main>
-      <section className="hero-section" aria-labelledby="hero-title">
+  <div className="portfolio-page">
+    <a className="skip-link" href="#main-content">Skip to content</a>
+    <main id="main-content">
+      <section className="hero-section" id="home" aria-labelledby="hero-title">
         <div className="hero-sky" aria-hidden="true">
           <div className="hero-stars" />
+          <div className="hero-halo" />
           <div className="hero-mountain hero-mountain-back" />
           <div className="hero-mountain hero-mountain-mid" />
           <div className="hero-mountain hero-mountain-front" />
           <div className="hero-lake" />
           <div className="hero-reflection" />
+          <svg className="hero-engraving" viewBox="0 0 1440 900" preserveAspectRatio="none">
+            <path d="M0 585 170 530 270 557 405 442 536 555 680 490 805 572 966 431 1084 522 1220 408 1440 565" />
+            <path d="M0 694c156-21 245 20 383 2s234-35 369-11 231 31 354 4 204-22 334-7" />
+            <path d="M0 746c160-18 246 17 399 2s236-25 375-7 243 24 368 5 199-19 298-5" />
+            <path d="M0 795c144-14 279 13 419 3s217-18 361-4 252 18 379 4 177-14 281-4" />
+            <g><circle cx="169" cy="222" r="2" /><circle cx="492" cy="145" r="1.8" /><circle cx="841" cy="181" r="1.8" /><circle cx="1109" cy="235" r="2" /><circle cx="1290" cy="156" r="1.5" /></g>
+          </svg>
         </div>
         <Navigation />
 
