@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import {
   ArrowDown,
   ArrowRight,
@@ -125,21 +125,6 @@ const Index = () => {
       setEmailCopied(true);
     } catch {
       setEmailCopied(false);
-    }
-  };
-
-  const startWhatsAppChat = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!whatsappNumber) return;
-
-    const message = `Hi Christopher, my name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`;
-    const chatUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    const topWindow = window.top;
-
-    if (topWindow) {
-      topWindow.location.assign(chatUrl);
-    } else {
-      window.location.assign(chatUrl);
     }
   };
 
@@ -304,15 +289,25 @@ const Index = () => {
           <p className="section-kicker">05 / GET IN TOUCH</p>
           <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
           <p className="contact-copy">Tell me a little about yourself and what you need. I’ll meet you on WhatsApp and we can talk it through.</p>
-          <form className="contact-form" onSubmit={startWhatsAppChat}>
+          <form
+            action={`https://wa.me/${whatsappNumber}`}
+            className="contact-form"
+            method="get"
+            target="_blank"
+          >
             <label className="contact-field">
               <span>Your name</span>
-              <input autoComplete="name" maxLength={80} name="name" onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
+              <input autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
             </label>
             <label className="contact-field">
               <span>How can I help?</span>
-              <textarea maxLength={1200} name="message" onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={4} value={visitorNeed} />
+              <textarea maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={4} value={visitorNeed} />
             </label>
+            <input
+              name="text"
+              type="hidden"
+              value={`Hi Christopher, my name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`}
+            />
             <button className="contact-button" disabled={!whatsappNumber} type="submit">Start WhatsApp chat <Send size={15} aria-hidden="true" /></button>
             {!whatsappNumber && <p className="contact-form-note">WhatsApp contact is being set up.</p>}
           </form>
