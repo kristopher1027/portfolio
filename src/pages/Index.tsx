@@ -71,20 +71,42 @@ const projects: PortfolioProject[] = [
   },
 ];
 
-const featuredCaseStudy = {
-  title: "IdomaConnect AI",
-  image: idomaPreview.url,
-  imageAlt: "Preview of the IdomaConnect cultural knowledge and heritage platform",
-  challenge:
-    "Create a digital home for Idoma culture where visitors can find reliable cultural knowledge and explore it in context.",
-  approach:
-    "Bring a verified knowledge base together with conversational AI and an interactive map of heritage sites, giving visitors different ways to discover the culture.",
-  engineeringFocus:
-    "Connect cultural content, retrieval-augmented generation and place-based discovery in one React and TypeScript experience.",
-  stack: ["React", "TypeScript", "RAG", "Maps"],
-  href: "https://github.com/kristopher1027/the-build-compass",
-  demo: "https://the-build-compass.lovable.app",
-};
+const caseStudies = [
+  {
+    slug: "idomaconnect",
+    project: projects[1],
+    intro: "A digital space for Idoma cultural knowledge, conversational discovery and heritage locations.",
+    challenge: "Make Idoma cultural information easier to discover and explore online.",
+    approach:
+      "Bring a verified knowledge base together with conversational AI and an interactive map of heritage sites.",
+    engineeringFocus:
+      "Connect cultural content, retrieval-augmented generation and place-based discovery in one React and TypeScript experience.",
+    linkLabel: "Source code",
+  },
+  {
+    slug: "devflow-ai",
+    project: projects[0],
+    intro: "An AI engineering workspace for repository context and practical code intelligence.",
+    challenge: "Bring repository understanding closer to everyday code assistance.",
+    approach:
+      "Place repository context and practical code intelligence near the developer workflow in an AI-powered engineering workspace.",
+    engineeringFocus:
+      "Combine Go, React, PostgreSQL and retrieval-augmented generation (RAG) for developer-focused AI tooling.",
+    linkLabel: "Source code",
+  },
+  {
+    slug: "aije-community-shield",
+    project: projects[2],
+    intro: "A community-safety platform for emergency reporting and mapped resources in Benue State.",
+    challenge:
+      "Support emergency and community-safety needs in Benue State with a way to report incidents and find mapped resources.",
+    approach:
+      "Bring incident reporting, mapped resources and offline-aware tools together in one community-safety platform.",
+    engineeringFocus:
+      "Use React, TypeScript, Tailwind and maps to present safety information while accounting for limited connectivity.",
+    linkLabel: "Project roadmap",
+  },
+];
 
 const capabilities = [
   {
@@ -302,66 +324,47 @@ const Index = () => {
 
           <ProjectMatcher projects={projects} />
 
-          <article className="case-study-card" aria-labelledby="case-study-title">
-            <div className="case-study-visual">
-              <img src={featuredCaseStudy.image} alt={featuredCaseStudy.imageAlt} loading="lazy" />
-              <span>CASE STUDY / 01</span>
-            </div>
-            <div className="case-study-content">
-              <p className="project-category">AI · Culture &amp; heritage</p>
-              <h3 id="case-study-title">{featuredCaseStudy.title}</h3>
-              <p className="case-study-intro">A digital home for Idoma knowledge, conversation and heritage.</p>
-              <div className="case-study-details">
-                <section>
-                  <h4>The challenge</h4>
-                  <p>{featuredCaseStudy.challenge}</p>
-                </section>
-                <section>
-                  <h4>The approach</h4>
-                  <p>{featuredCaseStudy.approach}</p>
-                </section>
-                <section>
-                  <h4>Engineering focus</h4>
-                  <p>{featuredCaseStudy.engineeringFocus}</p>
-                </section>
-              </div>
-              <div className="project-tags" aria-label="Technologies used">
-                {featuredCaseStudy.stack.map((tag) => <span key={tag}>{tag}</span>)}
-              </div>
-              <div className="project-links case-study-links">
-                <a href={featuredCaseStudy.demo} target="_blank" rel="noopener noreferrer" aria-label="Open IdomaConnect AI live preview in a new tab">Live preview <ArrowUpRight size={14} aria-hidden="true" /></a>
-                <a href={featuredCaseStudy.href} target="_blank" rel="noopener noreferrer" aria-label="View IdomaConnect AI source code in a new tab">Source code <ArrowUpRight size={14} aria-hidden="true" /></a>
-              </div>
-            </div>
-          </article>
-
-          <div className="project-grid">
-            {projects.filter((project) => project.title !== featuredCaseStudy.title).map((project) => (
-              <article className="project-card" key={project.number}>
-                <div className="project-card-visual">
-                  {project.image ? (
-                    <img src={project.image} alt={project.imageAlt} loading="lazy" />
-                  ) : (
-                    <div className="devflow-art" role="img" aria-label="Illustrated DevFlow AI engineering workspace preview">
-                      <div className="devflow-toolbar"><span /><span /><span /><b>DEVFLOW / WORKSPACE</b></div>
-                      <div className="devflow-panel"><aside><i>REPOSITORY</i><span>▤ &nbsp; api.go</span><span>▤ &nbsp; agents.go</span><span>▤ &nbsp; memory.go</span></aside><div className="devflow-code"><span><em>func</em> BuildWithContext(repo Repository) &#123;</span><span>&nbsp; assistant := NewAssistant(repo)</span><span>&nbsp; answer, err := assistant.Ask(prompt)</span><span>&nbsp; <em>return</em> answer, err</span><span>&#125;</span><strong>✳ Context found across 12 files</strong></div></div>
-                    </div>
-                  )}
-                  <span className="project-card-number">{project.number}</span>
-                </div>
-                <div className="project-card-body">
-                  <p className="project-category">{project.category}</p>
-                  <h3>{project.title}</h3>
-                  <p className="project-copy">{project.description}</p>
-                  <div className="project-tags">{project.stack.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                  <div className="project-links">
-                    {project.demo && <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live preview in a new tab`}>Live preview <ArrowUpRight size={14} aria-hidden="true" /></a>}
-                    <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code in a new tab`}>Source code <ArrowUpRight size={14} aria-hidden="true" /></a>
+          {caseStudies.map(({ slug, project, intro, challenge, approach, engineeringFocus, linkLabel }, index) => (
+            <article className="case-study-card" key={slug} aria-labelledby={`${slug}-title`}>
+              <div className="case-study-visual">
+                {project.image ? (
+                  <img src={project.image} alt={project.imageAlt} loading="lazy" />
+                ) : (
+                  <div className="devflow-art" role="img" aria-label="Illustrated DevFlow AI engineering workspace preview">
+                    <div className="devflow-toolbar"><span /><span /><span /><b>DEVFLOW / WORKSPACE</b></div>
+                    <div className="devflow-panel"><aside><i>REPOSITORY</i><span>▤ &nbsp; api.go</span><span>▤ &nbsp; agents.go</span><span>▤ &nbsp; memory.go</span></aside><div className="devflow-code"><span><em>func</em> BuildWithContext(repo Repository) &#123;</span><span>&nbsp; assistant := NewAssistant(repo)</span><span>&nbsp; answer, err := assistant.Ask(prompt)</span><span>&nbsp; <em>return</em> answer, err</span><span>&#125;</span><strong>REPOSITORY CONTEXT</strong></div></div>
                   </div>
+                )}
+                <span>CASE STUDY / {String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <div className="case-study-content">
+                <p className="project-category">{project.category}</p>
+                <h3 id={`${slug}-title`}>{project.title}</h3>
+                <p className="case-study-intro">{intro}</p>
+                <div className="case-study-details">
+                  <section>
+                    <h4>The challenge</h4>
+                    <p>{challenge}</p>
+                  </section>
+                  <section>
+                    <h4>The approach</h4>
+                    <p>{approach}</p>
+                  </section>
+                  <section>
+                    <h4>Engineering focus</h4>
+                    <p>{engineeringFocus}</p>
+                  </section>
                 </div>
-              </article>
-            ))}
-          </div>
+                <div className="project-tags" aria-label={`${project.title} technologies`}>
+                  {project.stack.map((tag) => <span key={tag}>{tag}</span>)}
+                </div>
+                <div className="project-links case-study-links">
+                  {project.demo && <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live preview in a new tab`}>Live preview <ArrowUpRight size={14} aria-hidden="true" /></a>}
+                  <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} ${linkLabel.toLowerCase()} in a new tab`}>{linkLabel} <ArrowUpRight size={14} aria-hidden="true" /></a>
+                </div>
+              </div>
+            </article>
+          ))}
           <a href="https://github.com/kristopher1027" className="all-work-link" target="_blank" rel="noopener noreferrer">More experiments on GitHub <ArrowRight size={15} aria-hidden="true" /></a>
         </div>
       </section>
