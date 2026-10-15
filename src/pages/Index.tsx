@@ -290,11 +290,12 @@ const Index = () => {
           <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
           <p className="contact-copy">Tell me a little about yourself and what you need. I’ll meet you on WhatsApp and we can talk it through.</p>
           <form
-            action={`https://wa.me/${whatsappNumber}`}
+            action="https://web.whatsapp.com/send/"
             className="contact-form"
             method="get"
             target="_blank"
           >
+            <input name="phone" type="hidden" value={whatsappNumber} />
             <label className="contact-field">
               <span>Your name</span>
               <input autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
