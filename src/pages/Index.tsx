@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import {
   ArrowDown,
   ArrowRight,
@@ -12,6 +12,7 @@ import {
   MapPin,
   PanelsTopLeft,
   Radio,
+  Send,
   Sparkles,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
@@ -104,6 +105,7 @@ const technologies = [
 ];
 
 const contactEmail = "etzkristokency2@gmail.com";
+const whatsappNumber = "2348020562772";
 
 const milestones = [
   { name: "Learn2Earn Fellow", detail: "AI & Software Engineering", status: "In progress" },
@@ -114,6 +116,8 @@ const milestones = [
 
 const Index = () => {
   const [emailCopied, setEmailCopied] = useState(false);
+  const [visitorName, setVisitorName] = useState("");
+  const [visitorNeed, setVisitorNeed] = useState("");
 
   const copyEmail = async () => {
     try {
@@ -122,6 +126,14 @@ const Index = () => {
     } catch {
       setEmailCopied(false);
     }
+  };
+
+  const startWhatsAppChat = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!whatsappNumber) return;
+
+    const message = `Hi Christopher, my name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`;
+    window.location.assign(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`);
   };
 
   return <div className="portfolio-page">
@@ -284,8 +296,19 @@ const Index = () => {
         <div className="section-container contact-container">
           <p className="section-kicker">05 / GET IN TOUCH</p>
           <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
-          <p className="contact-copy">Have a project, an opportunity or a problem worth solving? I’d love to hear from you.</p>
-          <a className="contact-button" href={`mailto:${contactEmail}?subject=Portfolio%20inquiry`}>Say hello <ArrowUpRight size={16} aria-hidden="true" /></a>
+          <p className="contact-copy">Tell me a little about yourself and what you need. I’ll meet you on WhatsApp and we can talk it through.</p>
+          <form className="contact-form" onSubmit={startWhatsAppChat}>
+            <label className="contact-field">
+              <span>Your name</span>
+              <input autoComplete="name" maxLength={80} name="name" onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
+            </label>
+            <label className="contact-field">
+              <span>How can I help?</span>
+              <textarea maxLength={1200} name="message" onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={4} value={visitorNeed} />
+            </label>
+            <button className="contact-button" disabled={!whatsappNumber} type="submit">Start WhatsApp chat <Send size={15} aria-hidden="true" /></button>
+            {!whatsappNumber && <p className="contact-form-note">WhatsApp contact is being set up.</p>}
+          </form>
           <p className="contact-email-fallback">Or email me at <a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
           <button className="contact-copy-email" type="button" onClick={copyEmail}>{emailCopied ? "Email copied" : "Copy email address"}</button>
           <div className="contact-socials" aria-label="Social links">
