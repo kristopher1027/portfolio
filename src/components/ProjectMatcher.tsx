@@ -112,8 +112,8 @@ const ProjectMatcher = ({ projects }: ProjectMatcherProps) => {
                   <div className="project-tags">{project.stack.map((tag) => <span key={tag}>{tag}</span>)}</div>
                 </div>
                 <div className="match-result-links">
-                  {project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Live preview <ArrowUpRight size={14} aria-hidden="true" /></a>}
-                  <a href={project.href} target="_blank" rel="noreferrer">Source <ArrowUpRight size={14} aria-hidden="true" /></a>
+                  {project.demo && <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live preview in a new tab`}>Live preview <ArrowUpRight size={14} aria-hidden="true" /></a>}
+                  <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code in a new tab`}>Source <ArrowUpRight size={14} aria-hidden="true" /></a>
                 </div>
               </article>
             )) : <p className="match-empty">No listed project closely matches that description.</p>}

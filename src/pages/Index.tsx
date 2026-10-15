@@ -189,13 +189,15 @@ const Index = () => {
           <p className="hero-intro">
             I build thoughtful digital products, from reliable backend systems to AI-powered tools that solve real problems.
           </p>
-          <a className="hero-button" href="#projects">Explore my work <ArrowRight size={16} aria-hidden="true" /></a>
+          <div className="hero-actions">
+            <a className="hero-button" href="#projects">Explore selected work <ArrowRight size={16} aria-hidden="true" /></a>
+            <a className="hero-button hero-button-secondary" href="#contact">Start a conversation <ArrowUpRight size={15} aria-hidden="true" /></a>
+          </div>
         </div>
 
         <a href="#about" className="hero-scroll" aria-label="Scroll to about Christopher">
           <span>Scroll to explore</span><ArrowDown size={15} aria-hidden="true" />
         </a>
-        <div className="hero-location"><MapPin size={13} aria-hidden="true" /> Nigeria · 09°04′N 07°29′E</div>
       </section>
 
       <section id="about" className="section-block about-section">
@@ -305,14 +307,14 @@ const Index = () => {
                   <p className="project-copy">{project.description}</p>
                   <div className="project-tags">{project.stack.map((tag) => <span key={tag}>{tag}</span>)}</div>
                   <div className="project-links">
-                    {project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Live preview <ArrowUpRight size={14} aria-hidden="true" /></a>}
-                    <a href={project.href} target="_blank" rel="noreferrer">Source code <ArrowUpRight size={14} aria-hidden="true" /></a>
+                    {project.demo && <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live preview in a new tab`}>Live preview <ArrowUpRight size={14} aria-hidden="true" /></a>}
+                    <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code in a new tab`}>Source code <ArrowUpRight size={14} aria-hidden="true" /></a>
                   </div>
                 </div>
               </article>
             ))}
           </div>
-          <a href="https://github.com/kristopher1027" className="all-work-link" target="_blank" rel="noreferrer">More experiments on GitHub <ArrowRight size={15} aria-hidden="true" /></a>
+          <a href="https://github.com/kristopher1027" className="all-work-link" target="_blank" rel="noopener noreferrer">More experiments on GitHub <ArrowRight size={15} aria-hidden="true" /></a>
         </div>
       </section>
 
