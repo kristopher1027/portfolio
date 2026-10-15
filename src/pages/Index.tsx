@@ -106,6 +106,19 @@ const technologies = [
 
 const contactEmail = "etzkristokency2@gmail.com";
 const whatsappNumber = "2348020562772";
+const isChromeBrowser = () => {
+  if (typeof navigator === "undefined") return false;
+  const browserNavigator = navigator as Navigator & {
+    brave?: unknown;
+    userAgentData?: { brands?: Array<{ brand: string }> };
+  };
+  if (browserNavigator.brave) return false;
+  const chromeBrand = browserNavigator.userAgentData?.brands?.some(({ brand }) => brand === "Google Chrome");
+  if (chromeBrand !== undefined) return chromeBrand;
+
+  const userAgent = navigator.userAgent;
+  return /(?:Chrome|Chromium|CriOS)\//.test(userAgent) && !/(?:Edg|OPR|Vivaldi|YaBrowser|SamsungBrowser)\//.test(userAgent);
+};
 
 const milestones = [
   { name: "Learn2Earn Fellow", detail: "AI & Software Engineering", status: "In progress" },
@@ -118,6 +131,9 @@ const Index = () => {
   const [emailCopied, setEmailCopied] = useState(false);
   const [visitorName, setVisitorName] = useState("");
   const [visitorNeed, setVisitorNeed] = useState("");
+  const useWhatsAppWeb = isChromeBrowser();
+  const whatsappMessage = `Hi Christopher, my name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`;
+  const whatsappWebUrl = `https://web.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
 
   const copyEmail = async () => {
     try {
@@ -290,11 +306,12 @@ const Index = () => {
           <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
           <p className="contact-copy">Tell me a little about yourself and what you need. I’ll meet you on WhatsApp and we can talk it through.</p>
           <form
-            action={`https://wa.me/${whatsappNumber}`}
+            action={useWhatsAppWeb ? "https://web.whatsapp.com/send/" : "whatsapp://send"}
             className="contact-form"
             method="get"
             target="_blank"
           >
+            <input name="phone" type="hidden" value={whatsappNumber} />
             <label className="contact-field">
               <span>Your name</span>
               <input autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
@@ -306,11 +323,16 @@ const Index = () => {
             <input
               name="text"
               type="hidden"
-              value={`Hi Christopher, my name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`}
+              value={whatsappMessage}
             />
             <button className="contact-button" disabled={!whatsappNumber} type="submit">Start WhatsApp chat <Send size={15} aria-hidden="true" /></button>
             {!whatsappNumber && <p className="contact-form-note">WhatsApp contact is being set up.</p>}
           </form>
+          {visitorName.trim() && visitorNeed.trim() && (
+            <p className="contact-email-fallback">
+              If WhatsApp doesn’t open, <a href={whatsappWebUrl} rel="noreferrer" target="_blank">open WhatsApp Web</a>.
+            </p>
+          )}
           <p className="contact-email-fallback">Or email me at <a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
           <button className="contact-copy-email" type="button" onClick={copyEmail}>{emailCopied ? "Email copied" : "Copy email address"}</button>
           <div className="contact-socials" aria-label="Social links">
