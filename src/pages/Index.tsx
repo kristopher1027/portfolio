@@ -71,6 +71,21 @@ const projects: PortfolioProject[] = [
   },
 ];
 
+const featuredCaseStudy = {
+  title: "IdomaConnect AI",
+  image: idomaPreview.url,
+  imageAlt: "Preview of the IdomaConnect cultural knowledge and heritage platform",
+  challenge:
+    "Create a digital home for Idoma culture where visitors can find reliable cultural knowledge and explore it in context.",
+  approach:
+    "Bring a verified knowledge base together with conversational AI and an interactive map of heritage sites, giving visitors different ways to discover the culture.",
+  engineeringFocus:
+    "Connect cultural content, retrieval-augmented generation and place-based discovery in one React and TypeScript experience.",
+  stack: ["React", "TypeScript", "RAG", "Maps"],
+  href: "https://github.com/kristopher1027/the-build-compass",
+  demo: "https://the-build-compass.lovable.app",
+};
+
 const capabilities = [
   {
     icon: PanelsTopLeft,
@@ -287,8 +302,41 @@ const Index = () => {
 
           <ProjectMatcher projects={projects} />
 
+          <article className="case-study-card" aria-labelledby="case-study-title">
+            <div className="case-study-visual">
+              <img src={featuredCaseStudy.image} alt={featuredCaseStudy.imageAlt} loading="lazy" />
+              <span>CASE STUDY / 01</span>
+            </div>
+            <div className="case-study-content">
+              <p className="project-category">AI · Culture &amp; heritage</p>
+              <h3 id="case-study-title">{featuredCaseStudy.title}</h3>
+              <p className="case-study-intro">A digital home for Idoma knowledge, conversation and heritage.</p>
+              <div className="case-study-details">
+                <section>
+                  <h4>The challenge</h4>
+                  <p>{featuredCaseStudy.challenge}</p>
+                </section>
+                <section>
+                  <h4>The approach</h4>
+                  <p>{featuredCaseStudy.approach}</p>
+                </section>
+                <section>
+                  <h4>Engineering focus</h4>
+                  <p>{featuredCaseStudy.engineeringFocus}</p>
+                </section>
+              </div>
+              <div className="project-tags" aria-label="Technologies used">
+                {featuredCaseStudy.stack.map((tag) => <span key={tag}>{tag}</span>)}
+              </div>
+              <div className="project-links case-study-links">
+                <a href={featuredCaseStudy.demo} target="_blank" rel="noopener noreferrer" aria-label="Open IdomaConnect AI live preview in a new tab">Live preview <ArrowUpRight size={14} aria-hidden="true" /></a>
+                <a href={featuredCaseStudy.href} target="_blank" rel="noopener noreferrer" aria-label="View IdomaConnect AI source code in a new tab">Source code <ArrowUpRight size={14} aria-hidden="true" /></a>
+              </div>
+            </div>
+          </article>
+
           <div className="project-grid">
-            {projects.map((project) => (
+            {projects.filter((project) => project.title !== featuredCaseStudy.title).map((project) => (
               <article className="project-card" key={project.number}>
                 <div className="project-card-visual">
                   {project.image ? (
