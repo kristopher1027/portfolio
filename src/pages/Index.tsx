@@ -133,7 +133,11 @@ const Index = () => {
     if (!whatsappNumber) return;
 
     const message = `Hi Christopher, my name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`;
-    window.location.assign(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`);
+    window.open(
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
   };
 
   return <div className="portfolio-page">
