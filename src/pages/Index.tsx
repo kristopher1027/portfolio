@@ -133,11 +133,14 @@ const Index = () => {
     if (!whatsappNumber) return;
 
     const message = `Hi Christopher, my name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`;
-    window.open(
-      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
-      "_blank",
-      "noopener,noreferrer",
-    );
+    const chatUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const topWindow = window.top;
+
+    if (topWindow) {
+      topWindow.location.assign(chatUrl);
+    } else {
+      window.location.assign(chatUrl);
+    }
   };
 
   return <div className="portfolio-page">
