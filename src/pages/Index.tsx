@@ -167,7 +167,11 @@ const Index = () => {
           <p className="section-kicker">01 / A LITTLE ABOUT ME</p>
           <h2 className="section-title">A curious mind,<br /><span>building for people.</span></h2>
           <div className="about-profile">
-            <div className="about-portrait"><img src={portrait.url} alt="Christopher Okoh" loading="lazy" /></div>
+            <div className="about-portrait-wrap">
+              <span className="portrait-index">CO / 01</span>
+              <div className="about-portrait"><img src={portrait.url} alt="Christopher Okoh" loading="lazy" /></div>
+              <span className="portrait-caption">Nigeria · Available worldwide</span>
+            </div>
             <div className="about-copy">
               <p>
                 I’m Christopher, a Nigeria-based full-stack and AI engineer. I enjoy taking a complex idea and turning it into a useful, dependable product, from the first interface to the systems behind it.
