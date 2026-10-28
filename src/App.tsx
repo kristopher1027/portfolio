@@ -22,7 +22,6 @@ const App = () => (
           <Route path="/contact" element={<Navigate to="/#contact" replace />} />
           <Route path="/blog" element={<Navigate to="/#projects" replace />} />
           <Route path="/blog/:id" element={<Navigate to="/#projects" replace />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
