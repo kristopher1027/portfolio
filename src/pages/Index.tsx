@@ -1,28 +1,16 @@
 import { useState } from "react";
 import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUpRight,
-  AtSign,
-  BrainCircuit,
-  Check,
-  Code2,
-  Github,
-  Linkedin,
-  MapPin,
-  PanelsTopLeft,
-  Radio,
-  Send,
-  Sparkles,
+  ArrowDown, ArrowRight, ArrowUpRight, AtSign, BrainCircuit,
+  Check, Code2, Github, Linkedin, MapPin, PanelsTopLeft, Radio,
+  Send, Sparkles,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ProjectMatcher from "@/components/ProjectMatcher";
-import idomaPreview from "@/assets/portfolio/idomaconnect-preview.jpg.asset.json";
-import aijePreview from "@/assets/portfolio/aije-community-shield-preview.jpg.asset.json";
-import portraitAsset from "@/assets/portfolio/christopher-okoh-portrait.webp.asset.json";import { featuredProjects as projects } from "@/data/portfolio";
+import { featuredProjects as projects } from "@/data/portfolio";
 
-const portrait = portraitAsset.url;
-
+// 👇 This is the image line. 
+// If the .webp file is still crashing, change it back to the .png.asset.json version.
+import portrait from "@/assets/portfolio/christopher-okoh-portrait.webp"; 
 const capabilities = [
   { icon: PanelsTopLeft, title: "Product thinking", text: "I shape clear, accessible interfaces around the people and problems a product is meant to serve." },
   { icon: Code2, title: "Full-stack development", text: "I build responsive frontends, dependable APIs and the data foundations that bring a product together." },
@@ -109,7 +97,7 @@ const Index = () => {
             <div className="about-portrait-wrap">
               <span className="portrait-index">CO / 01</span>
               <div className="about-portrait">
-                <img src={portrait} alt="Christopher Okoh, full-stack and AI engineer" loading="lazy" width={380} height={480} />
+              <img src={portrait} alt="Christopher Okoh, full-stack and AI engineer" loading="lazy" width={380} height={480} />
               </div>
               <span className="portrait-caption">Nigeria · Available worldwide</span>
             </div>
