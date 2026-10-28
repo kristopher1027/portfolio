@@ -1,23 +1,14 @@
 import { useState, type FormEvent } from "react";
+import type { PortfolioProject } from "@/data/portfolio";
 import { ArrowUpRight, LoaderCircle, Search, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 
-type MatcherProject = {
-  number: string;
-  title: string;
-  category: string;
-  description: string;
-  stack: string[];
-  href: string;
-  demo?: string;
-};
-
 type Match = { projectNumber: string; reason: string };
 
-type ProjectMatcherProps = { projects: MatcherProject[] };
+type ProjectMatcherProps = { projects: PortfolioProject[] };
 
 const ProjectMatcher = ({ projects }: ProjectMatcherProps) => {
   const [description, setDescription] = useState("");

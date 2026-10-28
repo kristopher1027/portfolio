@@ -19,153 +19,24 @@ import Navigation from "@/components/Navigation";
 import ProjectMatcher from "@/components/ProjectMatcher";
 import idomaPreview from "@/assets/portfolio/idomaconnect-preview.jpg.asset.json";
 import aijePreview from "@/assets/portfolio/aije-community-shield-preview.jpg.asset.json";
-import portrait from "@/assets/portfolio/christopher-okoh-portrait.png.asset.json";
+import portraitAsset from "@/assets/portfolio/christopher-okoh-portrait.webp.asset.json";import { featuredProjects as projects } from "@/data/portfolio";
 
-type PortfolioProject = {
-  number: string;
-  title: string;
-  category: string;
-  description: string;
-  stack: string[];
-  href: string;
-  demo?: string;
-  image?: string;
-  imageAlt?: string;
-  kind?: string;
-};
-
-const projects: PortfolioProject[] = [
-  {
-    number: "01",
-    title: "DevFlow AI",
-    category: "AI · Developer tools",
-    description:
-      "An AI-powered engineering workspace that brings repository context and practical code intelligence closer to the developer workflow.",
-    stack: ["Go", "React", "PostgreSQL", "RAG"],
-    href: "https://github.com/kristopher1027/devflow-ai",
-    kind: "devflow",
-  },
-  {
-    number: "02",
-    title: "IdomaConnect AI",
-    category: "AI · Culture & heritage",
-    description:
-      "A home for Idoma knowledge: a verified cultural knowledge base, conversational AI and an interactive map of heritage sites.",
-    stack: ["React", "TypeScript", "RAG", "Maps"],
-    href: "https://github.com/kristopher1027/the-build-compass",
-    demo: "https://the-build-compass.lovable.app",
-    image: idomaPreview.url,
-    imageAlt: "IdomaConnect cultural knowledge and heritage platform",
-  },
-  {
-    number: "03",
-    title: "AIJE Community Shield",
-    category: "Community · Public safety",
-    description:
-      "An emergency and community-safety platform for Benue State, with incident reporting, mapped resources and offline-aware tools.",
-    stack: ["React", "TypeScript", "Tailwind", "Maps"],
-    href: "https://github.com/Stonez-Digital/AIJE-Development-Roadmap",
-    demo: "https://aije-development-roadmap.pages.dev/",
-    image: aijePreview.url,
-    imageAlt: "AIJE Community Shield emergency and community safety platform",
-  },
-];
-
-const caseStudies = [
-  {
-    slug: "idomaconnect",
-    project: projects[1],
-    intro: "A digital space for Idoma cultural knowledge, conversational discovery and heritage locations.",
-    challenge: "Make Idoma cultural information easier to discover and explore online.",
-    approach:
-      "Bring a verified knowledge base together with conversational AI and an interactive map of heritage sites.",
-    engineeringFocus:
-      "Connect cultural content, retrieval-augmented generation and place-based discovery in one React and TypeScript experience.",
-    linkLabel: "Source code",
-  },
-  {
-    slug: "devflow-ai",
-    project: projects[0],
-    intro: "An AI engineering workspace for repository context and practical code intelligence.",
-    challenge: "Bring repository understanding closer to everyday code assistance.",
-    approach:
-      "Place repository context and practical code intelligence near the developer workflow in an AI-powered engineering workspace.",
-    engineeringFocus:
-      "Combine Go, React, PostgreSQL and retrieval-augmented generation (RAG) for developer-focused AI tooling.",
-    linkLabel: "Source code",
-  },
-  {
-    slug: "aije-community-shield",
-    project: projects[2],
-    intro: "A community-safety platform for emergency reporting and mapped resources in Benue State.",
-    challenge:
-      "Support emergency and community-safety needs in Benue State with a way to report incidents and find mapped resources.",
-    approach:
-      "Bring incident reporting, mapped resources and offline-aware tools together in one community-safety platform.",
-    engineeringFocus:
-      "Use React, TypeScript, Tailwind and maps to present safety information while accounting for limited connectivity.",
-    linkLabel: "Project roadmap",
-  },
-];
+const portrait = portraitAsset.url;
 
 const capabilities = [
-  {
-    icon: PanelsTopLeft,
-    title: "Product thinking",
-    text: "I shape clear, accessible interfaces around the people and problems a product is meant to serve.",
-  },
-  {
-    icon: Code2,
-    title: "Full-stack development",
-    text: "I build responsive frontends, dependable APIs and the data foundations that bring a product together.",
-  },
-  {
-    icon: BrainCircuit,
-    title: "Applied AI",
-    text: "I connect language models and retrieval systems to real workflows, with useful context and careful boundaries.",
-  },
+  { icon: PanelsTopLeft, title: "Product thinking", text: "I shape clear, accessible interfaces around the people and problems a product is meant to serve." },
+  { icon: Code2, title: "Full-stack development", text: "I build responsive frontends, dependable APIs and the data foundations that bring a product together." },
+  { icon: BrainCircuit, title: "Applied AI", text: "I connect language models and retrieval systems to real workflows, with useful context and careful boundaries." },
 ];
 
 const technologies = [
-  "TypeScript",
-  "React",
-  "Go",
-  "Python",
-  "FastAPI",
-  "PostgreSQL",
-  "RAG",
-  "Supabase",
-  "Docker",
-  "Git & GitHub",
-  "REST APIs",
-  "System design",
+  "TypeScript", "React", "Go", "Python", "PHP / Laravel", "FastAPI",
+  "PostgreSQL", "SQLite", "RAG", "Supabase", "Docker", "Git & GitHub",
+  "REST APIs", "System design",
 ];
 
-const contactEmail = "etzkristokency2@gmail.com";
+const contactEmail = "christopher.okoh@gmail.com";
 const whatsappNumber = "2348020562772";
-const isMobileDevice = () => {
-  if (typeof navigator === "undefined") return false;
-  const browserNavigator = navigator as Navigator & {
-    userAgentData?: { mobile?: boolean };
-  };
-  if (browserNavigator.userAgentData?.mobile !== undefined) return browserNavigator.userAgentData.mobile;
-  return /Android|iPhone|iPad|iPod|Mobile|IEMobile|Windows Phone/i.test(navigator.userAgent)
-    || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-};
-
-const isChromeBrowser = () => {
-  if (typeof navigator === "undefined") return false;
-  const browserNavigator = navigator as Navigator & {
-    brave?: unknown;
-    userAgentData?: { brands?: Array<{ brand: string }> };
-  };
-  if (browserNavigator.brave) return false;
-  const chromeBrand = browserNavigator.userAgentData?.brands?.some(({ brand }) => brand === "Google Chrome");
-  if (chromeBrand !== undefined) return chromeBrand;
-
-  const userAgent = navigator.userAgent;
-  return /(?:Chrome|Chromium|CriOS)\//.test(userAgent) && !/(?:Edg|OPR|Vivaldi|YaBrowser|SamsungBrowser)\//.test(userAgent);
-};
 
 const milestones = [
   { name: "Learn2Earn Fellow", detail: "AI & Software Engineering", status: "In progress" },
@@ -178,15 +49,10 @@ const Index = () => {
   const [emailCopied, setEmailCopied] = useState(false);
   const [visitorName, setVisitorName] = useState("");
   const [visitorNeed, setVisitorNeed] = useState("");
-  const isMobile = isMobileDevice();
-  const useWhatsAppWeb = !isMobile && isChromeBrowser();
-  const whatsappAction = isMobile
-    ? `https://wa.me/${whatsappNumber}`
-    : useWhatsAppWeb
-      ? "https://web.whatsapp.com/send/"
-      : "whatsapp://send";
+
+  const isMobile = typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
   const whatsappMessage = `Hi Christopher, my name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`;
-  const whatsappWebUrl = `https://web.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   const copyEmail = async () => {
     try {
@@ -223,9 +89,7 @@ const Index = () => {
           <p className="hero-kicker"><span /> Independent developer · Nigeria</p>
           <h1 id="hero-title">Hi, I’m <span>Christopher</span></h1>
           <p className="hero-role">Full-stack &amp; AI engineer</p>
-          <p className="hero-intro">
-            I build thoughtful digital products, from reliable backend systems to AI-powered tools that solve real problems.
-          </p>
+          <p className="hero-intro">I build thoughtful digital products, from reliable backend systems to AI-powered tools that solve real problems.</p>
           <div className="hero-actions">
             <a className="hero-button" href="#projects">Explore selected work <ArrowRight size={16} aria-hidden="true" /></a>
             <a className="hero-button hero-button-secondary" href="#contact">Start a conversation <ArrowUpRight size={15} aria-hidden="true" /></a>
@@ -244,16 +108,14 @@ const Index = () => {
           <div className="about-profile">
             <div className="about-portrait-wrap">
               <span className="portrait-index">CO / 01</span>
-              <div className="about-portrait"><img src={portrait.url} alt="Christopher Okoh" loading="lazy" /></div>
+              <div className="about-portrait">
+                <img src={portrait} alt="Christopher Okoh, full-stack and AI engineer" loading="lazy" width={380} height={480} />
+              </div>
               <span className="portrait-caption">Nigeria · Available worldwide</span>
             </div>
             <div className="about-copy">
-              <p>
-                I’m Christopher, a Nigeria-based full-stack and AI engineer. I enjoy taking a complex idea and turning it into a useful, dependable product, from the first interface to the systems behind it.
-              </p>
-              <p>
-                My work moves between product interfaces, backend architecture, data and practical AI. I care about the details, but I start with the people who will use what I build.
-              </p>
+              <p>I’m Christopher, a Nigeria-based full-stack and AI engineer. I enjoy taking a complex idea and turning it into a useful, dependable product, from the first interface to the systems behind it.</p>
+              <p>My work moves between product interfaces, backend architecture, data and practical AI. I care about the details, but I start with the people who will use what I build.</p>
               <div className="about-meta">
                 <span><MapPin size={15} aria-hidden="true" /> Based in Nigeria</span>
                 <span><Sparkles size={15} aria-hidden="true" /> Open to remote opportunities</span>
@@ -319,13 +181,13 @@ const Index = () => {
         <div className="section-container">
           <div className="section-heading-row">
             <div><p className="section-kicker">04 / SELECTED WORK</p><h2 className="section-title">What I’ve <span>built.</span></h2></div>
-            <p className="section-lede">A few projects at the intersection of developer tooling, cultural knowledge and community safety.</p>
+            <p className="section-lede">A few projects at the intersection of education, operations, developer tooling and community.</p>
           </div>
 
           <ProjectMatcher projects={projects} />
 
-          {caseStudies.map(({ slug, project, intro, challenge, approach, engineeringFocus, linkLabel }, index) => (
-            <article className="case-study-card" key={slug} aria-labelledby={`${slug}-title`}>
+          {projects.map((project, index) => (
+            <article className="case-study-card" key={project.slug} aria-labelledby={`${project.slug}-title`}>
               <div className="case-study-visual">
                 {project.image ? (
                   <img src={project.image} alt={project.imageAlt} loading="lazy" />
@@ -339,28 +201,19 @@ const Index = () => {
               </div>
               <div className="case-study-content">
                 <p className="project-category">{project.category}</p>
-                <h3 id={`${slug}-title`}>{project.title}</h3>
-                <p className="case-study-intro">{intro}</p>
+                <h3 id={`${project.slug}-title`}>{project.title}</h3>
+                <p className="case-study-intro">{project.caseStudy.intro}</p>
                 <div className="case-study-details">
-                  <section>
-                    <h4>The challenge</h4>
-                    <p>{challenge}</p>
-                  </section>
-                  <section>
-                    <h4>The approach</h4>
-                    <p>{approach}</p>
-                  </section>
-                  <section>
-                    <h4>Engineering focus</h4>
-                    <p>{engineeringFocus}</p>
-                  </section>
+                  <section><h4>The challenge</h4><p>{project.caseStudy.challenge}</p></section>
+                  <section><h4>The approach</h4><p>{project.caseStudy.approach}</p></section>
+                  <section><h4>Engineering focus</h4><p>{project.caseStudy.engineeringFocus}</p></section>
                 </div>
                 <div className="project-tags" aria-label={`${project.title} technologies`}>
                   {project.stack.map((tag) => <span key={tag}>{tag}</span>)}
                 </div>
                 <div className="project-links case-study-links">
                   {project.demo && <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live preview in a new tab`}>Live preview <ArrowUpRight size={14} aria-hidden="true" /></a>}
-                  <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} ${linkLabel.toLowerCase()} in a new tab`}>{linkLabel} <ArrowUpRight size={14} aria-hidden="true" /></a>
+                  <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} ${project.caseStudy.linkLabel.toLowerCase()} in a new tab`}>{project.caseStudy.linkLabel} <ArrowUpRight size={14} aria-hidden="true" /></a>
                 </div>
               </div>
             </article>
@@ -374,13 +227,7 @@ const Index = () => {
           <p className="section-kicker">05 / GET IN TOUCH</p>
           <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
           <p className="contact-copy">Tell me a little about yourself and what you need. I’ll meet you on WhatsApp and we can talk it through.</p>
-          <form
-            action={whatsappAction}
-            className="contact-form"
-            method="get"
-            target={isMobile ? "_self" : "_blank"}
-          >
-            {!isMobile && <input name="phone" type="hidden" value={whatsappNumber} />}
+          <form action={whatsappUrl} className="contact-form" method="get" target={isMobile ? "_self" : "_blank"}>
             <label className="contact-field">
               <span>Your name</span>
               <input autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
@@ -389,19 +236,8 @@ const Index = () => {
               <span>How can I help?</span>
               <textarea maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={4} value={visitorNeed} />
             </label>
-            <input
-              name="text"
-              type="hidden"
-              value={whatsappMessage}
-            />
             <button className="contact-button" disabled={!whatsappNumber} type="submit">Start WhatsApp chat <Send size={15} aria-hidden="true" /></button>
-            {!whatsappNumber && <p className="contact-form-note">WhatsApp contact is being set up.</p>}
           </form>
-          {!isMobile && !useWhatsAppWeb && visitorName.trim() && visitorNeed.trim() && (
-            <p className="contact-email-fallback">
-              If WhatsApp doesn’t open, <a href={whatsappWebUrl} rel="noreferrer" target="_blank">open WhatsApp Web</a>.
-            </p>
-          )}
           <p className="contact-email-fallback">Or email me at <a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
           <button className="contact-copy-email" type="button" onClick={copyEmail}>{emailCopied ? "Email copied" : "Copy email address"}</button>
           <div className="contact-socials" aria-label="Social links">
@@ -416,7 +252,7 @@ const Index = () => {
     <footer className="site-footer">
       <div className="section-container footer-inner">
         <a className="footer-brand" href="#home"><span>CO</span> CHRISTOPHER OKOH</a>
-        <span>© 2026 Christopher Okoh · Built with intention.</span>
+        <span>© {new Date().getFullYear()} Christopher Okoh · Built with intention.</span>
         <a href="#home">Back to top <ArrowUpRight size={14} aria-hidden="true" /></a>
       </div>
     </footer>
