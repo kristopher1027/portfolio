@@ -126,28 +126,95 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .section-title span { color: #409e9b; }
 .section-lede { max-width: 505px; margin: 18px 0 0; color: var(--muted-ink); font-size: 14px; line-height: 1.85; }
 
-/* About */
-.about-section { position: relative; overflow: hidden; background: radial-gradient(ellipse at 8% 46%, hsl(177 44% 73% / .11), transparent 34%), var(--paper); }
-.about-container { max-width: 930px; text-align: center; }
-.about-container > .section-kicker { margin: 0 auto 14px; }
-.about-profile { max-width: 900px; display: grid; grid-template-columns: 230px 1fr; align-items: center; gap: 52px; margin: 45px auto 0; text-align: left; }
-.about-portrait-wrap { position: relative; width: 210px; justify-self: center; padding: 14px 0 19px 14px; }
-.about-portrait-wrap::before { position: absolute; top: 4px; right: -8px; width: 74%; height: 82%; border: 1px solid #8cc9c4; content: ""; }
-.about-portrait-wrap::after { position: absolute; top: -2px; left: 12px; width: 38px; height: 4px; background: var(--teal); content: ""; }
-.portrait-index { position: absolute; z-index: 2; top: 22px; left: 0; padding: 6px 8px; background: var(--night); color: #d9f3f0; font-size: 8px; font-weight: 750; letter-spacing: .12em; }
-.about-portrait { position: relative; z-index: 1; width: 190px; height: 240px; overflow: hidden; border: 6px solid #fff; border-radius: 2px; background: #dce9eb; box-shadow: 0 14px 34px hsl(207 38% 17% / .13); }
-.about-portrait::after { position: absolute; inset: 55% 0 0; background: linear-gradient(180deg, transparent, hsl(210 54% 10% / .24)); content: ""; }
-.about-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 23%; }
-.portrait-caption { position: absolute; z-index: 2; right: 0; bottom: 0; padding: 7px 9px; background: #fff; color: #506975; font-size: 8px; letter-spacing: .04em; box-shadow: 0 5px 14px hsl(207 38% 17% / .08); }
-.about-copy p { margin: 0; color: var(--muted-ink); font-size: 14px; line-height: 1.9; }
-.about-copy p + p { margin-top: 12px; }
-.about-meta { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 21px; }
-.about-meta span { display: inline-flex; align-items: center; gap: 7px; color: var(--ink); font-size: 10px; font-weight: 700; }
-.about-meta svg { color: #409e9b; }
-.about-statement { max-width: 520px; display: grid; justify-items: center; gap: 4px; margin: 47px auto 0; color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: 20px; line-height: 1.5; }
-.about-statement > span { color: #53aaa6; font-family: Georgia, serif; font-size: 48px; line-height: .7; }
-.about-statement > i { margin-top: 8px; color: var(--muted-ink); font-family: "Lato", "Segoe UI", sans-serif; font-size: 10px; font-style: normal; }
+/* ─── Updated About Portrait UI ─── */
+/* --- NEW About Section UI --- */
 
+  .about-profile { 
+    grid-template-columns: 1fr; 
+    justify-items: center; 
+    gap: 40px; 
+    margin-top: 35px; 
+  }
+  
+  .about-portrait-wrap { 
+    width: 260px; /* Nice, large size on mobile */
+  }
+  
+  .about-copy { 
+    text-align: center; 
+  }
+/* Completely removes the messy floating lines and boxes */
+.about-portrait-wrap::before, 
+.about-portrait-wrap::after { 
+  display: none; 
+}
+
+/* The floating CO / 01 tag */
+.portrait-index { 
+  position: absolute; 
+  z-index: 3; 
+  top: 20px; 
+  left: -15px; 
+  padding: 8px 12px; 
+  background: var(--night); 
+  color: #d9f3f0; 
+  font-size: 9px; 
+  font-weight: 750; 
+  letter-spacing: .15em; 
+  box-shadow: 0 8px 20px rgba(8, 26, 43, 0.25);
+  border-radius: 2px;
+}
+
+/* The clean photo frame */
+.about-portrait { 
+  position: relative; 
+  z-index: 1; 
+  width: 100%; 
+  aspect-ratio: 4 / 5; /* Clean, modern portrait ratio */
+  overflow: hidden; 
+  border: none; 
+  border-radius: 8px; /* Soft modern rounding */
+  background: #dce9eb; 
+  box-shadow: 0 20px 40px rgba(16, 40, 61, 0.15); /* Deep, soft shadow */
+}
+
+/* The subtle dark gradient at the bottom for text */
+.about-portrait::after { 
+  position: absolute; 
+  inset: 60% 0 0; 
+  background: linear-gradient(180deg, transparent 0%, rgba(8, 26, 43, 0.8) 100%); 
+  content: ""; 
+}
+
+.about-portrait img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  object-position: center 20%; /* Ensures your face is perfectly centered */
+  transition: transform 0.7s ease;
+}
+
+.about-portrait:hover img {
+  transform: scale(1.04); /* Subtle zoom on hover */
+}
+
+/* White text on the dark gradient */
+.portrait-caption { 
+  position: absolute; 
+  z-index: 2; 
+  bottom: 20px; 
+  left: 20px; 
+  right: 20px;
+  padding: 0; 
+  background: transparent; 
+  color: rgba(255, 255, 255, 0.95); 
+  font-size: 10px; 
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: none; 
+  text-align: left;
+}
 /* Capability cards */
 .focus-section { background: var(--mist); text-align: center; }
 .focus-section .section-container > .section-kicker { margin-inline: auto; }
