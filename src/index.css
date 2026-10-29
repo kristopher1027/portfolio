@@ -590,3 +590,83 @@ p, li, h1, h2, h3, h4, a, span { overflow-wrap: anywhere; }
   .hero-content-left h1 { font-size: 40px; }
   .case-study-content { padding-inline: 16px; }
 }
+
+
+/* UI/UX polish: clearer hierarchy, calmer surfaces, and consistent interactions. */
+:root {
+  --surface-elevated: #ffffff;
+  --surface-soft: #f4f7f8;
+}
+::selection { background: rgba(30, 166, 160, .22); color: var(--night); }
+html { scroll-behavior: smooth; }
+body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+.section-container { max-width: 1180px; }
+.section-kicker { display: inline-flex; align-items: center; gap: 10px; }
+.section-kicker::before {
+  content: ""; display: inline-block; width: 22px; height: 1px;
+  background: var(--teal, #168f8a); flex: 0 0 auto;
+}
+.section-title { letter-spacing: -.035em; text-wrap: balance; }
+.section-lede { max-width: 58ch; text-wrap: pretty; }
+.hero-intro, .about-copy p, .capability p, .case-study-intro,
+.case-study-details p, .contact-copy { text-wrap: pretty; }
+.hero-button, .outline-button, .nav-contact, .contact-button,
+.project-links > a, .contact-copy-email {
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
+}
+.hero-button:hover, .outline-button:hover, .nav-contact:hover,
+.contact-button:hover:not(:disabled), .project-links > a:hover, .contact-copy-email:hover {
+  transform: translateY(-2px);
+}
+.hero-button:focus-visible, .outline-button:focus-visible, .nav-contact:focus-visible,
+.contact-button:focus-visible, .project-links > a:focus-visible {
+  outline: 3px solid var(--teal, #168f8a); outline-offset: 4px;
+}
+.capability {
+  border: 1px solid rgba(15, 35, 50, .08);
+  border-radius: 12px; background: rgba(255,255,255,.76);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.capability:hover {
+  transform: translateY(-4px); border-color: rgba(22,143,138,.3);
+  box-shadow: 0 18px 36px -24px rgba(8, 30, 45, .35);
+}
+.case-study-card {
+  border-radius: 14px;
+  box-shadow: 0 16px 48px -32px rgba(10, 29, 44, .34);
+  transition: box-shadow .25s ease, border-color .25s ease;
+}
+.case-study-card:hover {
+  border-color: rgba(22,143,138,.28);
+  box-shadow: 0 24px 56px -32px rgba(10, 29, 44, .42);
+}
+.case-study-visual > img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.case-study-card:hover .case-study-visual > img { transform: scale(1.025); }
+.case-study-content h3 { letter-spacing: -.025em; text-wrap: balance; }
+.case-study-details { border-top: 1px solid var(--line); padding-top: 24px; }
+.case-study-details h4 { color: var(--teal-dark, #117c78); }
+.project-tags > span { border-radius: 999px; }
+.project-links > a { border-radius: 8px; }
+.contact-field input, .contact-field textarea {
+  border-radius: 9px; transition: border-color .2s ease, box-shadow .2s ease;
+}
+.contact-field input:focus, .contact-field textarea:focus {
+  border-color: var(--teal, #168f8a);
+  box-shadow: 0 0 0 3px rgba(22,143,138,.12); outline: none;
+}
+.milestone { gap: 18px; }
+.milestone h4 { text-wrap: balance; }
+.site-footer { border-top: 1px solid rgba(255,255,255,.12); }
+@media (max-width: 680px) {
+  html { scroll-behavior: auto; }
+  .section-kicker { gap: 8px; }
+  .section-kicker::before { width: 16px; }
+  .capability:hover, .hero-button:hover, .outline-button:hover,
+  .project-links > a:hover { transform: none; }
+  .case-study-card:hover .case-study-visual > img { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .case-study-visual > img, .capability, .hero-button, .outline-button,
+  .nav-contact, .contact-button, .project-links > a { transition: none !important; }
+}
