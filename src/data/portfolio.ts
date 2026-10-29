@@ -1,8 +1,6 @@
 // src/data/portfolio.ts
 // ⚠️ SINGLE SOURCE OF TRUTH for all portfolio projects.
 
-import idomaPreview from "@/assets/portfolio/idomaconnect-preview.jpg.asset.json";
-import aijePreview from "@/assets/portfolio/aije-community-shield-preview.jpg.asset.json";
 import schoolPilotPreview from "@/assets/portfolio/schoolpilot-preview.webp";
 import resourceHubPreview from "@/assets/portfolio/resourcehub-preview.webp";
 export type PortfolioProject = {
@@ -38,8 +36,8 @@ export const projects: PortfolioProject[] = [
     description: "A multi-tenant school management platform for Nigerian K-12 schools, with isolated per-school databases, 8-role RBAC and a 6-stage result-approval workflow.",
     stack: ["Laravel 11", "PHP 8.4", "stancl/tenancy", "MySQL", "Tailwind"],
     href: "https://github.com/kristopher1027/SchoolPilot",
-    image: resourceHubPreview,
-    imageAlt: "ResourceHub inventory dashboard",
+    image: schoolPilotPreview,
+    imageAlt: "SchoolPilot school management dashboard",
     
     year: "2025",
     status: "in-progress",
@@ -60,8 +58,8 @@ export const projects: PortfolioProject[] = [
     description: "A multi-tenant inventory and resource-lending platform for organizations, with SQLite WAL concurrency, audit logging, QR asset labels, CI-tested security and ZIP backups.",
     stack: ["Python 3.10+", "SQLite (WAL)", "stdlib HTTP", "SMTP", "Turnstile", "unittest"],
     href: "https://github.com/kristopher1027/management-system",
-    image: schoolPilotPreview,
-    imageAlt: "SchoolPilot school management dashboard",
+    image: resourceHubPreview,
+    imageAlt: "ResourceHub inventory dashboard",
     
     year: "2025",
     status: "in-progress",
@@ -103,8 +101,6 @@ export const projects: PortfolioProject[] = [
     stack: ["React", "TypeScript", "RAG", "Maps"],
     href: "https://github.com/kristopher1027/the-build-compass",
     demo: "https://the-build-compass.lovable.app",
-    image: idomaPreview.url,
-    imageAlt: "IdomaConnect cultural knowledge and heritage platform",
     
     year: "2025",
     status: "in-progress",
@@ -126,8 +122,6 @@ export const projects: PortfolioProject[] = [
     stack: ["React", "TypeScript", "Tailwind", "Maps"],
     href: "https://github.com/Stonez-Digital/AIJE-Development-Roadmap",
     demo: "https://aije-development-roadmap.pages.dev/",
-    image: aijePreview.url,
-    imageAlt: "AIJE Community Shield emergency and community safety platform",
     
     year: "2025",
     status: "in-progress",
