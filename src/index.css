@@ -104,8 +104,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* --- NAVIGATION --- */
 .site-header { position: fixed; z-index: 40; top: 0; right: 0; left: 0; color: #f8fafc; transition: all 0.3s ease; }
-.site-header.is-scrolled { background: rgba(255, 255, 255, 0.85); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,0,0,0.05); color: var(--ink); }
-.scroll-progress { position: absolute; right: 0; bottom: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--teal), #38bdf8); transform: scaleX(var(--scroll-progress, 0)); transform-origin: left center; pointer-events: none; }
+.site-header.is-scrolled { 
+  background: rgba(255, 255, 255, 0.85); 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); 
+  backdrop-filter: blur(16px); 
+  -webkit-backdrop-filter: blur(16px); 
+  border-bottom: 1px solid rgba(0,0,0,0.05); 
+  color: var(--ink); /* 👈 This is the magic fix. It turns the text dark */
+}.scroll-progress { position: absolute; right: 0; bottom: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--teal), #38bdf8); transform: scaleX(var(--scroll-progress, 0)); transform-origin: left center; pointer-events: none; }
 .nav-shell { width: min(1200px, calc(100% - 64px)); height: 80px; display: flex; align-items: center; justify-content: space-between; margin-inline: auto; }
 .brand-mark { display: inline-flex; align-items: center; gap: 12px; color: currentColor; font-size: 12px; font-weight: 750; letter-spacing: 0.15em; white-space: nowrap; }
 .brand-mark b { color: var(--teal-dark); font-weight: 400; }
@@ -116,10 +122,39 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .nav-link::after { position: absolute; right: 0; bottom: 0; left: 0; height: 2px; background: var(--teal-dark); content: ""; transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
 .nav-link:hover, .nav-link:focus-visible { opacity: 1; }
 .nav-link:hover::after, .nav-link:focus-visible::after, .nav-link[aria-current="location"]::after { transform: scaleX(1); }
-.nav-link[aria-current="location"] { opacity: 1; }
-.nav-contact { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border: 1px solid currentColor; border-radius: 4px; color: currentColor; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; transition: all 0.3s ease; }
-.nav-contact:hover { border-color: var(--teal-dark); background: rgba(45, 212, 191, 0.1); color: var(--teal-dark); }
-
+.nav-link { 
+  position: relative; 
+  padding-block: 10px; 
+  color: currentColor; /* 👈 Inherits from the header (white -> dark) */
+  opacity: 0.7; 
+  font-size: 14px; 
+  font-weight: 500; 
+  transition: all 0.2s ease; 
+}
+.nav-link:hover, .nav-link:focus-visible { 
+  opacity: 1; 
+}
+.nav-link[aria-current="location"] { 
+  opacity: 1; 
+}
+.nav-contact { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 8px; 
+  padding: 10px 20px; 
+  border: 1px solid currentColor; /* 👈 Inherits */
+  border-radius: 4px; 
+  color: currentColor; 
+  font-size: 12px; 
+  font-weight: 600; 
+  letter-spacing: 0.05em; 
+  transition: all 0.3s ease; 
+}
+.nav-contact:hover { 
+  border-color: var(--teal-dark); 
+  background: rgba(45, 212, 191, 0.1); 
+  color: var(--teal-dark); 
+}
 /* --- HERO CONTENT --- */
 .hero-content { width: min(900px, calc(100% - 40px)); margin-top: 40px; text-align: center; animation: fade-up 0.8s ease both; }
 .hero-kicker { display: inline-flex; align-items: center; gap: 12px; margin: 0 0 24px; color: #94a3b8; font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; }

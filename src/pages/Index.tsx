@@ -23,7 +23,7 @@ const technologies = [
   "REST APIs", "System design",
 ];
 
-const contactEmail = "christopher.okoh@gmail.com";
+const contactEmail = "xtopher1027@gmail.com";
 const whatsappNumber = "2348020562772";
 
 const milestones = [
@@ -77,8 +77,10 @@ const Index = () => {
           <p className="hero-kicker"><span /> Independent developer · Nigeria</p>
           <h1 id="hero-title">Hi, I’m <span>Christopher</span></h1>
           <p className="hero-role">Full-stack &amp; AI engineer</p>
-          <p className="hero-intro">I build thoughtful digital products, from reliable backend systems to AI-powered tools that solve real problems.</p>
-          <div className="hero-actions">
+<p className="hero-intro">
+  I build reliable backend systems and AI-powered tools. From database architecture to applied LLMs, I turn complex problems into dependable products.
+</p>
+         <div className="hero-actions">
             <a className="hero-button" href="#projects">Explore selected work <ArrowRight size={16} aria-hidden="true" /></a>
             <a className="hero-button hero-button-secondary" href="#contact">Start a conversation <ArrowUpRight size={15} aria-hidden="true" /></a>
           </div>
