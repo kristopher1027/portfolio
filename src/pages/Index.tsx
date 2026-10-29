@@ -261,9 +261,10 @@ const Index = () => {
                 {project.image ? (
                   <img src={project.image} alt={project.imageAlt} loading="lazy" />
                 ) : (
-                  <div className="devflow-art" role="img" aria-label="Illustrated DevFlow AI engineering workspace preview">
-                    <div className="devflow-toolbar"><span /><span /><span /><b>DEVFLOW / WORKSPACE</b></div>
-                    <div className="devflow-panel"><aside><i>REPOSITORY</i><span>▤ &nbsp; api.go</span><span>▤ &nbsp; agents.go</span><span>▤ &nbsp; memory.go</span></aside><div className="devflow-code"><span><em>func</em> BuildWithContext(repo Repository) &#123;</span><span>&nbsp; assistant := NewAssistant(repo)</span><span>&nbsp; answer, err := assistant.Ask(prompt)</span><span>&nbsp; <em>return</em> answer, err</span><span>&#125;</span><strong>REPOSITORY CONTEXT</strong></div></div>
+                  <div className="project-image-placeholder" role="img" aria-label={`Screenshot unavailable for ${project.title}`}>
+                    <span className="placeholder-mark"><PanelsTopLeft size={25} aria-hidden="true" /></span>
+                    <strong>{project.title}</strong>
+                    <span>Project preview unavailable</span>
                   </div>
                 )}
                 <span>CASE STUDY / {String(index + 1).padStart(2, "0")}</span>
