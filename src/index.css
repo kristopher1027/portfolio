@@ -389,6 +389,40 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 
 
+
+.project-image-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(145deg, #f8fafc, #eef5f5);
+  color: var(--muted-ink);
+}
+.project-image-placeholder .placeholder-mark {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  color: var(--teal-dark);
+  background: #fff;
+}
+.project-image-placeholder strong {
+  color: var(--night);
+  font: 400 clamp(20px, 2.4vw, 28px)/1.15 "Instrument Serif", Georgia, serif;
+}
+.project-image-placeholder > span:last-child {
+  font: 500 11px/1.5 Inter, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
 /* Responsive corrections: preserve the existing navy, white and teal identity. */
 html { scroll-padding-top: 88px; }
 section[id] { scroll-margin-top: 88px; }
