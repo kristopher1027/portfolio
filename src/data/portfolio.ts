@@ -1,8 +1,6 @@
 // src/data/portfolio.ts
 // ⚠️ SINGLE SOURCE OF TRUTH for all portfolio projects.
 
-import idomaPreview from "@/assets/portfolio/idomaconnect-preview.jpg.asset.json";
-import aijePreview from "@/assets/portfolio/aije-community-shield-preview.jpg.asset.json";
 import schoolPilotPreview from "@/assets/portfolio/schoolpilot-preview.webp";
 import resourceHubPreview from "@/assets/portfolio/resourcehub-preview.webp";
 export type PortfolioProject = {
@@ -103,8 +101,6 @@ export const projects: PortfolioProject[] = [
     stack: ["React", "TypeScript", "RAG", "Maps"],
     href: "https://github.com/kristopher1027/the-build-compass",
     demo: "https://the-build-compass.lovable.app",
-    image: idomaPreview.url,
-    imageAlt: "IdomaConnect cultural knowledge and heritage platform",
     
     year: "2025",
     status: "in-progress",
@@ -126,8 +122,6 @@ export const projects: PortfolioProject[] = [
     stack: ["React", "TypeScript", "Tailwind", "Maps"],
     href: "https://github.com/Stonez-Digital/AIJE-Development-Roadmap",
     demo: "https://aije-development-roadmap.pages.dev/",
-    image: aijePreview.url,
-    imageAlt: "AIJE Community Shield emergency and community safety platform",
     
     year: "2025",
     status: "in-progress",
