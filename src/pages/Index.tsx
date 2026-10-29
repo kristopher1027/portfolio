@@ -1,23 +1,26 @@
 import { useEffect, useState } from "react";
 import {
-  ArrowDown, ArrowRight, ArrowUpRight, AtSign, BrainCircuit,
-  Check, Code2, Github, Linkedin, MapPin, PanelsTopLeft, Radio,
-  Send, Sparkles,
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  AtSign,
+  BrainCircuit,
+  Check,
+  Code2,
+  Github,
+  Linkedin,
+  MapPin,
+  PanelsTopLeft,
+  Radio,
+  Send,
+  Sparkles,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ProjectMatcher from "@/components/ProjectMatcher";
-
-
+import portraitAsset from "@/assets/portfolio/christopher-okoh-portrait.png.asset.json";
 import { featuredProjects as projects } from "@/data/portfolio";
 
-// 👇 This is the image line. 
-// If the .webp file is still crashing, change it back to the .png.asset.json version.
-import portrait from "@/assets/portfolio/christopher-okoh-portrait.webp"; 
-const capabilities = [
-  { icon: PanelsTopLeft, title: "Product thinking", text: "I shape clear, accessible interfaces around the people and problems a product is meant to serve." },
-  { icon: Code2, title: "Full-stack development", text: "I build responsive frontends, dependable APIs and the data foundations that bring a product together." },
-  { icon: BrainCircuit, title: "Applied AI", text: "I connect language models and retrieval systems to real workflows, with useful context and careful boundaries." },
-];
+const portrait = portraitAsset.url;
 
 const skillCategories = [
   { title: "Languages", skills: ["TypeScript", "Python", "Go", "PHP", "SQL"] },
@@ -27,34 +30,20 @@ const skillCategories = [
   { title: "Tools & DevOps", skills: ["Docker", "Git & GitHub", "CI/CD", "System Design"] }
 ];
 
-const contactEmail = "christopher.okoh@gmail.com";
+const capabilities = [
+  { icon: PanelsTopLeft, title: "Product thinking", text: "I shape clear, accessible interfaces around the people and problems a product is meant to serve." },
+  { icon: Code2, title: "Full-stack development", text: "I build responsive frontends, dependable APIs and the data foundations that bring a product together." },
+  { icon: BrainCircuit, title: "Applied AI", text: "I connect language models and retrieval systems to real workflows, with useful context and careful boundaries." },
+];
+
+const contactEmail = "christopher.okoh@gmail.com"; // Update with your real email
 const whatsappNumber = "2348020562772";
 
 const milestones = [
-  { 
-    name: "Learn2Earn Fellow", 
-    detail: "AI & Software Engineering", 
-    status: "In progress",
-    description: "Building AI-powered tools and full-stack applications through hands-on projects and collaboration."
-  },
-  { 
-    name: "Nithub × DataCamp", 
-    detail: "Data & AI scholarship", 
-    status: "In progress",
-    description: "Data science, machine learning, and AI fundamentals scholarship."
-  },
-  { 
-    name: "3MTT Fellow", 
-    detail: "Technology & Innovation", 
-    status: "In progress",
-    description: "National fellowship focused on technical excellence and innovation."
-  },
-  { 
-    name: "01 Edu · Piscine", 
-    detail: "Software development", 
-    status: "Completed",
-    description: "Intensive peer-to-peer software engineering bootcamp."
-  },
+  { name: "Learn2Earn Fellow", detail: "AI & Software Engineering", status: "In progress", description: "Building AI-powered tools and full-stack applications through hands-on projects and collaboration." },
+  { name: "Nithub × DataCamp", detail: "Data & AI scholarship", status: "In progress", description: "Data science, machine learning, and AI fundamentals scholarship." },
+  { name: "3MTT Fellow", detail: "Technology & Innovation", status: "In progress", description: "National fellowship focused on technical excellence and innovation." },
+  { name: "01 Edu · Piscine", detail: "Software development", status: "Completed", description: "Intensive peer-to-peer software engineering bootcamp." },
 ];
 
 const Index = () => {
@@ -62,14 +51,14 @@ const Index = () => {
   const [visitorName, setVisitorName] = useState("");
   const [visitorNeed, setVisitorNeed] = useState("");
 
-  // Inside the Index component:
+  // Scroll reveal animation hook
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target); // Reveal only once
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -98,7 +87,9 @@ const Index = () => {
   return <div className="portfolio-page">
     <a className="skip-link" href="#main-content">Skip to content</a>
     <main id="main-content">
-            <section className="hero-section" id="home" aria-labelledby="hero-title">
+      
+      {/* HERO SECTION */}
+      <section className="hero-section" id="home" aria-labelledby="hero-title">
         <div className="hero-sky" aria-hidden="true">
           <div className="hero-stars" />
           <div className="hero-halo" />
@@ -117,7 +108,7 @@ const Index = () => {
         </div>
         <Navigation />
 
-        <div className="hero-split container">
+        <div className="hero-split">
           <div className="hero-content-left">
             <p className="hero-kicker"><span /> Independent developer · Nigeria</p>
             <h1 id="hero-title">Hi, I’m <span>Christopher</span></h1>
@@ -154,8 +145,9 @@ const Index = () => {
         </a>
       </section>
 
+      {/* ABOUT SECTION */}
       <section id="about" className="section-block about-section">
-                <div className="section-container about-container reveal">
+        <div className="section-container about-container reveal">
           <p className="section-kicker">01 / A LITTLE ABOUT ME</p>
           <h2 className="section-title">A curious mind,<br /><span>building for people.</span></h2>
           
@@ -190,12 +182,14 @@ const Index = () => {
         </div>
       </section>
 
+      {/* CAPABILITIES SECTION */}
       <section id="focus" className="section-block focus-section">
         <div className="section-container">
-          <p className="section-kicker">02 / WHAT I DO</p>
-          <h2 className="section-title">Make ideas <span>useful.</span></h2>
-          <p className="section-lede">I work across the product stack to make digital tools feel clear, capable and grounded in everyday needs.</p>
-          <div className="capability-grid">
+          <p className="section-kicker reveal">02 / WHAT I DO</p>
+          <h2 className="section-title reveal">Make ideas <span>useful.</span></h2>
+          <p className="section-lede reveal">I work across the product stack to make digital tools feel clear, capable and grounded in everyday needs.</p>
+          
+          <div className="capability-grid reveal">
             {capabilities.map(({ icon: Icon, title, text }, index) => (
               <article className="capability" key={title}>
                 <span className="capability-index">0{index + 1}</span>
@@ -208,63 +202,69 @@ const Index = () => {
         </div>
       </section>
 
+      {/* EXPERIENCE SECTION */}
       <section id="experience" className="section-block experience-section">
-        <div className="section-container experience-container">
+        <div className="section-container experience-container reveal">
           <div className="experience-intro">
             <p className="section-kicker">03 / EXPERIENCE</p>
             <h2 className="section-title">Learning by<br /><span>doing the work.</span></h2>
             <p className="section-lede">My path so far is built around hands-on projects, collaboration and steady technical growth.</p>
           </div>
+          
           <div className="experience-details">
             <h3 className="subsection-title"><Radio size={16} aria-hidden="true" /> Learning journey</h3>
             <div className="milestone-list">
-            {milestones.map((item, index) => (
-  <div className="milestone" key={item.name}>
-    <span className="milestone-number">0{index + 1}</span>
-    <div>
-      <h4>{item.name}</h4>
-      <p>{item.detail}</p>
-      <p style={{ fontSize: '13px', marginTop: '4px', opacity: 0.8 }}>{item.description}</p>
-    </div>
-    <span className={`milestone-status ${item.status === "Completed" ? "is-complete" : ""}`}>
-      {item.status === "Completed" && <Check size={12} aria-hidden="true" />}{item.status}
-    </span>
-  </div>
-))}
+              {milestones.map((item, index) => (
+                <div className="milestone" key={item.name}>
+                  <div>
+                    <h4>{item.name}</h4>
+                    <p>{item.detail}</p>
+                    <p style={{ fontSize: '13px', marginTop: '4px', opacity: 0.8 }}>{item.description}</p>
+                  </div>
+                  <span className={`milestone-status ${item.status === "Completed" ? "is-complete" : ""}`}>
+                    {item.status === "Completed" && <Check size={12} aria-hidden="true" />}{item.status}
+                  </span>
+                </div>
+              ))}
             </div>
+            
             <h3 className="subsection-title technology-title"><Code2 size={16} aria-hidden="true" /> Technologies I use</h3>
-<div className="skill-grid">
-  {skillCategories.map((category) => (
-    <div key={category.title} className="skill-group">
-      <h4>{category.title}</h4>
-      <div className="technology-list">
-        {category.skills.map(skill => <span key={skill}>{skill}</span>)}
-      </div>
-    </div>
-  ))}
-</div>
+            <div className="skill-grid">
+              {skillCategories.map((category) => (
+                <div key={category.title} className="skill-group">
+                  <h4>{category.title}</h4>
+                  <div className="technology-list">
+                    {category.skills.map(skill => <span key={skill}>{skill}</span>)}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
+      {/* BANNER */}
       <section className="work-banner" aria-label="Continue exploring">
-        <div className="section-container work-banner-inner">
+        <div className="section-container work-banner-inner reveal">
           <div><p className="section-kicker">CURIOUS BY NATURE · BUILT WITH INTENTION</p><h2>There’s always more<br />to <span>make possible.</span></h2></div>
           <a href="#projects" className="outline-button">See selected work <ArrowDown size={15} aria-hidden="true" /></a>
         </div>
       </section>
 
+      {/* PROJECTS SECTION */}
       <section id="projects" className="section-block projects-section">
         <div className="section-container">
-          <div className="section-heading-row">
+          <div className="section-heading-row reveal">
             <div><p className="section-kicker">04 / SELECTED WORK</p><h2 className="section-title">What I’ve <span>built.</span></h2></div>
             <p className="section-lede">A few projects at the intersection of education, operations, developer tooling and community.</p>
           </div>
 
-          <ProjectMatcher projects={projects} />
+          <div className="reveal">
+            <ProjectMatcher projects={projects} />
+          </div>
 
           {projects.map((project, index) => (
-            <article className="case-study-card" key={project.slug} aria-labelledby={`${project.slug}-title`}>
+            <article className="case-study-card reveal" key={project.slug} aria-labelledby={`${project.slug}-title`}>
               <div className="case-study-visual">
                 {project.image ? (
                   <img src={project.image} alt={project.imageAlt} loading="lazy" />
@@ -276,18 +276,22 @@ const Index = () => {
                 )}
                 <span>CASE STUDY / {String(index + 1).padStart(2, "0")}</span>
               </div>
+              
               <div className="case-study-content">
                 <p className="project-category">{project.category}</p>
                 <h3 id={`${project.slug}-title`}>{project.title}</h3>
                 <p className="case-study-intro">{project.caseStudy.intro}</p>
+                
                 <div className="case-study-details">
                   <section><h4>The challenge</h4><p>{project.caseStudy.challenge}</p></section>
                   <section><h4>The approach</h4><p>{project.caseStudy.approach}</p></section>
                   <section><h4>Engineering focus</h4><p>{project.caseStudy.engineeringFocus}</p></section>
                 </div>
+                
                 <div className="project-tags" aria-label={`${project.title} technologies`}>
                   {project.stack.map((tag) => <span key={tag}>{tag}</span>)}
                 </div>
+                
                 <div className="project-links case-study-links">
                   {project.demo && <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live preview in a new tab`}>Live preview <ArrowUpRight size={14} aria-hidden="true" /></a>}
                   <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} ${project.caseStudy.linkLabel.toLowerCase()} in a new tab`}>{project.caseStudy.linkLabel} <ArrowUpRight size={14} aria-hidden="true" /></a>
@@ -295,37 +299,43 @@ const Index = () => {
               </div>
             </article>
           ))}
-          <a href="https://github.com/kristopher1027" className="all-work-link" target="_blank" rel="noopener noreferrer">More experiments on GitHub <ArrowRight size={15} aria-hidden="true" /></a>
+          
+          <a href="https://github.com/kristopher1027" className="all-work-link reveal" target="_blank" rel="noopener noreferrer">More experiments on GitHub <ArrowRight size={15} aria-hidden="true" /></a>
         </div>
       </section>
 
+      {/* CONTACT SECTION */}
       <section id="contact" className="contact-section">
-        <div className="section-container contact-container">
+        <div className="section-container contact-container reveal">
           <p className="section-kicker">05 / GET IN TOUCH</p>
           <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
           <p className="contact-copy">Tell me a little about yourself and what you need. I’ll meet you on WhatsApp and we can talk it through.</p>
+          
           <form action={whatsappUrl} className="contact-form" method="get" target={isMobile ? "_self" : "_blank"}>
             <label className="contact-field">
               <span>Your name</span>
-        <input type="text" autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
+              <input type="text" autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
             </label>
             <label className="contact-field">
               <span>How can I help?</span>
-            <textarea maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={4} value={visitorNeed} />
-              </label>
+              <textarea maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={4} value={visitorNeed} />
+            </label>
             <button className="contact-button" disabled={!whatsappNumber} type="submit">Start WhatsApp chat <Send size={15} aria-hidden="true" /></button>
           </form>
+          
           <p className="contact-email-fallback">Or email me at <a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
           <button className="contact-copy-email" type="button" onClick={copyEmail}>{emailCopied ? "Email copied" : "Copy email address"}</button>
+          
           <div className="contact-socials" aria-label="Social links">
             <a href={`mailto:${contactEmail}`} aria-label="Email"><AtSign size={17} /></a>
-<a href="https://github.com/kristopher1027" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={17} /></a>
-<a href="https://www.linkedin.com/in/christopher-okoh-391933430/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={17} /></a>
+            <a href="https://github.com/kristopher1027" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={17} /></a>
+            <a href="https://www.linkedin.com/in/christopher-okoh-391933430/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={17} /></a>
           </div>
         </div>
       </section>
     </main>
 
+    {/* FOOTER */}
     <footer className="site-footer">
       <div className="section-container footer-inner">
         <a className="footer-brand" href="#home"><span>CO</span> CHRISTOPHER OKOH</a>
