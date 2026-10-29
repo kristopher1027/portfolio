@@ -246,34 +246,102 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .projects-section { background: var(--paper); }
 .section-heading-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 64px; }
 .section-heading-row .section-lede { max-width: 400px; margin: 0 0 8px; }
+/* --- Projects: Editorial Layout --- */
 .case-study-card { 
-  display: grid; 
-  grid-template-columns: 1.1fr 0.9fr; /* Adjusted slightly for better text fit */
+  display: flex; 
+  flex-direction: row; 
   overflow: hidden; 
   margin-bottom: 80px; 
-  border: 1px solid transparent; 
-  background: transparent; 
-  border-radius: 4px; 
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.case-study-card:nth-child(even) { grid-template-columns: 0.8fr 1.2fr; }
-.case-study-card:nth-child(even) .case-study-visual { order: 2; }
-.case-study-card:nth-child(even) .case-study-content { order: 1; padding-left: 0; padding-right: 48px; }
-.case-study-card:hover { border-color: rgba(45, 212, 191, 0.2); background: #fff; box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.08); transform: translateY(-4px); }
-.case-study-visual { position: relative; min-height: 500px; overflow: hidden; background: #e2e8f0; border-radius: 4px; box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15); }
-.case-study-visual img { width: 100%; height: 100%; position: absolute; inset: 0; display: block; object-fit: cover; object-position: top center; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-.case-study-card:hover .case-study-visual img { transform: scale(1.04); }
-.case-study-visual > span { position: absolute; z-index: 1; bottom: 24px; left: 24px; color: #fff; font-family: "Inter", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(5,16,28,0.6); padding: 6px 12px; backdrop-filter: blur(8px); border-radius: 2px; }
+
+.case-study-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+/* Alternate the layout for even cards */
+.case-study-card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* The Image Side */
+.case-study-visual { 
+  flex: 1.2; /* Takes up 55% of the width */
+  position: relative; 
+  min-height: 500px; 
+  background: #e2e8f0; 
+  overflow: hidden;
+}
+
+.case-study-visual img { 
+  width: 100%; 
+  height: 100%; 
+  position: absolute; 
+  inset: 0; 
+  object-fit: cover; 
+  object-position: top center; 
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+
+.case-study-card:hover .case-study-visual img { 
+  transform: scale(1.03); 
+}
+
+.case-study-visual > span { 
+  position: absolute; 
+  z-index: 2; 
+  bottom: 24px; 
+  left: 24px; 
+  color: #fff; 
+  font-family: "Inter", sans-serif; 
+  font-size: 11px; 
+  font-weight: 700; 
+  letter-spacing: 0.15em; 
+  text-transform: uppercase; 
+  background: rgba(5,16,28,0.6); 
+  padding: 6px 12px; 
+  backdrop-filter: blur(8px); 
+  border-radius: 2px; 
+}
+
+/* The Text Side */
 .case-study-content { 
+  flex: 0.8; /* Takes up 45% of the width */
   padding: 48px; 
   display: flex; 
   flex-direction: column; 
   justify-content: center; 
-  background: var(--paper); /* 👈 Forces a solid white background */
-  position: relative;       /* 👈 Ensures it sits above the image */
-  z-index: 2;               /* 👈 Keeps it on top */
-  border-radius: 4px; 
-  box-shadow: -10px 0 30px -10px rgba(15, 23, 42, 0.05); /* 👈 Adds a subtle shadow so it separates from the image */
+  background: #fff; /* Solid background guarantees no overlap */
+  position: relative;
+  z-index: 10; /* Forces it above the image */
+}
+
+.case-study-content h3 { 
+  margin: 12px 0 16px; 
+  color: var(--ink); 
+  font-size: clamp(32px, 3vw, 42px); 
+}
+
+/* Mobile Adjustment */
+@media (max-width: 900px) {
+  .case-study-card, 
+  .case-study-card:nth-child(even) { 
+    flex-direction: column; 
+  }
+  .case-study-visual { 
+    min-height: 350px; 
+    width: 100%;
+  }
+  .case-study-content { 
+    width: 100%;
+    padding: 32px 24px; 
+  }
 }
 .case-study-content h3 { margin: 12px 0 16px; color: var(--ink); font-size: clamp(32px, 3vw, 42px); }
 .case-study-intro { margin: 0 0 32px; color: var(--muted-ink); font-size: 16px; line-height: 1.6; }
