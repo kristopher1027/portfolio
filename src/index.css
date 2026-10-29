@@ -48,7 +48,7 @@
 /* Layout & Utilities */
 .portfolio-page { overflow: clip; color: var(--ink); background: var(--paper); }
 .section-container { width: min(1200px, calc(100% - 64px)); margin-inline: auto; }
-.section-block { padding-block: clamp(100px, 15vw, 180px); }
+.section-block { padding-block: clamp(80px, 12vw, 140px); }
 section[id] { scroll-margin-top: 80px; }
 
 /* Accessibility */
@@ -150,7 +150,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* Shared Section Typography */
 .section-kicker { display: flex; align-items: center; gap: 12px; margin: 0 0 20px; color: var(--teal-dark); font-family: "Inter", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; }
 .section-kicker::before { width: 24px; height: 1px; background: var(--teal-dark); content: ""; }
-.section-title { margin: 0; color: var(--ink); font-size: clamp(44px, 6vw, 72px); }
+.section-title { margin: 0; color: var(--ink); font-size: clamp(40px, 5vw, 64px); line-height: 1.1; }
 .section-title span { color: var(--teal-dark); font-style: italic; }
 .section-lede { max-width: 560px; margin: 24px 0 0; color: var(--muted-ink); font-size: 16px; line-height: 1.8; }
 
@@ -276,4 +276,48 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+/* --- BULLETPROOF PROJECT LAYOUT (Overrides Lovable & Tailwind) --- */
+@media (min-width: 1024px) {
+  .case-study-card {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 !important;
+    background: #fff !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    margin-bottom: 80px !important;
+    box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.08) !important;
+  }
+  
+  /* The Image Side */
+  .case-study-card > div:first-child {
+    grid-column: 1 !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 500px !important;
+    background: #e2e8f0 !important;
+  }
+
+  /* The Text Side */
+  .case-study-card > div:last-child {
+    grid-column: 2 !important;
+    background: #ffffff !important;
+    padding: 48px !important;
+    position: relative !important;
+    z-index: 10 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  /* Flip every second card */
+  .case-study-card:nth-child(even) > div:first-child {
+    grid-column: 2 !important;
+  }
+  .case-study-card:nth-child(even) > div:last-child {
+    grid-column: 1 !important;
+  }
 }
