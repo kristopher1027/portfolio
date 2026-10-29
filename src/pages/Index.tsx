@@ -6,27 +6,8 @@ import {
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ProjectMatcher from "@/components/ProjectMatcher";
-import { useEffect, useState } from "react"; // Ensure useEffect is imported
+import { useEffect, useState } from "react";
 
-// Inside the Index component:
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target); // Reveal only once
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-
-    const elements = document.querySelectorAll(".reveal");
-    elements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
 import { featuredProjects as projects } from "@/data/portfolio";
 
 // 👇 This is the image line. 
@@ -80,6 +61,26 @@ const Index = () => {
   const [emailCopied, setEmailCopied] = useState(false);
   const [visitorName, setVisitorName] = useState("");
   const [visitorNeed, setVisitorNeed] = useState("");
+
+  // Inside the Index component:
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target); // Reveal only once
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    const elements = document.querySelectorAll(".reveal");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   const isMobile = typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
   const whatsappMessage = `Hi Christopher, my name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`;
