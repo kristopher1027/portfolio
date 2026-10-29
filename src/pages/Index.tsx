@@ -25,7 +25,7 @@ const skillCategories = [
   { title: "Tools & DevOps", skills: ["Docker", "Git & GitHub", "CI/CD", "System Design"] }
 ];
 
-const contactEmail = "xtopher1027@gmail.com";
+const contactEmail = "christopher.okoh@gmail.com";
 const whatsappNumber = "2348020562772";
 
 const milestones = [
@@ -255,20 +255,20 @@ const Index = () => {
           <form action={whatsappUrl} className="contact-form" method="get" target={isMobile ? "_self" : "_blank"}>
             <label className="contact-field">
               <span>Your name</span>
-              <input autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
+        <input type="text" autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
             </label>
             <label className="contact-field">
               <span>How can I help?</span>
-              <textarea maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={4} value={visitorNeed} />
-            </label>
+            <textarea maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={4} value={visitorNeed} />
+              </label>
             <button className="contact-button" disabled={!whatsappNumber} type="submit">Start WhatsApp chat <Send size={15} aria-hidden="true" /></button>
           </form>
           <p className="contact-email-fallback">Or email me at <a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
           <button className="contact-copy-email" type="button" onClick={copyEmail}>{emailCopied ? "Email copied" : "Copy email address"}</button>
           <div className="contact-socials" aria-label="Social links">
             <a href={`mailto:${contactEmail}`} aria-label="Email"><AtSign size={17} /></a>
-            <a href="https://github.com/kristopher1027" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={17} /></a>
-            <a href="https://www.linkedin.com/in/christopher-okoh-391933430/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={17} /></a>
+<a href="https://github.com/kristopher1027" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={17} /></a>
+<a href="https://www.linkedin.com/in/christopher-okoh-391933430/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={17} /></a>
           </div>
         </div>
       </section>
