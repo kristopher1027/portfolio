@@ -102,7 +102,7 @@ const Index = () => {
             <h1 id="hero-title">Hi, I’m <span>Christopher</span></h1>
             <p className="hero-role">Full-stack &amp; AI engineer</p>
             <p className="hero-intro">
-              I build reliable backend systems and AI-powered tools. From database architecture to applied LLMs, I turn complex problems into dependable products.
+              I design and build thoughtful digital products — from secure backend systems and full-stack platforms to AI features that solve practical problems.
             </p>
             <div className="hero-actions">
               <a className="hero-button" href="#projects">Explore selected work <ArrowRight size={16} aria-hidden="true" /></a>
@@ -136,7 +136,7 @@ const Index = () => {
       {/* ABOUT SECTION */}
       <section id="about" className="section-block about-section">
         <div className="section-container about-container reveal">
-          <p className="section-kicker">01 / A LITTLE ABOUT ME</p>
+          <p className="section-kicker">01 / PROFILE</p>
           <h2 className="section-title">A curious mind,<br /><span>building for people.</span></h2>
           
           <div className="about-profile">
@@ -153,7 +153,7 @@ const Index = () => {
                 I’m Christopher, a Nigeria-based full-stack and AI engineer. I enjoy taking a complex idea and turning it into a useful, dependable product.
               </p>
               <p>
-                My work moves between product interfaces, backend architecture, data and practical AI. I care about the details, but I start with the people who will use what I build.
+                I work across product design, backend engineering, data and applied AI. My approach is simple: understand the people first, choose the right tools, and build software that is useful, secure and maintainable.
               </p>
               <div className="about-meta">
                 <span><MapPin size={15} aria-hidden="true" /> Based in Nigeria</span>
@@ -175,7 +175,7 @@ const Index = () => {
         <div className="section-container">
           <p className="section-kicker reveal">02 / WHAT I DO</p>
           <h2 className="section-title reveal">Make ideas <span>useful.</span></h2>
-          <p className="section-lede reveal">I work across the product stack to make digital tools feel clear, capable and grounded in everyday needs.</p>
+          <p className="section-lede reveal">From the first product decision to the underlying data model, I focus on making software intuitive to use and dependable behind the scenes.</p>
           
           <div className="capability-grid reveal">
             {capabilities.map(({ icon: Icon, title, text }, index) => (
@@ -194,9 +194,9 @@ const Index = () => {
       <section id="experience" className="section-block experience-section">
         <div className="section-container experience-container reveal">
           <div className="experience-intro">
-            <p className="section-kicker">03 / EXPERIENCE</p>
+            <p className="section-kicker">03 / LEARNING & EXPERIENCE</p>
             <h2 className="section-title">Learning by<br /><span>doing the work.</span></h2>
-            <p className="section-lede">My path so far is built around hands-on projects, collaboration and steady technical growth.</p>
+            <p className="section-lede">I’m growing through real projects, collaborative learning and the discipline of shipping, testing and improving working software.</p>
           </div>
           
           <div className="experience-details">
@@ -244,7 +244,7 @@ const Index = () => {
         <div className="section-container">
           <div className="section-heading-row reveal">
             <div><p className="section-kicker">04 / SELECTED WORK</p><h2 className="section-title">What I’ve <span>built.</span></h2></div>
-            <p className="section-lede">A few projects at the intersection of education, operations, developer tooling and community.</p>
+            <p className="section-lede">Selected case studies across education, operations, AI developer tools, cultural heritage and community safety. Each one starts with a real need and a practical engineering response.</p>
           </div>
 
           <div className="reveal">
@@ -300,9 +300,9 @@ const Index = () => {
       {/* CONTACT SECTION */}
       <section id="contact" className="contact-section">
         <div className="section-container contact-container reveal">
-          <p className="section-kicker">05 / GET IN TOUCH</p>
+          <p className="section-kicker">05 / CONTACT</p>
           <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
-          <p className="contact-copy">Tell me a little about yourself and what you need. I’ll meet you on WhatsApp and we can talk it through.</p>
+          <p className="contact-copy">Share a little about your project, team or opportunity. I’ll get back to you so we can discuss the goal, constraints and next steps.</p>
           
           <form action={whatsappUrl} className="contact-form" method="get" target={isMobile ? "_self" : "_blank"}>
             <label className="contact-field">
