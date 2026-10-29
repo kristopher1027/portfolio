@@ -272,7 +272,10 @@ const Index = () => {
               
               <div className="case-study-content">
                 <p className="project-category">{project.category}</p>
-                <h3 id={`${project.slug}-title`}>{project.title}</h3>
+                <div className="project-meta-row">
+                  <h3 id={`${project.slug}-title`}>{project.title}</h3>
+                  {project.status && <span className={`project-status project-status-${project.status}`}>{project.status === "shipped" ? "Shipped" : project.status === "archived" ? "Archived" : "In progress"}</span>}
+                </div>
                 <p className="case-study-intro">{project.caseStudy.intro}</p>
                 
                 <div className="case-study-details">
