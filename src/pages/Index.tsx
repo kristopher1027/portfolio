@@ -6,6 +6,27 @@ import {
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ProjectMatcher from "@/components/ProjectMatcher";
+import { useEffect, useState } from "react"; // Ensure useEffect is imported
+
+// Inside the Index component:
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target); // Reveal only once
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    const elements = document.querySelectorAll(".reveal");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 import { featuredProjects as projects } from "@/data/portfolio";
 
 // 👇 This is the image line. 
@@ -133,27 +154,38 @@ const Index = () => {
       </section>
 
       <section id="about" className="section-block about-section">
-        <div className="section-container about-container">
+                <div className="section-container about-container reveal">
           <p className="section-kicker">01 / A LITTLE ABOUT ME</p>
           <h2 className="section-title">A curious mind,<br /><span>building for people.</span></h2>
+          
           <div className="about-profile">
             <div className="about-portrait-wrap">
               <span className="portrait-index">CO / 01</span>
               <div className="about-portrait">
-              <img src={portrait} alt="Christopher Okoh, full-stack and AI engineer" loading="lazy" width={380} height={480} />
+                <img src={portrait} alt="Christopher Okoh, full-stack and AI engineer" loading="lazy" />
               </div>
               <span className="portrait-caption">Nigeria · Available worldwide</span>
             </div>
+            
             <div className="about-copy">
-              <p>I’m Christopher, a Nigeria-based full-stack and AI engineer. I enjoy taking a complex idea and turning it into a useful, dependable product, from the first interface to the systems behind it.</p>
-              <p>My work moves between product interfaces, backend architecture, data and practical AI. I care about the details, but I start with the people who will use what I build.</p>
+              <p className="about-lead">
+                I’m Christopher, a Nigeria-based full-stack and AI engineer. I enjoy taking a complex idea and turning it into a useful, dependable product.
+              </p>
+              <p>
+                My work moves between product interfaces, backend architecture, data and practical AI. I care about the details, but I start with the people who will use what I build.
+              </p>
               <div className="about-meta">
                 <span><MapPin size={15} aria-hidden="true" /> Based in Nigeria</span>
                 <span><Sparkles size={15} aria-hidden="true" /> Open to remote opportunities</span>
               </div>
             </div>
           </div>
-          <div className="about-statement"><span>“</span>Software is at its best when it makes something meaningful possible.<i>— Christopher Okoh</i></div>
+          
+          <div className="about-statement reveal">
+            <span>“</span>
+            Software is at its best when it makes something meaningful possible.
+            <i>— Christopher Okoh</i>
+          </div>
         </div>
       </section>
 
