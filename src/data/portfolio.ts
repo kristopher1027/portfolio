@@ -3,9 +3,8 @@
 
 import idomaPreview from "@/assets/portfolio/idomaconnect-preview.jpg.asset.json";
 import aijePreview from "@/assets/portfolio/aije-community-shield-preview.jpg.asset.json";
-import schoolPilotPreview from "@/assets/portfolio/schoolpilot-preview.jpg";
-import resourceHubPreview from "@/assets/portfolio/resourcehub-preview.jpg";
-
+import schoolPilotPreview from "@/assets/portfolio/schoolpilot-preview.webp";
+import resourceHubPreview from "@/assets/portfolio/resourcehub-preview.webp";
 export type PortfolioProject = {
   number: string;
   slug: string;

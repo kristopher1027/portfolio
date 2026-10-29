@@ -246,10 +246,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .projects-section { background: var(--paper); }
 .section-heading-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 64px; }
 .section-heading-row .section-lede { max-width: 400px; margin: 0 0 8px; }
-/* --- Projects: Editorial Layout --- */
+/* --- Projects: Strict Grid Layout to prevent overlap --- */
 .case-study-card { 
-  display: flex; 
-  flex-direction: row; 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; /* Strict 50/50 split */
   overflow: hidden; 
   margin-bottom: 80px; 
   background: #fff;
@@ -257,6 +257,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border-radius: 8px;
   box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  align-items: stretch; /* Forces both sides to be the exact same height */
 }
 
 .case-study-card:hover {
@@ -267,13 +268,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* Alternate the layout for even cards */
 .case-study-card:nth-child(even) {
-  flex-direction: row-reverse;
+  grid-template-columns: 1fr 1fr;
 }
+.case-study-card:nth-child(even) .case-study-visual { order: 2; }
+.case-study-card:nth-child(even) .case-study-content { order: 1; }
 
 /* The Image Side */
 .case-study-visual { 
-  flex: 1.2; /* Takes up 55% of the width */
   position: relative; 
+  width: 100%;
+  height: 100%;
   min-height: 500px; 
   background: #e2e8f0; 
   overflow: hidden;
@@ -293,57 +297,36 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   transform: scale(1.03); 
 }
 
-.case-study-visual > span { 
-  position: absolute; 
-  z-index: 2; 
-  bottom: 24px; 
-  left: 24px; 
-  color: #fff; 
-  font-family: "Inter", sans-serif; 
-  font-size: 11px; 
-  font-weight: 700; 
-  letter-spacing: 0.15em; 
-  text-transform: uppercase; 
-  background: rgba(5,16,28,0.6); 
-  padding: 6px 12px; 
-  backdrop-filter: blur(8px); 
-  border-radius: 2px; 
-}
-
 /* The Text Side */
 .case-study-content { 
-  flex: 0.8; /* Takes up 45% of the width */
   padding: 48px; 
   display: flex; 
   flex-direction: column; 
   justify-content: center; 
-  background: #fff; /* Solid background guarantees no overlap */
+  background: #fff; 
   position: relative;
-  z-index: 10; /* Forces it above the image */
-}
-
-.case-study-content h3 { 
-  margin: 12px 0 16px; 
-  color: var(--ink); 
-  font-size: clamp(32px, 3vw, 42px); 
+  z-index: 10;
 }
 
 /* Mobile Adjustment */
 @media (max-width: 900px) {
   .case-study-card, 
   .case-study-card:nth-child(even) { 
-    flex-direction: column; 
+    grid-template-columns: 1fr; /* Stacks on mobile */
   }
+  .case-study-card:nth-child(even) .case-study-visual { order: 1; }
+  .case-study-card:nth-child(even) .case-study-content { order: 2; }
   .case-study-visual { 
     min-height: 350px; 
-    width: 100%;
+
   }
+
   .case-study-content { 
-    width: 100%;
+    
     padding: 32px 24px; 
   }
 }
-.case-study-content h3 { margin: 12px 0 16px; color: var(--ink); font-size: clamp(32px, 3vw, 42px); }
+
 .case-study-intro { margin: 0 0 32px; color: var(--muted-ink); font-size: 16px; line-height: 1.6; }
 .case-study-details { display: grid; gap: 16px; margin-bottom: 32px; }
 .case-study-details section { border-left: 1px solid var(--line); padding-left: 16px; }
