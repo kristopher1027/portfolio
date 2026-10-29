@@ -1,26 +1,14 @@
 import { useEffect, useState } from "react";
 import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUpRight,
-  AtSign,
-  BrainCircuit,
-  Check,
-  Code2,
-  Github,
-  Linkedin,
-  MapPin,
-  PanelsTopLeft,
-  Radio,
-  Send,
-  Sparkles,
+  ArrowDown, ArrowRight, ArrowUpRight, AtSign, BrainCircuit,
+  Check, Code2, Github, Linkedin, MapPin, PanelsTopLeft, Radio,
+  Send, Sparkles,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ProjectMatcher from "@/components/ProjectMatcher";
-import portraitAsset from "@/assets/portfolio/christopher-okoh-portrait.png.asset.json";
+import portrait from "@/assets/portfolio/christopher-okoh-portrait.webp"; // ✅ Correct
 import { featuredProjects as projects } from "@/data/portfolio";
 
-const portrait = portraitAsset.url;
 
 const skillCategories = [
   { title: "Languages", skills: ["TypeScript", "Python", "Go", "PHP", "SQL"] },
