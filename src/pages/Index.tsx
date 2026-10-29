@@ -76,7 +76,7 @@ const Index = () => {
   return <div className="portfolio-page">
     <a className="skip-link" href="#main-content">Skip to content</a>
     <main id="main-content">
-      <section className="hero-section" id="home" aria-labelledby="hero-title">
+            <section className="hero-section" id="home" aria-labelledby="hero-title">
         <div className="hero-sky" aria-hidden="true">
           <div className="hero-stars" />
           <div className="hero-halo" />
@@ -95,16 +95,35 @@ const Index = () => {
         </div>
         <Navigation />
 
-        <div className="hero-content">
-          <p className="hero-kicker"><span /> Independent developer · Nigeria</p>
-          <h1 id="hero-title">Hi, I’m <span>Christopher</span></h1>
-          <p className="hero-role">Full-stack &amp; AI engineer</p>
-<p className="hero-intro">
-  I build reliable backend systems and AI-powered tools. From database architecture to applied LLMs, I turn complex problems into dependable products.
-</p>
-         <div className="hero-actions">
-            <a className="hero-button" href="#projects">Explore selected work <ArrowRight size={16} aria-hidden="true" /></a>
-            <a className="hero-button hero-button-secondary" href="#contact">Start a conversation <ArrowUpRight size={15} aria-hidden="true" /></a>
+        <div className="hero-split container">
+          <div className="hero-content-left">
+            <p className="hero-kicker"><span /> Independent developer · Nigeria</p>
+            <h1 id="hero-title">Hi, I’m <span>Christopher</span></h1>
+            <p className="hero-role">Full-stack &amp; AI engineer</p>
+            <p className="hero-intro">
+              I build reliable backend systems and AI-powered tools. From database architecture to applied LLMs, I turn complex problems into dependable products.
+            </p>
+            <div className="hero-actions">
+              <a className="hero-button" href="#projects">Explore selected work <ArrowRight size={16} aria-hidden="true" /></a>
+              <a className="hero-button hero-button-secondary" href="#contact">Start a conversation <ArrowUpRight size={15} aria-hidden="true" /></a>
+            </div>
+          </div>
+          
+          <div className="hero-visual-right" aria-hidden="true">
+            <div className="hero-code-block">
+              <div className="code-header">
+                <span /><span /><span />
+                <p>architecture.ts</p>
+              </div>
+              <div className="code-body">
+                <p><span className="c-keyword">const</span> engineer = &#123;</p>
+                <p className="c-indent">focus: <span className="c-string">"Backend & AI"</span>,</p>
+                <p className="c-indent">stack: [<span className="c-string">"Go"</span>, <span className="c-string">"Python"</span>, <span className="c-string">"React"</span>],</p>
+                <p className="c-indent">mindset: <span className="c-string">"Solve real problems"</span>,</p>
+                <p className="c-indent">status: <span className="c-string">"Open to work"</span></p>
+                <p>&#125;;</p>
+              </div>
+            </div>
           </div>
         </div>
 
