@@ -41,7 +41,7 @@ export const projects: PortfolioProject[] = [
     href: "https://github.com/kristopher1027/SchoolPilot",
     image: resourceHubPreview,
     imageAlt: "ResourceHub inventory dashboard",
-    kind: "image",
+    
     year: "2025",
     status: "in-progress",
     isFeatured: true,
@@ -63,7 +63,7 @@ export const projects: PortfolioProject[] = [
     href: "https://github.com/kristopher1027/management-system",
     image: schoolPilotPreview,
     imageAlt: "SchoolPilot school management dashboard",
-    kind: "image",
+    
     year: "2025",
     status: "in-progress",
     isFeatured: true,
@@ -83,7 +83,7 @@ export const projects: PortfolioProject[] = [
     description: "An AI-powered engineering workspace that brings repository context and practical code intelligence closer to the developer workflow.",
     stack: ["Go", "React", "PostgreSQL", "RAG"],
     href: "https://github.com/kristopher1027/devflow-ai",
-    kind: "devflow",
+    
     year: "2025",
     status: "in-progress",
     isFeatured: true,
@@ -106,7 +106,7 @@ export const projects: PortfolioProject[] = [
     demo: "https://the-build-compass.lovable.app",
     image: idomaPreview.url,
     imageAlt: "IdomaConnect cultural knowledge and heritage platform",
-    kind: "image",
+    
     year: "2025",
     status: "in-progress",
     isFeatured: true,
@@ -129,7 +129,7 @@ export const projects: PortfolioProject[] = [
     demo: "https://aije-development-roadmap.pages.dev/",
     image: aijePreview.url,
     imageAlt: "AIJE Community Shield emergency and community safety platform",
-    kind: "image",
+    
     year: "2025",
     status: "in-progress",
     isFeatured: true,
