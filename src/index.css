@@ -407,6 +407,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color: var(--teal); 
 }
 
+/* --- Skill Grid --- */
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.skill-group h4 {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-ink);
+  margin-bottom: 12px;
+}
+
 /* --- MEDIA QUERIES --- */
 @media (max-width: 900px) {
   .section-container { width: calc(100% - 48px); }

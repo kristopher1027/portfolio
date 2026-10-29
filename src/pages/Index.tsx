@@ -17,20 +17,42 @@ const capabilities = [
   { icon: BrainCircuit, title: "Applied AI", text: "I connect language models and retrieval systems to real workflows, with useful context and careful boundaries." },
 ];
 
-const technologies = [
-  "TypeScript", "React", "Go", "Python", "PHP / Laravel", "FastAPI",
-  "PostgreSQL", "SQLite", "RAG", "Supabase", "Docker", "Git & GitHub",
-  "REST APIs", "System design",
+const skillCategories = [
+  { title: "Languages", skills: ["TypeScript", "Python", "Go", "PHP", "SQL"] },
+  { title: "Backend & APIs", skills: ["Laravel 11", "FastAPI", "Node.js", "REST APIs", "Supabase"] },
+  { title: "Databases", skills: ["PostgreSQL", "SQLite", "MySQL"] },
+  { title: "AI & Data", skills: ["RAG", "OpenAI API", "LLM Integration", "Data Modeling"] },
+  { title: "Tools & DevOps", skills: ["Docker", "Git & GitHub", "CI/CD", "System Design"] }
 ];
 
 const contactEmail = "xtopher1027@gmail.com";
 const whatsappNumber = "2348020562772";
 
 const milestones = [
-  { name: "Learn2Earn Fellow", detail: "AI & Software Engineering", status: "In progress" },
-  { name: "Nithub × DataCamp", detail: "Data & AI scholarship", status: "In progress" },
-  { name: "3MTT Fellow", detail: "Technology & Innovation", status: "In progress" },
-  { name: "01 Edu · Piscine", detail: "Software development", status: "Completed" },
+  { 
+    name: "Learn2Earn Fellow", 
+    detail: "AI & Software Engineering", 
+    status: "In progress",
+    description: "Building AI-powered tools and full-stack applications through hands-on projects and collaboration."
+  },
+  { 
+    name: "Nithub × DataCamp", 
+    detail: "Data & AI scholarship", 
+    status: "In progress",
+    description: "Data science, machine learning, and AI fundamentals scholarship."
+  },
+  { 
+    name: "3MTT Fellow", 
+    detail: "Technology & Innovation", 
+    status: "In progress",
+    description: "National fellowship focused on technical excellence and innovation."
+  },
+  { 
+    name: "01 Edu · Piscine", 
+    detail: "Software development", 
+    status: "Completed",
+    description: "Intensive peer-to-peer software engineering bootcamp."
+  },
 ];
 
 const Index = () => {
@@ -144,18 +166,31 @@ const Index = () => {
           <div className="experience-details">
             <h3 className="subsection-title"><Radio size={16} aria-hidden="true" /> Learning journey</h3>
             <div className="milestone-list">
-              {milestones.map((item, index) => (
-                <div className="milestone" key={item.name}>
-                  <span className="milestone-number">0{index + 1}</span>
-                  <div><h4>{item.name}</h4><p>{item.detail}</p></div>
-                  <span className={`milestone-status ${item.status === "Completed" ? "is-complete" : ""}`}>
-                    {item.status === "Completed" && <Check size={12} aria-hidden="true" />}{item.status}
-                  </span>
-                </div>
-              ))}
+            {milestones.map((item, index) => (
+  <div className="milestone" key={item.name}>
+    <span className="milestone-number">0{index + 1}</span>
+    <div>
+      <h4>{item.name}</h4>
+      <p>{item.detail}</p>
+      <p style={{ fontSize: '13px', marginTop: '4px', opacity: 0.8 }}>{item.description}</p>
+    </div>
+    <span className={`milestone-status ${item.status === "Completed" ? "is-complete" : ""}`}>
+      {item.status === "Completed" && <Check size={12} aria-hidden="true" />}{item.status}
+    </span>
+  </div>
+))}
             </div>
             <h3 className="subsection-title technology-title"><Code2 size={16} aria-hidden="true" /> Technologies I use</h3>
-            <div className="technology-list">{technologies.map((technology) => <span key={technology}>{technology}</span>)}</div>
+<div className="skill-grid">
+  {skillCategories.map((category) => (
+    <div key={category.title} className="skill-group">
+      <h4>{category.title}</h4>
+      <div className="technology-list">
+        {category.skills.map(skill => <span key={skill}>{skill}</span>)}
+      </div>
+    </div>
+  ))}
+</div>
           </div>
         </div>
       </section>
