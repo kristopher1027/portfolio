@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const links = [
@@ -14,6 +14,7 @@ const Navigation = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const menuTriggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const updateScrollState = () => {
@@ -45,7 +46,10 @@ const Navigation = () => {
   useEffect(() => {
     if (!open) return;
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuTriggerRef.current?.focus();
+      }
     };
     document.addEventListener("keydown", closeOnEscape);
     return () => document.removeEventListener("keydown", closeOnEscape);
@@ -71,13 +75,14 @@ const Navigation = () => {
         <a className="nav-contact" href="#contact">Let’s talk <ArrowUpRight size={14} aria-hidden="true" /></a>
         <button
           type="button"
+          ref={menuTriggerRef}
           className="mobile-menu-trigger"
           aria-label={open ? "Close navigation" : "Open navigation"}
           aria-expanded={open}
           aria-controls="mobile-navigation"
           onClick={() => setOpen(!open)}
         >
-          {open ? <X size={21} /> : <Menu size={21} />}
+          {open ? <X size={21} aria-hidden="true" /> : <Menu size={21} aria-hidden="true" />}
         </button>
       </nav>
       <span className="scroll-progress" aria-hidden="true" />
