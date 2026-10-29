@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ProjectMatcher from "@/components/ProjectMatcher";
-import { useEffect, useState } from "react";
+
 
 import { featuredProjects as projects } from "@/data/portfolio";
 
