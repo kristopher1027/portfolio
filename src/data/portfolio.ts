@@ -3,8 +3,8 @@
 
 import idomaPreview from "@/assets/portfolio/idomaconnect-preview.jpg.asset.json";
 import aijePreview from "@/assets/portfolio/aije-community-shield-preview.jpg.asset.json";
-import schoolPilotPreview from "@/assets/portfolio/schoolpilot-preview.jpg.asset.json";
-import resourceHubPreview from "@/assets/portfolio/resourcehub-preview.jpg.asset.json";
+import schoolPilotPreview from "@/assets/portfolio/schoolpilot-preview.jpg";
+import resourceHubPreview from "@/assets/portfolio/resourcehub-preview.jpg";
 
 export type PortfolioProject = {
   number: string;
@@ -39,7 +39,7 @@ export const projects: PortfolioProject[] = [
     description: "A multi-tenant school management platform for Nigerian K-12 schools, with isolated per-school databases, 8-role RBAC and a 6-stage result-approval workflow.",
     stack: ["Laravel 11", "PHP 8.4", "stancl/tenancy", "MySQL", "Tailwind"],
     href: "https://github.com/kristopher1027/SchoolPilot",
-    image: resourceHubPreview.url,
+    image: resourceHubPreview,
     imageAlt: "ResourceHub inventory dashboard",
     kind: "image",
     year: "2025",
@@ -61,7 +61,7 @@ export const projects: PortfolioProject[] = [
     description: "A multi-tenant inventory and resource-lending platform for organizations, with SQLite WAL concurrency, audit logging, QR asset labels, CI-tested security and ZIP backups.",
     stack: ["Python 3.10+", "SQLite (WAL)", "stdlib HTTP", "SMTP", "Turnstile", "unittest"],
     href: "https://github.com/kristopher1027/management-system",
-    image: schoolPilotPreview.url,
+    image: schoolPilotPreview,
     imageAlt: "SchoolPilot school management dashboard",
     kind: "image",
     year: "2025",
