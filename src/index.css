@@ -670,3 +670,12 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
   .case-study-visual > img, .capability, .hero-button, .outline-button,
   .nav-contact, .contact-button, .project-links > a { transition: none !important; }
 }
+
+
+/* Phase 1 credibility: make each project's delivery state explicit. */
+.project-meta-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.project-meta-row h3 { min-width: 0; }
+.project-status { display: inline-flex; align-items: center; flex: 0 0 auto; padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted-ink); background: var(--mist); font: 700 10px/1.4 Inter, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+.project-status-in-progress { border-color: #f3d6a1; background: #fffbeb; color: #92400e; }
+.project-status-shipped { border-color: #a7f3d0; background: #ecfdf5; color: #065f46; }
+.project-status-archived { border-color: #cbd5e1; background: #f1f5f9; color: #475569; }
