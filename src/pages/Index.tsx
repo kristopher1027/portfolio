@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowDown, ArrowRight, ArrowUpRight, AtSign, BrainCircuit,
   Check, Code2, Github, Linkedin, MapPin, PanelsTopLeft, Radio,
