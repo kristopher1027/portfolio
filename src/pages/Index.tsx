@@ -1,24 +1,14 @@
 import { useEffect, useState } from "react";
 import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUpRight,
-  AtSign,
-  BrainCircuit,
-  Check,
-  Code2,
-  Github,
-  Linkedin,
-  MapPin,
-  PanelsTopLeft,
-  Radio,
-  Send,
-  Sparkles,
+  ArrowDown, ArrowRight, ArrowUpRight, AtSign, BrainCircuit,
+  Check, Code2, Github, Linkedin, MapPin, PanelsTopLeft, Radio,
+  Send, Sparkles,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ProjectMatcher from "@/components/ProjectMatcher";
-import portrait from "@/assets/portfolio/christopher-okoh-portrait.webp";
+import portrait from "@/assets/portfolio/christopher-okoh-portrait.webp"; // ✅ Correct
 import { featuredProjects as projects } from "@/data/portfolio";
+
 
 const skillCategories = [
   { title: "Languages", skills: ["TypeScript", "Python", "Go", "PHP", "SQL"] },
@@ -262,29 +252,22 @@ const Index = () => {
           </div>
 
           {projects.map((project, index) => (
-            <article 
-              className={`reveal flex flex-col lg:flex-row ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''} mb-16 border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow`} 
-              key={project.slug}
-            >
-              {/* Image Side */}
-              <div className="relative w-full lg:w-1/2 min-h-[350px] lg:min-h-[500px] bg-gray-100">
+            <article className="case-study-card reveal" key={project.slug} aria-labelledby={`${project.slug}-title`}>
+              <div className="case-study-visual">
                 {project.image ? (
-                  <img src={project.image} alt={project.imageAlt} className="absolute inset-0 w-full h-full object-cover object-top" />
+                  <img src={project.image} alt={project.imageAlt} loading="lazy" />
                 ) : (
                   <div className="devflow-art" role="img" aria-label="Illustrated DevFlow AI engineering workspace preview">
                     <div className="devflow-toolbar"><span /><span /><span /><b>DEVFLOW / WORKSPACE</b></div>
                     <div className="devflow-panel"><aside><i>REPOSITORY</i><span>▤ &nbsp; api.go</span><span>▤ &nbsp; agents.go</span><span>▤ &nbsp; memory.go</span></aside><div className="devflow-code"><span><em>func</em> BuildWithContext(repo Repository) &#123;</span><span>&nbsp; assistant := NewAssistant(repo)</span><span>&nbsp; answer, err := assistant.Ask(prompt)</span><span>&nbsp; <em>return</em> answer, err</span><span>&#125;</span><strong>REPOSITORY CONTEXT</strong></div></div>
                   </div>
                 )}
-                <span className="absolute bottom-6 left-6 bg-black/60 text-white px-3 py-1.5 text-xs font-bold tracking-widest uppercase backdrop-blur-sm rounded-sm z-10">
-                  CASE STUDY / {String(index + 1).padStart(2, "0")}
-                </span>
+                <span>CASE STUDY / {String(index + 1).padStart(2, "0")}</span>
               </div>
-
-              {/* Text Side */}
-              <div className="w-full lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center bg-white z-20 relative">
+              
+              <div className="case-study-content">
                 <p className="project-category">{project.category}</p>
-                <h3 id={`${project.slug}-title`} className="mt-2 mb-4 text-3xl font-serif">{project.title}</h3>
+                <h3 id={`${project.slug}-title`}>{project.title}</h3>
                 <p className="case-study-intro">{project.caseStudy.intro}</p>
                 
                 <div className="case-study-details">
