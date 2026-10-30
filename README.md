@@ -1,6 +1,6 @@
 # Christopher Okoh — Portfolio
 
-Live site: **[christopherokoh.com](https://christopherokoh.com/)**
+Live site: **[christopherokoh.com](https://christopher-okoh.vercel.app/)**
 
 Personal portfolio of Christopher Okoh, a Nigeria-based full-stack and AI engineer. Built with React 18, TypeScript, Vite, Tailwind CSS, and Supabase.
 
