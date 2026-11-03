@@ -259,7 +259,9 @@ const Index = () => {
                   <div className="preview-marquee" aria-label={`${project.title} product screenshot preview`}>
                     <div className="preview-track">
                       {[0, 1].map((copy) => <div className="preview-group" key={copy} aria-hidden={copy === 1}>
-                        <img src={project.image} alt={copy === 0 ? project.imageAlt || `${project.title} product screenshot` : ""} loading="lazy" />
+                        {(project.screenshots?.length ? project.screenshots : [project.image!]).map((shot, shotIndex) =>
+                          <img key={`${copy}-${shotIndex}`} src={shot} alt={copy === 0 ? `${project.title} product screenshot ${shotIndex + 1}` : ""} loading="lazy" />
+                        )}
                       </div>)}
                     </div>
                   </div>
