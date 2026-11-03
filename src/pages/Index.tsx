@@ -280,7 +280,7 @@ const Index = () => {
                 <p className="project-category">{project.category}</p>
                 <div className="project-meta-row">
                   <h3 id={`${project.slug}-title`}>{project.title}</h3>
-                  <span className={`project-status project-status-${project.slug === "aije-community-shield" ? "pilot" : project.slug === "schoolpilot" || project.slug === "resourcehub" ? "development" : "live"}`}>{project.slug === "aije-community-shield" ? "Pilot Validation" : project.slug === "schoolpilot" || project.slug === "resourcehub" ? "In Development" : "Live"}</span>
+                  <span className={`project-status project-status-${project.slug === "aije-community-shield" ? "pilot" : project.slug === "schoolpilot" || project.slug === "resourcehub" || project.slug === "devflow-ai" ? "development" : project.slug === "aije-community-shield" ? "pilot" : "live"}`}>{project.slug === "aije-community-shield" ? "Pilot Validation" : project.slug === "schoolpilot" || project.slug === "resourcehub" || project.slug === "devflow-ai" ? "In Development" : "Live"}</span>
                 </div>
                 <p className="case-study-intro">{project.caseStudy.intro}</p>
                 
