@@ -79,7 +79,7 @@ export const projects: PortfolioProject[] = [
     slug: "devflow-ai",
     title: "DevFlow AI",
     category: "AI · Developer tools",
-    description: "An AI-powered engineering workspace that brings repository context and practical code intelligence closer to the developer workflow.",
+    description: "An AI-assisted developer workspace built to make repository context more useful during everyday engineering work, combining a Go API, React interface, PostgreSQL and retrieval-augmented generation.",
     stack: ["Go", "React", "PostgreSQL", "RAG"],
     href: "https://github.com/kristopher1027/devflow-ai",
     
@@ -87,10 +87,10 @@ export const projects: PortfolioProject[] = [
     status: "in-progress",
     isFeatured: true,
     caseStudy: {
-      intro: "An AI engineering workspace for repository context and practical code intelligence.",
-      challenge: "Bring repository understanding closer to everyday code assistance.",
-      approach: "Place repository context and practical code intelligence near the developer workflow in an AI-powered engineering workspace.",
-      engineeringFocus: "Combine Go, React, PostgreSQL and retrieval-augmented generation (RAG) for developer-focused AI tooling.",
+      intro: "DevFlow AI explores how an engineering workspace can use repository context to make AI assistance more relevant to the code a developer is working on.",
+      challenge: "General-purpose AI assistance can lack the project-specific context needed to give useful guidance about an existing codebase. Developers need a way to bring repository information into the engineering workflow.",
+      approach: "Build a full-stack workspace with a Go backend, React frontend and PostgreSQL data layer, with retrieval-augmented generation used to organize and retrieve relevant engineering context.",
+      engineeringFocus: "Focus on backend API design, persistent data, repository-context packaging and relevance-focused retrieval. The goal is to ground AI assistance in project-specific information rather than generic prompts alone.",
       linkLabel: "Source code",
     },
   },
