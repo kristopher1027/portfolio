@@ -679,3 +679,141 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
 .project-status-in-progress { border-color: #f3d6a1; background: #fffbeb; color: #92400e; }
 .project-status-shipped { border-color: #a7f3d0; background: #ecfdf5; color: #065f46; }
 .project-status-archived { border-color: #cbd5e1; background: #f1f5f9; color: #475569; }
+
+
+/* Work section layout refinement */
+.projects-section {
+  padding-top: clamp(64px, 8vw, 96px);
+  padding-bottom: clamp(72px, 9vw, 112px);
+}
+.projects-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr);
+  align-items: center;
+  gap: clamp(32px, 7vw, 100px);
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+.projects-heading-copy { min-width: 0; }
+.projects-heading .section-kicker { margin-bottom: 18px; }
+.projects-heading .section-title {
+  font-size: clamp(48px, 6vw, 76px);
+  line-height: 1.02;
+}
+.projects-heading .section-lede {
+  max-width: 46ch;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.85;
+}
+.projects-section > .section-container > .reveal:has(.project-matcher) {
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+.project-matcher {
+  padding: clamp(22px, 3.2vw, 38px);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f8fbfb 0%, #f2f7f7 100%);
+}
+.matcher-heading { margin-bottom: 22px; }
+.matcher-heading .section-index { margin-bottom: 8px; }
+.matcher-heading .section-index span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--teal-dark);
+  font: 700 10px/1.5 Inter, sans-serif;
+  letter-spacing: .15em;
+}
+.matcher-heading p {
+  margin: 0;
+  color: var(--muted-ink);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.matcher-form { display: grid; gap: 10px; }
+.matcher-label {
+  color: var(--ink);
+  font: 600 12px/1.5 Inter, sans-serif;
+}
+.matcher-textarea {
+  min-height: 104px;
+  padding: 14px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font: 14px/1.65 Inter, sans-serif;
+  resize: vertical;
+}
+.matcher-textarea:focus-visible {
+  outline: 3px solid rgba(20,184,166,.22);
+  border-color: var(--teal-dark);
+}
+.matcher-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.matcher-count { color: var(--muted-ink); font: 12px/1.5 Inter, sans-serif; }
+.matcher-submit {
+  min-height: 44px;
+  padding-inline: 18px;
+  border-radius: 7px;
+  background: var(--teal-dark);
+  color: #fff;
+  font: 600 12px/1.4 Inter, sans-serif;
+}
+.matcher-submit:hover { background: var(--night); }
+.matcher-status:empty { display: none; }
+.matcher-loading, .matcher-error, .match-empty {
+  margin: 18px 0 0;
+  color: var(--muted-ink);
+  font-size: 13px;
+}
+.matcher-error { color: #b42318; }
+.match-results { margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--line); }
+.match-results-heading {
+  margin: 0 0 14px;
+  color: var(--teal-dark);
+  font: 700 10px/1.5 Inter, sans-serif;
+  letter-spacing: .14em;
+}
+.match-result {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+.match-result-number { color: var(--teal-dark); font: 400 24px/1 "Instrument Serif", Georgia, serif; }
+.match-result-copy h3 { margin: 4px 0 6px; color: var(--ink); font-size: 24px; }
+.match-result-copy p { margin: 0; color: var(--muted-ink); font-size: 13px; line-height: 1.65; }
+.match-result-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.match-result-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 8px 11px;
+  border-radius: 6px;
+  background: var(--ink);
+  color: #fff;
+  font: 600 11px/1.4 Inter, sans-serif;
+}
+@media (max-width: 760px) {
+  .projects-heading { grid-template-columns: minmax(0,1fr); gap: 18px; align-items: start; }
+  .projects-heading .section-title { font-size: clamp(44px, 10vw, 60px); }
+  .projects-heading .section-lede { max-width: 58ch; font-size: 15px; }
+  .project-matcher { padding: 22px 18px; }
+  .match-result { grid-template-columns: auto minmax(0,1fr); }
+  .match-result-links { grid-column: 2; }
+}
+@media (max-width: 480px) {
+  .matcher-form-footer { align-items: stretch; }
+  .matcher-submit { padding-inline: 13px; }
+  .match-result { gap: 12px; }
+  .match-result-links { flex-direction: column; align-items: stretch; }
+  .match-result-links a { justify-content: center; }
+}
