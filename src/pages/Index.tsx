@@ -305,7 +305,7 @@ const Index = () => {
         <div className="section-container contact-container reveal">
           <p className="section-kicker">05 / CONTACT</p>
           <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
-          <p className="contact-copy">Share a little about your project, team or opportunity. I’ll get back to you so we can discuss the goal, constraints and next steps.</p>
+          <p className="contact-copy">Share a little about your project, team or opportunity. I’ll get back to you so we can discuss the goal, constraints and next steps. The form opens a WhatsApp conversation with your message ready to send.</p>
           
           <form action={whatsappUrl} className="contact-form" method="get" target={isMobile ? "_self" : "_blank"}>
             <label className="contact-field">
@@ -318,6 +318,7 @@ const Index = () => {
             </label>
             <button className="contact-button" disabled={!whatsappNumber} type="submit">Start WhatsApp chat <Send size={15} aria-hidden="true" /></button>
           </form>
+          <p className="contact-copy">Your message is sent through WhatsApp when you choose to send it. This portfolio does not submit the form to a separate contact database.</p>
           
           <p className="contact-email-fallback">Or email me at <a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
           <button className="contact-copy-email" type="button" onClick={copyEmail}>{emailCopied ? "Email copied" : "Copy email address"}</button>
