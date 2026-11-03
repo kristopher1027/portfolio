@@ -231,20 +231,15 @@ const Index = () => {
         </div>
       </section>
 
-      {/* BANNER */}
-      <section className="work-banner" aria-label="Continue exploring">
-        <div className="section-container work-banner-inner reveal">
-          <div><p className="section-kicker">CURIOUS BY NATURE · BUILT WITH INTENTION</p><h2>There’s always more<br />to <span>make possible.</span></h2></div>
-          <a href="#projects" className="outline-button">See selected work <ArrowDown size={15} aria-hidden="true" /></a>
-        </div>
-      </section>
-
       {/* PROJECTS SECTION */}
       <section id="projects" className="section-block projects-section">
         <div className="section-container">
-          <div className="section-heading-row reveal">
-            <div><p className="section-kicker">04 / SELECTED WORK</p><h2 className="section-title">What I’ve <span>built.</span></h2></div>
-            <p className="section-lede">Selected case studies across education, operations, AI developer tools, cultural heritage and community safety. Each one starts with a real need and a practical engineering response.</p>
+          <div className="section-heading-row projects-heading reveal">
+            <div className="projects-heading-copy">
+              <p className="section-kicker">04 / SELECTED WORK</p>
+              <h2 className="section-title">What I’ve <span>built.</span></h2>
+            </div>
+            <p className="section-lede">A closer look at products I’ve designed and engineered across education, operations, applied AI, cultural heritage and community safety.</p>
           </div>
 
           <div className="reveal">
