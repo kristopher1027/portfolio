@@ -99,10 +99,10 @@ const Index = () => {
         <div className="hero-split">
           <div className="hero-content-left">
             <p className="hero-kicker"><span /> Independent developer · Nigeria</p>
-            <h1 id="hero-title">Hi, I’m <span>Christopher</span></h1>
-            <p className="hero-role">Full-stack &amp; AI engineer</p>
+            <h1 id="hero-title">I build <span>thoughtful software.</span></h1>
+            <p className="hero-role">Full-stack engineer · Applied AI</p>
             <p className="hero-intro">
-              I design and build thoughtful digital products — from secure backend systems and full-stack platforms to AI features that solve practical problems.
+              I turn complex ideas into dependable digital products — building full-stack platforms, secure backend systems and practical AI experiences that solve real problems.
             </p>
             <div className="hero-actions">
               <a className="hero-button" href="#projects">Explore selected work <ArrowRight size={16} aria-hidden="true" /></a>
