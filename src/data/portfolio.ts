@@ -4,7 +4,7 @@
 import schoolPilotPreview from "@/assets/portfolio/schoolpilot-preview.webp";
 import resourceHubPreview from "@/assets/portfolio/resourcehub-preview.webp";
 import aijePreview from "@/assets/portfolio/aije-community-shield-preview.webp";
-import idomaPreview from "@/assets/portfolio/ idomaconnect-preview.webp";
+import idomaPreview from "@/assets/portfolio/idomaconnect-preview.webp";
 export type PortfolioProject = {
   number: string;
   slug: string;
