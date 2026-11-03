@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import {
   ArrowDown, ArrowRight, ArrowUpRight, AtSign, BrainCircuit,
   Check, Code2, Github, Linkedin, MapPin, PanelsTopLeft, Radio,
-  Send, Sparkles,
+  Send, Sparkles, Server, Monitor, Database, Cloud, Sun, Moon, Workflow,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ProjectMatcher from "@/components/ProjectMatcher";
@@ -98,6 +98,7 @@ const Index = () => {
 
         <div className="hero-split">
           <div className="hero-content-left">
+            <p className="availability-pill"><span /> Open to opportunities</p>
             <p className="hero-kicker"><span /> Independent developer · Nigeria</p>
             <h1 id="hero-title">I build <span>thoughtful software.</span></h1>
             <p className="hero-role">Full-stack engineer · Applied AI</p>
@@ -253,27 +254,37 @@ const Index = () => {
               aria-labelledby={`${project.slug}-title`}
             >
               <div className="case-study-visual">
+                <div className="preview-label">CONTINUOUS PRODUCT PREVIEW</div>
                 {project.image ? (
-                  <img src={project.image} alt={project.imageAlt} loading="lazy" />
+                  <div className="preview-marquee" aria-label={`${project.title} product screenshot preview`}>
+                    <div className="preview-track">
+                      {[0, 1].map((copy) => <div className="preview-group" key={copy} aria-hidden={copy === 1}>
+                        {(project.screenshots?.length ? project.screenshots : [project.image!]).map((shot, shotIndex) =>
+                          <img key={`${copy}-${shotIndex}`} src={shot} alt={copy === 0 ? `${project.title} product screenshot ${shotIndex + 1}` : ""} loading="lazy" />
+                        )}
+                      </div>)}
+                    </div>
+                  </div>
                 ) : (
-                  <div className="project-image-placeholder" role="img" aria-label={`Screenshot unavailable for ${project.title}`}>
+                  <div className="project-image-placeholder" role="img" aria-label={`${project.title}: screenshots coming soon`}>
                     <span className="placeholder-mark"><PanelsTopLeft size={25} aria-hidden="true" /></span>
                     <strong>{project.title}</strong>
-                    <span>Project preview unavailable</span>
+                    <span>Screenshots coming soon</span>
                   </div>
                 )}
-                <span>CASE STUDY / {String(index + 1).padStart(2, "0")}</span>
+                <span className="preview-counter">SCREEN 01</span>
+                <span className="case-study-index">CASE STUDY / {String(index + 1).padStart(2, "0")}</span>
               </div>
               
               <div className="case-study-content">
                 <p className="project-category">{project.category}</p>
                 <div className="project-meta-row">
                   <h3 id={`${project.slug}-title`}>{project.title}</h3>
-                  {project.status && <span className={`project-status project-status-${project.status}`}>{project.status === "shipped" ? "Shipped" : project.status === "archived" ? "Archived" : "In progress"}</span>}
+                  <span className={`project-status project-status-${project.slug === "aije-community-shield" ? "pilot" : project.slug === "schoolpilot" || project.slug === "resourcehub" || project.slug === "devflow-ai" ? "development" : project.slug === "aije-community-shield" ? "pilot" : "live"}`}>{project.slug === "aije-community-shield" ? "Pilot Validation" : project.slug === "schoolpilot" || project.slug === "resourcehub" || project.slug === "devflow-ai" ? "In Development" : "Live"}</span>
                 </div>
                 <p className="case-study-intro">{project.caseStudy.intro}</p>
                 
-                <div className="case-study-details">
+                <div className="case-study-details" id={`${project.slug}-details`}>
                   <section><h4>The challenge</h4><p>{project.caseStudy.challenge}</p></section>
                   <section><h4>The approach</h4><p>{project.caseStudy.approach}</p></section>
                   <section><h4>Engineering focus</h4><p>{project.caseStudy.engineeringFocus}</p></section>
@@ -284,6 +295,7 @@ const Index = () => {
                 </div>
                 
                 <div className="project-links case-study-links">
+                  <a href={`#${project.slug}-details`}>Read case study <ArrowRight size={14} aria-hidden="true" /></a>
                   {project.demo && <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} live preview in a new tab`}>Live preview <ArrowUpRight size={14} aria-hidden="true" /></a>}
                   <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title} ${project.caseStudy.linkLabel.toLowerCase()} in a new tab`}>{project.caseStudy.linkLabel} <ArrowUpRight size={14} aria-hidden="true" /></a>
                 </div>
@@ -292,6 +304,77 @@ const Index = () => {
           ))}
           
           <a href="https://github.com/kristopher1027" className="all-work-link reveal" target="_blank" rel="noopener noreferrer">More experiments on GitHub <ArrowRight size={15} aria-hidden="true" /></a>
+        </div>
+      </section>
+
+
+      {/* TECHNICAL EXPERTISE */}
+      <section id="skills" className="section-block expertise-section">
+        <div className="section-container">
+          <p className="section-kicker reveal">05 / TECHNICAL EXPERTISE</p>
+          <h2 className="section-title reveal">Technical <span>expertise.</span></h2>
+          <div className="expertise-grid">
+            {[
+              { icon: Server, title: "Backend & APIs", skills: ["Go", "Python", "REST API design", "Authentication", "PostgreSQL"] },
+              { icon: Monitor, title: "Frontend", skills: ["React", "TypeScript", "Tailwind"] },
+              { icon: Database, title: "AI & Data", skills: ["RAG", "LLM APIs", "Prompt design", "Hugging Face"] },
+              { icon: Cloud, title: "Tools & Cloud", skills: ["Git/GitHub", "Linux", "Vercel", "Cloudflare", "Supabase", "Debugging", "Testing"] },
+            ].map(({ icon: Icon, title, skills }) => <article className="expertise-card reveal" key={title}>
+              <Icon size={23} aria-hidden="true" /><h3>{title}</h3>
+              <div className="expertise-chips">{skills.map(skill => <span key={skill}>{skill}</span>)}</div>
+            </article>)}
+          </div>
+        </div>
+      </section>
+
+      {/* BUILDING APPROACH */}
+      <section id="approach" className="section-block approach-section">
+        <div className="section-container">
+          <p className="section-kicker reveal">06 / PROCESS</p>
+          <h2 className="section-title reveal">How I approach <span>building software.</span></h2>
+          <p className="section-lede reveal">This is my working approach, not a claim that every project has completed every step.</p>
+          <div className="approach-grid">
+            {[
+              ["Understand the problem", "Clarify the people, constraints and outcome before choosing a solution."],
+              ["Plan architecture & data flow", "Map system boundaries, data ownership and the path through the product."],
+              ["Build maintainable components", "Keep interfaces and backend responsibilities clear, reusable and testable."],
+              ["Integrate APIs & databases", "Connect services and persistence with deliberate contracts and access rules."],
+              ["Test functionality & permissions", "Check important workflows, edge cases and who is allowed to do what."],
+              ["Deploy, monitor & improve", "Ship carefully, observe behaviour and refine based on what is learned."],
+            ].map(([title, description], index) => <article className="approach-card reveal" key={title}>
+              <span className="step-pill">Step {String(index + 1).padStart(2, "0")}</span>
+              <span className="approach-ghost" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <h3>{title}</h3><p>{description}</p>
+            </article>)}
+          </div>
+        </div>
+      </section>
+
+      {/* PUBLIC GITHUB WORK + CV */}
+      <section id="github" className="section-block github-section">
+        <div className="section-container">
+          <p className="section-kicker reveal">07 / OPEN SOURCE & CAREER</p>
+          <h2 className="section-title reveal">Public repositories and <span>project roadmaps.</span></h2>
+          <div className="github-cv-grid">
+            <div className="github-panel reveal">
+              <a className="section-action" href="https://github.com/kristopher1027" target="_blank" rel="noopener noreferrer">Visit GitHub Profile <ArrowUpRight size={15} aria-hidden="true" /></a>
+              {[
+                ["IdomaConnect AI", "Cultural knowledge platform and conversational discovery.", "In Development", "https://github.com/kristopher1027/the-build-compass"],
+                ["DevFlow AI", "AI-assisted developer workspace and repository-context tooling.", "In Development", "https://github.com/kristopher1027/devflow-ai"],
+                ["AIJE Community Shield", "Community safety product roadmap and delivery plan.", "Pilot Validation", "https://github.com/Stonez-Digital/AIJE-Development-Roadmap"],
+              ].map(([name, description, status, url]) => <a className="repository-row" href={url} target="_blank" rel="noopener noreferrer" key={name}>
+                <span><strong>{name}</strong><small>{description}</small></span><em>{status}</em><ArrowUpRight size={17} aria-hidden="true" />
+              </a>)}
+              <p className="honesty-note">I don't fabricate contribution counts or commit histories.</p>
+            </div>
+            <aside className="cv-card reveal">
+              <span className="cv-eyebrow">CAREER PROFILE</span><h3>Experience, skills<br />and direction.</h3>
+              <p>A concise overview of my engineering work, technical skills and learning journey.</p>
+              <a className="cv-primary" href="/Christopher-Okoh-CV.pdf" download>Download CV <ArrowDown size={15} aria-hidden="true" /></a>
+              <a className="cv-secondary" href="https://github.com/kristopher1027" target="_blank" rel="noopener noreferrer">Explore GitHub <ArrowUpRight size={15} aria-hidden="true" /></a>
+              <small>Currently targeting AI/API Engineer internship opportunities.</small>
+            </aside>
+          </div>
         </div>
       </section>
 

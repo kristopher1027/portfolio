@@ -15,6 +15,7 @@ export type PortfolioProject = {
   href: string;
   demo?: string;
   image?: string;
+  screenshots?: string[];
   imageAlt?: string;
   kind?: "devflow" | "image";
   year?: string;
@@ -39,6 +40,7 @@ export const projects: PortfolioProject[] = [
     stack: ["Laravel 11", "PHP 8.4", "stancl/tenancy", "MySQL", "Tailwind"],
     href: "https://github.com/kristopher1027/SchoolPilot",
     image: schoolPilotPreview,
+    screenshots: [schoolPilotPreview],
     imageAlt: "SchoolPilot school management dashboard",
     
     year: "2025",
@@ -61,6 +63,7 @@ export const projects: PortfolioProject[] = [
     stack: ["Python 3.10+", "SQLite (WAL)", "stdlib HTTP", "SMTP", "Turnstile", "unittest"],
     href: "https://github.com/kristopher1027/management-system",
     image: resourceHubPreview,
+    screenshots: [resourceHubPreview],
     imageAlt: "ResourceHub inventory dashboard",
     
     year: "2025",
@@ -104,6 +107,7 @@ export const projects: PortfolioProject[] = [
     href: "https://github.com/kristopher1027/the-build-compass",
     demo: "https://the-build-compass.lovable.app",
     image: idomaPreview,
+    screenshots: [idomaPreview],
     imageAlt: "IdomaConnect AI cultural knowledge and heritage platform preview",
     
     year: "2025",
@@ -127,6 +131,7 @@ export const projects: PortfolioProject[] = [
     href: "https://github.com/Stonez-Digital/AIJE-Development-Roadmap",
     demo: "https://aije-development-roadmap.pages.dev/",
     image: aijePreview,
+    screenshots: [aijePreview],
     imageAlt: "AIJE Community Shield community safety platform preview",
     
     year: "2025",
