@@ -194,13 +194,13 @@ const Index = () => {
       <section id="experience" className="section-block experience-section">
         <div className="section-container experience-container reveal">
           <div className="experience-intro">
-            <p className="section-kicker">03 / LEARNING & EXPERIENCE</p>
-            <h2 className="section-title">Learning by<br /><span>doing the work.</span></h2>
-            <p className="section-lede">I’m growing through real projects, collaborative learning and the discipline of shipping, testing and improving working software.</p>
+            <p className="section-kicker">03 / LEARNING & DEVELOPMENT</p>
+            <h2 className="section-title">Growing through<br /><span>practical engineering.</span></h2>
+            <p className="section-lede">Alongside independent product builds, I’m developing my engineering skills through structured programs and collaborative learning. I focus on applying what I learn by designing, building, testing and improving working software.</p>
           </div>
           
           <div className="experience-details">
-            <h3 className="subsection-title"><Radio size={16} aria-hidden="true" /> Learning journey</h3>
+            <h3 className="subsection-title"><Radio size={16} aria-hidden="true" /> Programs & learning</h3>
             <div className="milestone-list">
               {milestones.map((item, index) => (
                 <div className="milestone" key={item.name}>
