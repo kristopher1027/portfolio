@@ -906,3 +906,50 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
 @media (max-width:900px) { .approach-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .github-cv-grid { grid-template-columns:1fr; } }
 @media (max-width:680px) { .expertise-grid,.approach-grid { grid-template-columns:1fr; } .expertise-card,.approach-card { padding:23px; } .repository-row { grid-template-columns:minmax(0,1fr) auto; } .repository-row > svg { display:none; } .theme-toggle { width:34px;height:34px; } }
 @media (prefers-reduced-motion:reduce) { .preview-track { animation:none; } .expertise-card,.approach-card { transition:none; } }
+
+
+/* Contact and footer: editorial, split-layout treatment inspired by the supplied reference. */
+.contact-section { padding-block: clamp(76px, 10vw, 132px); text-align:left; }
+.contact-container { max-width:1120px; display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,.88fr); align-items:start; gap:clamp(36px,7vw,100px); }
+.contact-intro { min-width:0; }
+.contact-intro .section-kicker { justify-content:flex-start; margin-inline:0; }
+.contact-availability { display:inline-flex; align-items:center; gap:9px; margin:12px 0 24px; color:#b8c7ce; font:600 11px/1.5 Inter,sans-serif; letter-spacing:.06em; text-transform:uppercase; }
+.contact-availability span { width:7px; height:7px; border-radius:50%; background:#4ade80; box-shadow:0 0 0 4px rgba(74,222,128,.12); }
+.contact-section h2 { font-size:clamp(54px,7vw,88px); line-height:.98; letter-spacing:-.045em; }
+.contact-copy { max-width:46ch; margin:24px 0 36px; font-size:15px; }
+.contact-direct-links { display:grid; gap:0; max-width:440px; border-top:1px solid rgba(255,255,255,.14); }
+.contact-direct-links a { display:grid; grid-template-columns:88px minmax(0,1fr) auto; align-items:center; gap:12px; padding:17px 0; border-bottom:1px solid rgba(255,255,255,.14); color:#f8fafc; }
+.contact-link-label { color:#7f929f; font:700 9px/1.4 Inter,sans-serif; letter-spacing:.16em; }
+.contact-direct-links strong { min-width:0; font:500 14px/1.5 Inter,sans-serif; }
+.contact-direct-links a > svg { color:var(--teal); }
+.contact-form-panel { padding:clamp(22px,3vw,34px); border:1px solid rgba(255,255,255,.14); border-radius:12px; background:rgba(255,255,255,.035); }
+.contact-form-heading > span { color:var(--teal); font:700 10px/1.5 Inter,sans-serif; letter-spacing:.16em; }
+.contact-form-heading p { margin:9px 0 24px; color:#a8b6c0; font-size:13px; line-height:1.6; }
+.contact-form { grid-template-columns:minmax(0,1fr); gap:18px; margin:0; }
+.contact-form .contact-button { grid-column:auto; justify-self:stretch; width:100%; margin-top:4px; }
+.contact-privacy-note { margin:16px 0 0; color:#82929e; font-size:11px; line-height:1.7; }
+.footer-inner { display:block; padding-top:0; }
+.footer-topline,.footer-bottomline { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.footer-topline { padding:10px 0 28px; }
+.footer-topline > p { margin:0; color:#9aa8b4; font:400 13px/1.6 Inter,sans-serif; }
+.footer-socials { display:flex; align-items:center; gap:9px; }
+.footer-socials a { display:grid; place-items:center; width:36px; height:36px; border:1px solid rgba(255,255,255,.14); border-radius:50%; color:#cbd5e1; transition:color .2s,border-color .2s,transform .2s; }
+.footer-socials a:hover { color:var(--teal); border-color:var(--teal); transform:translateY(-2px); }
+.footer-bottomline { padding-top:22px; border-top:1px solid rgba(255,255,255,.12); color:#788895; font:400 11px/1.6 Inter,sans-serif; }
+.footer-bottomline nav { display:flex; flex-wrap:wrap; gap:22px; }
+.footer-bottomline a { color:#aab7c1; }
+.footer-bottomline a:hover { color:var(--teal); }
+.footer-back-top { display:inline-flex; align-items:center; gap:6px; }
+@media (max-width:760px) {
+  .contact-container { grid-template-columns:minmax(0,1fr); gap:34px; }
+  .contact-section h2 { font-size:clamp(50px,12vw,70px); }
+  .contact-form-panel { padding:22px 18px; }
+  .footer-topline { align-items:flex-start; flex-wrap:wrap; }
+  .footer-topline > p { order:3; flex-basis:100%; }
+  .footer-bottomline { align-items:flex-start; flex-direction:column; gap:14px; }
+  .footer-bottomline nav { gap:18px; }
+}
+@media (max-width:420px) {
+  .contact-direct-links a { grid-template-columns:68px minmax(0,1fr) auto; gap:8px; }
+  .contact-direct-links strong { font-size:12px; }
+}
