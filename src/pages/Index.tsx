@@ -388,12 +388,16 @@ const Index = () => {
               if (contactStatus === "sending") return;
               setContactStatus("sending");
               try {
-                const response = await fetch("/api/contact", {
+                const formData = new FormData(event.currentTarget);
+                const response = await fetch("https://api.web3forms.com/submit", {
                   method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ name: visitorName.trim(), email: visitorEmail.trim(), message: visitorNeed.trim() }),
+                  headers: { Accept: "application/json" },
+                  body: formData,
                 });
-                if (!response.ok) throw new Error("Message delivery failed");
+                const result = await response.json();
+                if (!response.ok || result.success !== true) {
+                  throw new Error(result.message || result.body?.message || "Message delivery failed");
+                }
                 setContactStatus("success");
                 setVisitorName("");
                 setVisitorEmail("");
@@ -404,18 +408,20 @@ const Index = () => {
             }}>
               <label className="contact-field">
                 <span>Your name</span>
-                <input type="text" autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
+                <input name="name" type="text" autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
               </label>
               <label className="contact-field">
                 <span>Your email</span>
-                <input type="email" autoComplete="email" maxLength={254} onChange={(event) => setVisitorEmail(event.target.value)} placeholder="you@example.com" required value={visitorEmail} />
+                <input name="email" type="email" autoComplete="email" maxLength={254} onChange={(event) => setVisitorEmail(event.target.value)} placeholder="you@example.com" required value={visitorEmail} />
               </label>
               <label className="contact-field">
                 <span>What would you like to discuss?</span>
-                <textarea maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={5} value={visitorNeed} />
+                <textarea name="message" maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={5} value={visitorNeed} />
               </label>
-              <input aria-hidden="true" autoComplete="off" tabIndex={-1} name="company" type="text" value="" onChange={() => undefined}
-                style={{ position: "absolute", width: 1, height: 1, padding: 0, margin: -1, overflow: "hidden", clip: "rect(0, 0, 0, 0)", whiteSpace: "nowrap", border: 0 }} />
+              <input type="hidden" name="access_key" value={import.meta.env.VITE_WEB3FORMS_ACCESS_KEY} />
+              <input type="hidden" name="subject" value="New portfolio contact message" />
+              <input type="hidden" name="from_name" value="Christopher Okoh Portfolio" />
+              <input type="checkbox" name="botcheck" tabIndex={-1} aria-hidden="true" style={{ display: "none" }} />
               <button className="contact-button contact-email-button" disabled={contactStatus === "sending"} type="submit">
                 {contactStatus === "sending" ? "Sending..." : "Send message"} <Send size={15} aria-hidden="true" />
               </button>
