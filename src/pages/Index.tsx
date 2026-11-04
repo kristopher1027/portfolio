@@ -381,30 +381,30 @@ const Index = () => {
       {/* CONTACT SECTION */}
       <section id="contact" className="contact-section">
         <div className="section-container contact-container reveal">
-          <p className="section-kicker">05 / CONTACT</p>
-          <h2>Have an idea?<br /><span>Let’s build it.</span></h2>
-          <p className="contact-copy">Share a little about your project, team or opportunity. I’ll get back to you so we can discuss the goal, constraints and next steps. The form opens a WhatsApp conversation with your message ready to send.</p>
-          
-          <form action={whatsappUrl} className="contact-form" method="get" target={isMobile ? "_self" : "_blank"}>
-            <label className="contact-field">
-              <span>Your name</span>
-              <input type="text" autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
-            </label>
-            <label className="contact-field">
-              <span>How can I help?</span>
-              <textarea maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={4} value={visitorNeed} />
-            </label>
-            <button className="contact-button" disabled={!whatsappNumber} type="submit">Start WhatsApp chat <Send size={15} aria-hidden="true" /></button>
-          </form>
-          <p className="contact-copy">Your message is sent through WhatsApp when you choose to send it. This portfolio does not submit the form to a separate contact database.</p>
-          
-          <p className="contact-email-fallback">Or email me at <a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
-          <button className="contact-copy-email" type="button" onClick={copyEmail}>{emailCopied ? "Email copied" : "Copy email address"}</button>
-          
-          <div className="contact-socials" aria-label="Social links">
-            <a href={`mailto:${contactEmail}`} aria-label="Email"><AtSign size={17} /></a>
-            <a href="https://github.com/kristopher1027" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={17} /></a>
-            <a href="https://www.linkedin.com/in/christopher-okoh-391933430/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={17} /></a>
+          <div className="contact-intro">
+            <p className="section-kicker">07 / CONTACT</p>
+            <p className="contact-availability"><span /> Available for selected opportunities</p>
+            <h2>Let’s talk<br /><span>about ideas.</span></h2>
+            <p className="contact-copy">Have a product to build, a problem to solve, or an opportunity to discuss? Tell me a little about it and let’s work out the next step.</p>
+            <div className="contact-direct-links">
+              <a href={`mailto:${contactEmail}`}><span className="contact-link-label">EMAIL</span><strong>{contactEmail}</strong><ArrowUpRight size={16} aria-hidden="true" /></a>
+              <a href="https://www.linkedin.com/in/christopher-okoh-391933430/" target="_blank" rel="noopener noreferrer"><span className="contact-link-label">CONNECT</span><strong>LinkedIn</strong><ArrowUpRight size={16} aria-hidden="true" /></a>
+            </div>
+          </div>
+          <div className="contact-form-panel">
+            <div className="contact-form-heading"><span>START A CONVERSATION</span><p>Share the essentials. I’ll take it from there.</p></div>
+            <form action={whatsappUrl} className="contact-form" method="get" target={isMobile ? "_self" : "_blank"}>
+              <label className="contact-field">
+                <span>Your name</span>
+                <input type="text" autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
+              </label>
+              <label className="contact-field">
+                <span>What would you like to discuss?</span>
+                <textarea maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={5} value={visitorNeed} />
+              </label>
+              <button className="contact-button" disabled={!whatsappNumber} type="submit">Send via WhatsApp <Send size={15} aria-hidden="true" /></button>
+            </form>
+            <p className="contact-privacy-note">Your message opens in WhatsApp for you to review and send. This site does not store form submissions.</p>
           </div>
         </div>
       </section>
@@ -413,9 +413,20 @@ const Index = () => {
     {/* FOOTER */}
     <footer className="site-footer">
       <div className="section-container footer-inner">
-        <a className="footer-brand" href="#home"><span>CO</span> CHRISTOPHER OKOH</a>
-        <span>© {new Date().getFullYear()} Christopher Okoh · Built with intention.</span>
-        <a href="#home">Back to top <ArrowUpRight size={14} aria-hidden="true" /></a>
+        <div className="footer-topline">
+          <a className="footer-brand" href="#home"><span>CO</span> CHRISTOPHER OKOH</a>
+          <p>Thoughtful software. Built with intention.</p>
+          <div className="footer-socials" aria-label="Social links">
+            <a href="https://github.com/kristopher1027" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={16} /></a>
+            <a href="https://www.linkedin.com/in/christopher-okoh-391933430/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={16} /></a>
+            <a href={`mailto:${contactEmail}`} aria-label="Email"><AtSign size={16} /></a>
+          </div>
+        </div>
+        <div className="footer-bottomline">
+          <span>© {new Date().getFullYear()} Christopher Okoh. All rights reserved.</span>
+          <nav aria-label="Footer navigation"><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+          <a className="footer-back-top" href="#home">Back to top <ArrowUpRight size={14} aria-hidden="true" /></a>
+        </div>
       </div>
     </footer>
   </div>;
