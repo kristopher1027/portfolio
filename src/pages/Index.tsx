@@ -35,7 +35,9 @@ const milestones = [
 
 const Index = () => {
   const [visitorName, setVisitorName] = useState("");
+  const [visitorEmail, setVisitorEmail] = useState("");
   const [visitorNeed, setVisitorNeed] = useState("");
+  const [contactStatus, setContactStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   // Scroll reveal animation hook
   useEffect(() => {
@@ -380,24 +382,47 @@ const Index = () => {
             </div>
           </div>
           <div className="contact-form-panel">
-            <div className="contact-form-heading"><span>SEND AN EMAIL</span><p>Share a few details and your email app will open with a message ready to send.</p></div>
-            <form className="contact-form" onSubmit={(event) => {
+            <div className="contact-form-heading"><span>SEND A MESSAGE</span><p>Share a few details and your message will be delivered directly to my inbox.</p></div>
+            <form className="contact-form" onSubmit={async (event) => {
               event.preventDefault();
-              const subject = encodeURIComponent("Portfolio enquiry");
-              const body = encodeURIComponent(`Hi Christopher,\n\nMy name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`);
-              window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+              if (contactStatus === "sending") return;
+              setContactStatus("sending");
+              try {
+                const response = await fetch("/api/contact", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ name: visitorName.trim(), email: visitorEmail.trim(), message: visitorNeed.trim() }),
+                });
+                if (!response.ok) throw new Error("Message delivery failed");
+                setContactStatus("success");
+                setVisitorName("");
+                setVisitorEmail("");
+                setVisitorNeed("");
+              } catch {
+                setContactStatus("error");
+              }
             }}>
               <label className="contact-field">
                 <span>Your name</span>
                 <input type="text" autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
               </label>
               <label className="contact-field">
+                <span>Your email</span>
+                <input type="email" autoComplete="email" maxLength={254} onChange={(event) => setVisitorEmail(event.target.value)} placeholder="you@example.com" required value={visitorEmail} />
+              </label>
+              <label className="contact-field">
                 <span>What would you like to discuss?</span>
                 <textarea maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={5} value={visitorNeed} />
               </label>
-              <button className="contact-button contact-email-button" type="submit">Continue to email <Send size={15} aria-hidden="true" /></button>
+              <input aria-hidden="true" autoComplete="off" tabIndex={-1} name="company" type="text" value="" onChange={() => undefined}
+                style={{ position: "absolute", width: 1, height: 1, padding: 0, margin: -1, overflow: "hidden", clip: "rect(0, 0, 0, 0)", whiteSpace: "nowrap", border: 0 }} />
+              <button className="contact-button contact-email-button" disabled={contactStatus === "sending"} type="submit">
+                {contactStatus === "sending" ? "Sending..." : "Send message"} <Send size={15} aria-hidden="true" />
+              </button>
+              {contactStatus === "success" && <p role="status">Thanks — your message has been sent successfully.</p>}
+              {contactStatus === "error" && <p role="alert">Sorry, your message could not be sent. Please try again or email me directly.</p>}
             </form>
-            <p className="contact-privacy-note">Your email app opens with your message for you to review and send. This site does not store form submissions.</p>
+            <p className="contact-privacy-note">Your message is sent securely to my inbox. Your details are used only to respond to your enquiry.</p>
           </div>
         </div>
       </section>
