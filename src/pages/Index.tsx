@@ -387,12 +387,21 @@ const Index = () => {
             <h2>Let’s talk<br /><span>about ideas.</span></h2>
             <p className="contact-copy">Have a product to build, a problem to solve, or an opportunity to discuss? Tell me a little about it and let’s work out the next step.</p>
             <div className="contact-direct-links">
-              <a href={`mailto:${contactEmail}`}><span className="contact-link-label">EMAIL</span><strong>{contactEmail}</strong><ArrowUpRight size={16} aria-hidden="true" /></a>
-              <a href="https://www.linkedin.com/in/christopher-okoh-391933430/" target="_blank" rel="noopener noreferrer"><span className="contact-link-label">CONNECT</span><strong>LinkedIn</strong><ArrowUpRight size={16} aria-hidden="true" /></a>
+              <a className="contact-email-primary" href={`mailto:${contactEmail}`}>
+                <span className="contact-link-label">PRIMARY CONTACT</span>
+                <strong>Send me an email</strong>
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+              <a className="contact-whatsapp-secondary" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">
+                <span className="contact-link-label">ALSO AVAILABLE</span>
+                <strong>Chat on WhatsApp</strong>
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
             </div>
+            <p className="contact-email-address">Or write directly to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.</p>
           </div>
           <div className="contact-form-panel">
-            <div className="contact-form-heading"><span>START A CONVERSATION</span><p>Share the essentials. I’ll take it from there.</p></div>
+            <div className="contact-form-heading"><span>PREFER WHATSAPP?</span><p>Send a quick message directly through WhatsApp.</p></div>
             <form action={whatsappUrl} className="contact-form" method="get" target={isMobile ? "_self" : "_blank"}>
               <label className="contact-field">
                 <span>Your name</span>
@@ -402,7 +411,7 @@ const Index = () => {
                 <span>What would you like to discuss?</span>
                 <textarea maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={5} value={visitorNeed} />
               </label>
-              <button className="contact-button" disabled={!whatsappNumber} type="submit">Send via WhatsApp <Send size={15} aria-hidden="true" /></button>
+              <button className="contact-button contact-whatsapp-button" disabled={!whatsappNumber} type="submit">Continue to WhatsApp <Send size={15} aria-hidden="true" /></button>
             </form>
             <p className="contact-privacy-note">Your message opens in WhatsApp for you to review and send. This site does not store form submissions.</p>
           </div>

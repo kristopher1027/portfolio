@@ -953,3 +953,26 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
   .contact-direct-links a { grid-template-columns:68px minmax(0,1fr) auto; gap:8px; }
   .contact-direct-links strong { font-size:12px; }
 }
+
+
+/* Contact hierarchy: email is the primary professional channel; WhatsApp is secondary. */
+.contact-direct-links a.contact-email-primary {
+  color: #082d32;
+  background: #b9eee6;
+  border: 1px solid #b9eee6;
+  border-radius: 8px;
+  padding: 16px 14px;
+  margin-top: 12px;
+}
+.contact-direct-links a.contact-email-primary .contact-link-label { color: #315d60; }
+.contact-direct-links a.contact-email-primary > svg { color: #0b6663; }
+.contact-direct-links a.contact-whatsapp-secondary { padding: 15px 0; }
+.contact-email-address { margin: 16px 0 0; color: #9aaab4; font-size: 12px; line-height: 1.7; }
+.contact-email-address a { color: #d6f4ef; text-decoration: underline; text-underline-offset: 3px; }
+.contact-form-heading > span { letter-spacing: .16em; }
+.contact-whatsapp-button { background: transparent; border: 1px solid rgba(255,255,255,.38); color: #f8fafc; }
+.contact-whatsapp-button:hover { background: rgba(255,255,255,.08); }
+:root[data-theme="dark"] .contact-direct-links a.contact-email-primary { color: #082d32; }
+@media (max-width:420px) {
+  .contact-direct-links a.contact-email-primary { padding: 14px 10px; }
+}
