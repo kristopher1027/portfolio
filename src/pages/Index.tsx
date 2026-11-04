@@ -25,7 +25,6 @@ const capabilities = [
 ];
 
 const contactEmail = "christopher.okoh@gmail.com"; // Update with your real email
-const whatsappNumber = "2348020562772";
 
 const milestones = [
   { name: "Learn2Earn Fellow", detail: "AI & Software Engineering", status: "In progress", description: "Building AI-powered tools and full-stack applications through hands-on projects and collaboration." },
@@ -35,7 +34,6 @@ const milestones = [
 ];
 
 const Index = () => {
-  const [emailCopied, setEmailCopied] = useState(false);
   const [visitorName, setVisitorName] = useState("");
   const [visitorNeed, setVisitorNeed] = useState("");
 
@@ -58,19 +56,6 @@ const Index = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  const isMobile = typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
-  const whatsappMessage = `Hi Christopher, my name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`;
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(contactEmail);
-      setEmailCopied(true);
-    } catch {
-      setEmailCopied(false);
-    }
-  };
 
   return <div className="portfolio-page">
     <a className="skip-link" href="#main-content">Skip to content</a>
@@ -392,17 +377,16 @@ const Index = () => {
                 <strong>Send me an email</strong>
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>
-              <a className="contact-whatsapp-secondary" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">
-                <span className="contact-link-label">ALSO AVAILABLE</span>
-                <strong>Chat on WhatsApp</strong>
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
             </div>
-            <p className="contact-email-address">Or write directly to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.</p>
           </div>
           <div className="contact-form-panel">
-            <div className="contact-form-heading"><span>PREFER WHATSAPP?</span><p>Send a quick message directly through WhatsApp.</p></div>
-            <form action={whatsappUrl} className="contact-form" method="get" target={isMobile ? "_self" : "_blank"}>
+            <div className="contact-form-heading"><span>SEND AN EMAIL</span><p>Share a few details and your email app will open with a message ready to send.</p></div>
+            <form className="contact-form" onSubmit={(event) => {
+              event.preventDefault();
+              const subject = encodeURIComponent("Portfolio enquiry");
+              const body = encodeURIComponent(`Hi Christopher,\n\nMy name is ${visitorName.trim()}.\n\n${visitorNeed.trim()}`);
+              window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+            }}>
               <label className="contact-field">
                 <span>Your name</span>
                 <input type="text" autoComplete="name" maxLength={80} onChange={(event) => setVisitorName(event.target.value)} placeholder="How should I address you?" required value={visitorName} />
@@ -411,9 +395,9 @@ const Index = () => {
                 <span>What would you like to discuss?</span>
                 <textarea maxLength={1200} onChange={(event) => setVisitorNeed(event.target.value)} placeholder="A project, an opportunity, or a problem you’re working on..." required rows={5} value={visitorNeed} />
               </label>
-              <button className="contact-button contact-whatsapp-button" disabled={!whatsappNumber} type="submit">Continue to WhatsApp <Send size={15} aria-hidden="true" /></button>
+              <button className="contact-button contact-email-button" type="submit">Continue to email <Send size={15} aria-hidden="true" /></button>
             </form>
-            <p className="contact-privacy-note">Your message opens in WhatsApp for you to review and send. This site does not store form submissions.</p>
+            <p className="contact-privacy-note">Your email app opens with your message for you to review and send. This site does not store form submissions.</p>
           </div>
         </div>
       </section>
