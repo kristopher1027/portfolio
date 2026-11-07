@@ -11,10 +11,10 @@ import { featuredProjects as projects } from "@/data/portfolio";
 
 
 const skillCategories = [
-  { title: "Languages", skills: ["TypeScript", "Python", "Go", "PHP", "SQL"] },
-  { title: "Backend & APIs", skills: ["Laravel 11", "FastAPI", "Node.js", "REST APIs", "Supabase"] },
+  { title: "Languages", skills: ["Go", "Python", "TypeScript", "PHP", "SQL"] },
+  { title: "Backend & APIs", skills: ["Go", "Laravel 11", "FastAPI", "Node.js", "REST API design"] },
   { title: "Databases", skills: ["PostgreSQL", "SQLite", "MySQL"] },
-  { title: "AI & Data", skills: ["RAG", "OpenAI API", "LLM Integration", "Data Modeling"] },
+  { title: "AI & Data", skills: ["RAG", "LLM integration", "OpenAI API", "Data modeling"] },
   { title: "Tools & DevOps", skills: ["Docker", "Git & GitHub", "CI/CD", "System Design"] }
 ];
 
@@ -90,7 +90,7 @@ const Index = () => {
             <h1 id="hero-title">I build <span>thoughtful software.</span></h1>
             <p className="hero-role">Full-stack engineer · Applied AI</p>
             <p className="hero-intro">
-              I turn complex ideas into dependable digital products — building full-stack platforms, secure backend systems and practical AI experiences that solve real problems.
+              I design and build full-stack products, dependable backend systems and practical AI experiences — with a focus on clear workflows, secure data and solving real-world problems.
             </p>
             <div className="hero-actions">
               <a className="hero-button" href="#projects">Explore selected work <ArrowRight size={16} aria-hidden="true" /></a>
@@ -138,10 +138,10 @@ const Index = () => {
             
             <div className="about-copy">
               <p className="about-lead">
-                I’m Christopher, a Nigeria-based full-stack and AI engineer. I enjoy taking a complex idea and turning it into a useful, dependable product.
+                I’m Christopher Okoh, a Nigeria-based full-stack developer focused on backend engineering and applied AI. I enjoy turning complex requirements into software people can use with confidence.
               </p>
               <p>
-                I work across product design, backend engineering, data and applied AI. My approach is simple: understand the people first, choose the right tools, and build software that is useful, secure and maintainable.
+                My work spans frontend development, API design, database-backed applications and AI integration. I start by understanding the user and the problem, then make deliberate technical choices to keep the product useful, secure and maintainable.
               </p>
               <div className="about-meta">
                 <span><MapPin size={15} aria-hidden="true" /> Based in Nigeria</span>
@@ -184,7 +184,7 @@ const Index = () => {
           <div className="experience-intro">
             <p className="section-kicker">03 / LEARNING & DEVELOPMENT</p>
             <h2 className="section-title">Growing through<br /><span>practical engineering.</span></h2>
-            <p className="section-lede">Alongside independent product builds, I’m developing my engineering skills through structured programs and collaborative learning. I focus on applying what I learn by designing, building, testing and improving working software.</p>
+            <p className="section-lede">I strengthen my engineering practice through structured learning and hands-on product development. I apply new concepts by designing workflows, implementing features, writing tests and improving software based on what I learn.</p>
           </div>
           
           <div className="experience-details">
