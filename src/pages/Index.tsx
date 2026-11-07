@@ -24,7 +24,7 @@ const capabilities = [
   { icon: BrainCircuit, title: "Applied AI", text: "I connect language models and retrieval systems to real workflows, with useful context and careful boundaries." },
 ];
 
-const contactEmail = "christopher.okoh@gmail.com"; // Update with your real email
+const contactEmail = "xtopher1027@gmail.com"; // Update with your real email
 
 const milestones = [
   { name: "Learn2Earn Fellow", detail: "AI & Software Engineering", status: "In progress", description: "Building AI-powered tools and full-stack applications through hands-on projects and collaboration." },
