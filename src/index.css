@@ -1004,3 +1004,32 @@ body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; 
 :root[data-theme="dark"] .case-study-content .case-study-details h4 {
   color: #5eead4;
 }
+
+/* Internship portfolio readability: project cards must never remain faded. */
+.case-study-card.reveal,
+.case-study-card.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.case-study-card .case-study-intro,
+.case-study-card .case-study-details p {
+  color: #334155 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  text-shadow: none !important;
+}
+.case-study-card .project-category {
+  color: #0f766e !important;
+}
+.case-study-card .case-study-details h4 {
+  color: #0f766e !important;
+}
+:root[data-theme="dark"] .case-study-card .case-study-intro,
+:root[data-theme="dark"] .case-study-card .case-study-details p {
+  color: #d5e0e8 !important;
+}
+:root[data-theme="dark"] .case-study-card .project-category,
+:root[data-theme="dark"] .case-study-card .case-study-details h4 {
+  color: #5eead4 !important;
+}
