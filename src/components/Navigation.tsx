@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
 
 const links = [
-  ["About", "#about"], ["Skills", "#skills"], ["Projects", "#projects"],
+  ["About", "#about"], ["Learning", "#experience"], ["Skills", "#skills"], ["Projects", "#projects"],
   ["Approach", "#approach"], ["GitHub", "#github"], ["Contact", "#contact"],
 ];
-const sectionIds = ["home", "about", "skills", "projects", "approach", "github", "contact"];
+const sectionIds = ["home", "about", "experience", "skills", "projects", "approach", "github", "contact"];
 
 const Navigation = () => {
   const [open, setOpen] = useState(false);

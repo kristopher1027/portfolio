@@ -12,7 +12,7 @@ import { featuredProjects as projects } from "@/data/portfolio";
 
 const skillCategories = [
   { title: "Languages", skills: ["Go", "Python", "TypeScript", "PHP", "SQL"] },
-  { title: "Backend & APIs", skills: ["Go", "Laravel 11", "FastAPI", "Node.js", "REST API design"] },
+  { title: "Backend & APIs", skills: ["Go", "Laravel", "FastAPI", "Node.js", "REST API design"] },
   { title: "Databases", skills: ["PostgreSQL", "SQLite", "MySQL"] },
   { title: "AI & Data", skills: ["RAG", "LLM integration", "OpenAI API", "Data modeling"] },
   { title: "Tools & DevOps", skills: ["Docker", "Git & GitHub", "CI/CD", "System Design"] }
@@ -227,7 +227,7 @@ const Index = () => {
               <p className="section-kicker">04 / SELECTED WORK</p>
               <h2 className="section-title">What I’ve <span>built.</span></h2>
             </div>
-            <p className="section-lede">A closer look at products I’ve designed and engineered across education, operations, applied AI, cultural heritage and community safety.</p>
+            <p className="section-lede">Selected projects where I turn real-world problems into thoughtful products — from education and operations to applied AI and community tools.</p>
           </div>
 
           <div className="reveal">
@@ -356,10 +356,10 @@ const Index = () => {
             </div>
             <aside className="cv-card reveal">
               <span className="cv-eyebrow">CAREER PROFILE</span><h3>Experience, skills<br />and direction.</h3>
-              <p>A concise overview of my engineering work, technical skills and learning journey.</p>
+              <p>A focused overview of my projects, technical skills, education and current learning journey.</p>
               <a className="cv-primary" href="/Christopher-Okoh-CV.pdf" download>Download CV <ArrowDown size={15} aria-hidden="true" /></a>
               <a className="cv-secondary" href="https://github.com/kristopher1027" target="_blank" rel="noopener noreferrer">Explore GitHub <ArrowUpRight size={15} aria-hidden="true" /></a>
-              <small>Currently targeting AI/API Engineer internship opportunities.</small>
+              <small>Seeking opportunities to contribute, learn and grow as a software engineer.</small>
             </aside>
           </div>
         </div>
@@ -369,8 +369,8 @@ const Index = () => {
       <section id="contact" className="contact-section">
         <div className="section-container contact-container reveal">
           <div className="contact-intro">
-            <p className="section-kicker">07 / CONTACT</p>
-            <p className="contact-availability"><span /> Available for selected opportunities</p>
+            <p className="section-kicker">08 / CONTACT</p>
+            <p className="contact-availability"><span /> Open to internship and collaboration opportunities</p>
             <h2>Let’s talk<br /><span>about ideas.</span></h2>
             <p className="contact-copy">Have a product to build, a problem to solve, or an opportunity to discuss? Tell me a little about it and let’s work out the next step.</p>
             <div className="contact-direct-links">
@@ -382,7 +382,7 @@ const Index = () => {
             </div>
           </div>
           <div className="contact-form-panel">
-            <div className="contact-form-heading"><span>SEND A MESSAGE</span><p>Share a few details and your message will be delivered directly to my inbox.</p></div>
+            <div className="contact-form-heading"><span>SEND A MESSAGE</span><p>Tell me what you’re working on, and I’ll get back to you by email.</p></div>
             <form className="contact-form" onSubmit={async (event) => {
               event.preventDefault();
               if (contactStatus === "sending") return;
