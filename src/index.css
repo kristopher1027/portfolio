@@ -1134,3 +1134,26 @@ body { text-rendering: optimizeLegibility; }
   .reveal, .reveal.is-visible { opacity: 1; transform: none; }
   .case-study-card:hover, .repository-row:hover { transform: none; }
 }
+
+
+/* Preserve the existing theme toggle after the visual refinements above. */
+:root[data-theme="dark"] .section-lede,
+:root[data-theme="dark"] .about-copy p,
+:root[data-theme="dark"] .capability p,
+:root[data-theme="dark"] .milestone p,
+:root[data-theme="dark"] .approach-card p { color: #b8c8d3; }
+:root[data-theme="dark"] .case-study-content { background: #172633; }
+:root[data-theme="dark"] .case-study-content h3,
+:root[data-theme="dark"] .case-study-intro { color: #edf5f8; }
+:root[data-theme="dark"] .case-study-details p { color: #c2d0d9; }
+:root[data-theme="dark"] .case-study-details h4,
+:root[data-theme="dark"] .case-study-content .project-category { color: #5eead4; }
+:root[data-theme="dark"] .project-tags > span { background: #263846; border-color: #405462; color: #dce8ee; }
+:root[data-theme="dark"] .project-links > a:first-child { background: #234b4b; color: #a7f3e8; }
+:root[data-theme="dark"] .project-links > a:first-child:hover { background: #2dd4bf; color: #082d32; }
+:root[data-theme="dark"] .milestone-status { background: #332b1d; border-color: #70552b; color: #f6c879; }
+:root[data-theme="dark"] .milestone-status.is-complete { background: #17372f; border-color: #28664f; color: #8ce0bd; }
+:root[data-theme="dark"] .project-status { background: #332b1d; border-color: #70552b; color: #f6c879; }
+:root[data-theme="dark"] .project-status-shipped { background: #17372f; border-color: #28664f; color: #8ce0bd; }
+:root[data-theme="dark"] .project-status-archived { background: #263846; border-color: #405462; color: #dce8ee; }
+:root[data-theme="dark"] .case-study-card:hover { box-shadow: 0 30px 70px -38px rgba(0,0,0,.7); }
