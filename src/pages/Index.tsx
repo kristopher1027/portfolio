@@ -85,12 +85,12 @@ const Index = () => {
 
         <div className="hero-split">
           <div className="hero-content-left">
-            <p className="availability-pill"><span /> Open to opportunities</p>
+            <p className="availability-pill"><span /> Open to internship opportunities</p>
             <p className="hero-kicker"><span /> Independent developer · Nigeria</p>
-            <h1 id="hero-title">I build <span>thoughtful software.</span></h1>
-            <p className="hero-role">Full-stack engineer · Applied AI</p>
+            <h1 id="hero-title">I build <span>software that solves real problems.</span></h1>
+            <p className="hero-role">Full-stack developer · AI engineer</p>
             <p className="hero-intro">
-              I design and build full-stack products, dependable backend systems and practical AI experiences — with a focus on clear workflows, secure data and solving real-world problems.
+              I build web applications, backend systems and practical AI-powered tools. My work focuses on clear product workflows, secure data and software that solves real problems.
             </p>
             <div className="hero-actions">
               <a className="hero-button" href="#projects">Explore selected work <ArrowRight size={16} aria-hidden="true" /></a>
@@ -267,7 +267,7 @@ const Index = () => {
                 <p className="project-category">{project.category}</p>
                 <div className="project-meta-row">
                   <h3 id={`${project.slug}-title`}>{project.title}</h3>
-                  <span className={`project-status project-status-${project.slug === "aije-community-shield" ? "pilot" : project.slug === "schoolpilot" || project.slug === "resourcehub" || project.slug === "devflow-ai" ? "development" : project.slug === "aije-community-shield" ? "pilot" : "live"}`}>{project.slug === "aije-community-shield" ? "Pilot Validation" : project.slug === "schoolpilot" || project.slug === "resourcehub" || project.slug === "devflow-ai" ? "In Development" : "Live"}</span>
+                  <span className={`project-status project-status-${project.status ?? "in-progress"}`}>{project.status === "shipped" ? "Live" : project.status === "archived" ? "Archived" : "In Development"}</span>
                 </div>
                 <p className="case-study-intro">{project.caseStudy.intro}</p>
                 
